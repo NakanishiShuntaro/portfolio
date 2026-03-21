@@ -1,366 +1,483 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Shuntaro Nakanishi — CV / Resume" />
-    <title>Shuntaro Nakanishi — CV</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    />
+    <meta name="description" content="Shuntaro Nakanishi — About / CV" />
+    <title>Shuntaro Nakanishi - About Me</title>
     <style>
-      :root {
-        color-scheme: light dark;
-        --bg: #fafafa;
-        --fg: #0f1419;
-        --muted: #536471;
-        --accent: #26428b;
-        --rule: rgba(38, 66, 139, 0.35);
-      }
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --bg: #0f1419;
-          --fg: #e7e9ea;
-          --muted: #8b98a5;
-          --rule: rgba(147, 187, 255, 0.25);
-        }
-      }
       * {
         box-sizing: border-box;
       }
+
+      ul {
+        padding-left: 1.2em;
+        margin-top: 1em;
+        margin-bottom: 1.5em;
+      }
+
+      ul li {
+        margin-bottom: 0.5em;
+        line-height: 1.5;
+      }
+
       body {
+        font-family: sans-serif;
         margin: 0;
-        min-height: 100vh;
-        font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Hiragino Sans",
-          "Noto Sans JP", sans-serif;
-        background: var(--bg);
-        color: var(--fg);
-        line-height: 1.55;
-        padding: 2rem 1.25rem 3rem;
       }
-      .wrap {
-        max-width: 44rem;
-        margin: 0 auto;
+
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 224px;
+        height: 100vh;
+        background-color: #f4f4f4;
+        padding: 2rem 1rem;
+        overflow-y: auto;
+        transition: transform 0.3s ease;
       }
-      header {
-        margin-bottom: 1.75rem;
+
+      nav h1 {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
       }
-      h1 {
-        font-size: clamp(1.65rem, 4vw, 2rem);
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        margin: 0 0 0.5rem;
-        color: var(--accent);
+
+      nav ul {
+        list-style: none;
+        padding: 0;
       }
-      .contact {
-        font-size: 0.9rem;
-        color: var(--muted);
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.35rem 0.75rem;
-        align-items: center;
+
+      nav li {
+        margin: 1rem 0;
       }
-      .contact a {
-        color: var(--accent);
+
+      nav a {
         text-decoration: none;
+        color: #0055aa;
       }
-      .contact a:hover {
+
+      nav a:hover {
         text-decoration: underline;
       }
-      .sep {
-        color: var(--muted);
-        opacity: 0.6;
-        user-select: none;
+
+      a {
+        color: #0055aa;
+        text-decoration: underline;
       }
-      section {
-        margin-top: 1.35rem;
+
+      a:hover {
+        color: #3399ff;
       }
+
+      main {
+        margin-left: 224px;
+        padding: 2rem;
+        max-width: 800px;
+      }
+
       h2 {
-        font-size: 0.72rem;
-        font-weight: 600;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--accent);
-        margin: 0 0 0.65rem;
-        padding-bottom: 0.35rem;
-        border-bottom: 1px solid var(--rule);
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 0.3em;
+        margin-top: 2rem;
       }
-      .entry {
-        margin-bottom: 1.1rem;
+
+      section {
+        margin-bottom: 3rem;
       }
-      .entry:last-child {
-        margin-bottom: 0;
+
+      section:first-of-type h2 {
+        margin-top: 0;
       }
-      .entry-head {
+
+      .profile-img {
+        width: 180px;
+        height: 180px;
+        border-radius: 45%;
+        object-fit: cover;
+        display: block;
+        margin: 0 auto 1.5rem auto;
+        border: 5px solid white;
+        box-shadow: 0 0 0 1.2px #d7d7d7;
+        background-color: white;
+      }
+
+      .mobile-only-block {
+        display: none;
+      }
+
+      .social-links {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.25rem 1rem;
-        justify-content: space-between;
-        align-items: baseline;
-        margin-bottom: 0.35rem;
+        justify-content: center;
+        column-gap: 1rem;
+        row-gap: 0.6rem;
+        width: 100%;
+        margin-top: 1rem;
+        padding: 0;
+        background: none;
+        border: none;
+        box-shadow: none;
       }
-      .entry-title {
-        font-weight: 600;
+
+      .social-links a {
+        color: #0055aa;
+        text-decoration: none;
+        transition: color 0.3s;
       }
-      .entry-sub {
-        font-size: 0.9rem;
-        color: var(--muted);
+
+      .social-links a:hover {
+        color: #3399ff;
       }
-      .dates {
-        font-size: 0.85rem;
-        color: var(--muted);
-        white-space: nowrap;
+
+      .social-icons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        column-gap: 1rem;
+        row-gap: 0.6rem;
+        width: 100%;
+        margin-top: 1rem;
+        padding: 0;
+        background: none;
+        border: none;
+        box-shadow: none;
       }
-      ul {
-        margin: 0.35rem 0 0;
-        padding-left: 1.15rem;
+
+      .social-icons a {
+        color: #0055aa;
+        font-size: 1.4rem;
+        text-decoration: none;
+        transition: color 0.3s;
       }
-      li {
-        margin: 0.2rem 0;
+
+      .social-icons a:hover {
+        color: #3399ff;
       }
-      .skills-grid {
-        display: grid;
-        gap: 0.35rem 1.5rem;
+
+      .mobile-only-flex {
+        display: none;
       }
-      @media (min-width: 32rem) {
-        .skills-grid {
-          grid-template-columns: 1fr 1fr;
+
+      .desktop-only {
+        display: block;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #121212;
+          color: #e0e0e0;
+        }
+
+        nav {
+          background-color: #1e1e1e;
+        }
+
+        nav a,
+        .social-icons a {
+          color: #66ccff;
+        }
+
+        nav a:hover,
+        .social-icons a:hover {
+          color: #99ddff;
+        }
+
+        a {
+          color: #66ccff;
+        }
+
+        a:hover {
+          color: #99ddff;
+        }
+
+        h2 {
+          border-bottom-color: #444;
+        }
+
+        .profile-img {
+          border-color: #2a2a2a;
+          box-shadow: 0 0 0 1.2px #444;
         }
       }
-      .skill-line {
-        font-size: 0.95rem;
-      }
-      .skill-line strong {
-        color: var(--accent);
-        font-weight: 600;
-      }
-      footer {
-        margin-top: 2.5rem;
-        padding-top: 1rem;
-        border-top: 1px solid var(--rule);
-        font-size: 0.8rem;
-        color: var(--muted);
-      }
-      footer a {
-        color: var(--accent);
-        text-decoration: none;
-      }
-      footer a:hover {
-        text-decoration: underline;
+
+      @media screen and (max-width: 768px) {
+        nav {
+          display: none;
+        }
+
+        main {
+          margin-left: 0;
+          padding: 1.5rem;
+        }
+
+        .mobile-only-block {
+          display: block;
+        }
+
+        .mobile-only-flex {
+          display: flex;
+        }
+
+        .social-icons {
+          gap: 1rem;
+          justify-content: center;
+          margin-top: 1rem;
+        }
+
+        .social-links {
+          gap: 1rem;
+          justify-content: center;
+          margin-top: 1rem;
+        }
+
+        .desktop-only {
+          display: none;
+        }
       }
     </style>
   </head>
+
   <body>
-    <div class="wrap">
-      <header>
-        <h1>Shuntaro Nakanishi</h1>
-        <div class="contact">
-          <span>Fukuoka, Japan</span>
-          <span class="sep">|</span>
-          <a href="mailto:nsh92030@gmail.com">nsh92030@gmail.com</a>
-          <span class="sep">|</span>
-          <a href="https://github.com/NakanishiShuntaro">GitHub</a>
-          <span class="sep">|</span>
-          <a href="https://linkedin.com/in/shuntaro-nakanishi-a44b55361">LinkedIn</a>
-        </div>
-      </header>
+    <nav id="sidebar" aria-label="Primary">
+      <h1>Shuntaro Nakanishi</h1>
+      <img
+        src="https://github.com/NakanishiShuntaro.png"
+        alt="Profile photo"
+        class="profile-img"
+        width="180"
+        height="180"
+      />
+      <ul>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#work">Work Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#awards">Awards &amp; Honors</a></li>
+        <li><a href="#activities">Extracurricular Activities</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#languages">Languages</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
 
-      <section>
+      <div class="social-icons">
+        <a href="mailto:nsh92030@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/shuntaro-nakanishi-a44b55361"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+        >
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/NakanishiShuntaro" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
+    </nav>
+
+    <main>
+      <section id="profile">
+        <h2 class="desktop-only">About</h2>
+        <h2 class="mobile-only-block">Shuntaro Nakanishi</h2>
+
+        <img
+          src="https://github.com/NakanishiShuntaro.png"
+          alt="Profile photo"
+          class="profile-img mobile-only-block"
+          width="180"
+          height="180"
+        />
+
+        <div class="social-icons mobile-only-flex">
+          <a href="mailto:nsh92030@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/shuntaro-nakanishi-a44b55361"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+          >
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://github.com/NakanishiShuntaro" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+
+        <p>
+          Undergraduate in aerospace engineering at Kyushu University (Class of 2027), based in Fukuoka, Japan. Builds
+          software with Python and TypeScript in industry settings, including agriculture-related AI support at SERAKU
+          Co., Ltd. and the Fukuoka Mitou program, where he co-developed Tellmee, a generative AI assistant for beginner
+          farmers.
+        </p>
+        <p>
+          Active in student space engineering (PLANET-Q: CanSat and hybrid rockets) and a physics reading group
+          (PhysiKyu). Holds the Applied Information Technology Engineer certification (IPA) and has presented research
+          on farmer-facing AI at the Japanese Society of Agricultural Informatics.
+        </p>
+      </section>
+
+      <section id="education">
         <h2>Education</h2>
-        <div class="entry">
-          <div class="entry-head">
-            <div>
-              <span class="entry-title">Kyushu University</span>
-              <span class="entry-sub"> — Fukuoka, Japan</span>
-            </div>
-            <span class="dates">Apr 2023 — Mar 2027</span>
-          </div>
-          <div class="entry-sub">Bachelor of Engineering, Department of Aeronautics and Astronautics</div>
-          <ul>
-            <li>Undergraduate student in Aerospace Engineering, Class of 2027</li>
-            <li>Activities and societies: PLANET-Q, PhysiKyu, Kyushu University Rubber Baseball Club</li>
-            <li>Graduated from Chienkan Junior and Senior High School</li>
-            <li>Played baseball in junior high school and senior high school</li>
-          </ul>
-        </div>
+        <ul>
+          <li>
+            <strong>Apr 2023 — Mar 2027:</strong> Kyushu University, Fukuoka, Japan — Bachelor of Engineering, Department
+            of Aeronautics and Astronautics
+          </li>
+          <li>Undergraduate student in Aerospace Engineering, Class of 2027</li>
+          <li>Activities and societies: PLANET-Q, PhysiKyu, Kyushu University Rubber Baseball Club</li>
+          <li>Graduated from Chienkan Junior and Senior High School</li>
+          <li>Played baseball in junior high school and senior high school</li>
+        </ul>
       </section>
 
-      <section>
+      <section id="work">
         <h2>Work Experience</h2>
-        <div class="entry">
-          <div class="entry-head">
-            <div>
-              <span class="entry-title">Software Engineer</span>
-              <span class="entry-sub"> — SERAKU Co., Ltd.</span>
-            </div>
-            <span class="dates">Apr 2025 — Jan 2026</span>
-          </div>
-          <div class="entry-sub">Fukuoka, Japan (Remote)</div>
-          <ul>
-            <li>Worked part-time as a software engineer using Python and TypeScript</li>
-            <li>Built software in collaboration with an industry team based in Fukuoka, Japan</li>
-            <li>Contributed to an agriculture-related AI support project in partnership with users and stakeholders</li>
-          </ul>
-        </div>
-        <div class="entry">
-          <div class="entry-head">
-            <div>
-              <span class="entry-title">Software Engineer Intern</span>
-              <span class="entry-sub"> — Fukuoka Mitou</span>
-            </div>
-            <span class="dates">Sep 2024 — Feb 2025</span>
-          </div>
-          <div class="entry-sub">Fukuoka, Japan (Hybrid)</div>
-          <ul>
-            <li>Developed software using Python and TypeScript during the Fukuoka Mitou program</li>
-            <li>Designed and implemented an AI-based agriculture assistant for beginner farmers</li>
-          </ul>
-        </div>
+        <ul>
+          <li>
+            <strong>Apr 2025 — Jan 2026:</strong> Software Engineer (part-time), SERAKU Co., Ltd. — Fukuoka, Japan
+            (Remote)
+            <ul>
+              <li>Worked part-time as a software engineer using Python and TypeScript</li>
+              <li>Built software in collaboration with an industry team based in Fukuoka, Japan</li>
+              <li>Contributed to an agriculture-related AI support project in partnership with users and stakeholders</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Sep 2024 — Feb 2025:</strong> Software Engineer Intern, Fukuoka Mitou — Fukuoka, Japan (Hybrid)
+            <ul>
+              <li>Developed software using Python and TypeScript during the Fukuoka Mitou program</li>
+              <li>Designed and implemented an AI-based agriculture assistant for beginner farmers</li>
+            </ul>
+          </li>
+        </ul>
       </section>
 
-      <section>
+      <section id="projects">
         <h2>Projects</h2>
-        <div class="entry">
-          <div class="entry-head">
-            <div>
-              <span class="entry-title">Tellmee</span>
-              <span class="entry-sub"> — Developer</span>
-            </div>
-            <span class="dates">Sep 2024 — Present</span>
-          </div>
-          <div class="entry-sub">
-            <a href="https://mitou-fukuoka.org/works/solve-tellmee">mitou-fukuoka.org/works/solve-tellmee</a>
-          </div>
-          <ul>
-            <li>Built a generative AI assistant that helps beginner farmers interpret sensor data and decide next actions</li>
-            <li>Developed a system that presents field conditions, recommended actions, and key observations in clear natural language</li>
-            <li>Incorporated a feedback mechanism so each farmer's observations and preferences can improve future LLM suggestions</li>
-            <li>Built the project primarily with Python and TypeScript</li>
-            <li>Continued improving the product toward practical deployment with industry collaboration</li>
-          </ul>
-        </div>
+        <ul>
+          <li>
+            <strong>Tellmee</strong> — Developer, Sep 2024 — Present —
+            <a href="https://mitou-fukuoka.org/works/solve-tellmee" target="_blank" rel="noopener noreferrer"
+              >mitou-fukuoka.org/works/solve-tellmee</a
+            >
+            <ul>
+              <li>Built a generative AI assistant that helps beginner farmers interpret sensor data and decide next actions</li>
+              <li>
+                Developed a system that presents field conditions, recommended actions, and key observations in clear natural
+                language
+              </li>
+              <li>
+                Incorporated a feedback mechanism so each farmer's observations and preferences can improve future LLM
+                suggestions
+              </li>
+              <li>Built the project primarily with Python and TypeScript</li>
+              <li>Continued improving the product toward practical deployment with industry collaboration</li>
+            </ul>
+          </li>
+        </ul>
       </section>
 
-      <section>
+      <section id="certifications">
         <h2>Certifications</h2>
-        <div class="entry">
-          <div class="entry-head">
-            <span class="entry-title">Applied Information Technology Engineer</span>
-            <span class="dates">Jan 2025</span>
-          </div>
-          <div class="entry-sub">Information-technology Promotion Agency, Japan (IPA)</div>
-          <ul>
-            <li>Credential ID: AP-2025-10-10308</li>
-          </ul>
-        </div>
-        <div class="entry">
-          <div class="entry-head">
-            <span class="entry-title">Security Camp 2025 Mini Specialized Course</span>
-            <span class="dates">2025</span>
-          </div>
-          <div class="entry-sub">Information-technology Promotion Agency, Japan (IPA)</div>
-        </div>
-        <div class="entry">
-          <div class="entry-head">
-            <span class="entry-title">Astro Camp 2025 Satellite Development Seminar</span>
-            <span class="dates">2025</span>
-          </div>
-          <div class="entry-sub">ASE Lab</div>
-        </div>
-        <div class="entry">
-          <div class="entry-head">
-            <span class="entry-title">GCI2023 Winter / Deep Learning Fundamentals</span>
-            <span class="dates">2023</span>
-          </div>
-          <div class="entry-sub">Matsuo Laboratory, The University of Tokyo</div>
-        </div>
+        <ul>
+          <li>
+            <strong>Applied Information Technology Engineer</strong> — Information-technology Promotion Agency, Japan
+            (IPA), Jan 2025
+            <br />
+            Credential ID: AP-2025-10-10308
+          </li>
+          <li>
+            <strong>Security Camp 2025 Mini Specialized Course</strong> — Information-technology Promotion Agency,
+            Japan (IPA), 2025
+          </li>
+          <li><strong>Astro Camp 2025 Satellite Development Seminar</strong> — ASE Lab, 2025</li>
+          <li>
+            <strong>GCI2023 Winter / Deep Learning Fundamentals</strong> — Matsuo Laboratory, The University of Tokyo,
+            2023
+          </li>
+        </ul>
       </section>
 
-      <section>
-        <h2>Awards and Honors</h2>
-        <div class="entry">
-          <div class="entry-head">
-            <span class="entry-title">Certified Excellent Creator</span>
-            <span class="dates">2025</span>
-          </div>
-          <div class="entry-sub">Fukuoka Mitou</div>
-          <ul>
-            <li>Recognized for the AI-based agriculture assistant project developed during the program</li>
-          </ul>
-        </div>
-        <div class="entry">
-          <div class="entry-head">
-            <span class="entry-title">Team Awards at Noshiro Joint Rocket Launch Experiment</span>
-            <span class="dates">2023–2024</span>
-          </div>
-          <div class="entry-sub">Noshiro Joint Rocket Launch Experiment</div>
-          <ul>
-            <li>MHI Award (2023), Autodesk Award (2023), and Photron Award (2024)</li>
-          </ul>
-        </div>
+      <section id="awards">
+        <h2>Awards &amp; Honors</h2>
+        <ul>
+          <li>
+            <strong>Certified Excellent Creator</strong> — Fukuoka Mitou, 2025
+            <br />
+            Recognized for the AI-based agriculture assistant project developed during the program
+          </li>
+          <li>
+            <strong>Team Awards at Noshiro Joint Rocket Launch Experiment</strong> — 2023–2024
+            <br />
+            MHI Award (2023), Autodesk Award (2023), and Photron Award (2024)
+          </li>
+        </ul>
       </section>
 
-      <section>
+      <section id="activities">
         <h2>Extracurricular Activities</h2>
-        <div class="entry">
-          <div class="entry-head">
-            <span class="entry-title">PLANET-Q</span>
-            <span class="dates">Apr 2023 — Present</span>
-          </div>
-          <ul>
-            <li>Member of Kyushu University's space development club, working on CanSat and hybrid rocket projects</li>
-            <li>Participated in two CanSat competitions and four joint hybrid rocket launch experiments</li>
-            <li>Used C, C++, Python, KiCad, and Fusion 360 in hands-on aerospace development</li>
-            <li>Strengthened debugging and systems thinking through hardware-software integration challenges</li>
-          </ul>
-        </div>
-        <div class="entry">
-          <div class="entry-head">
-            <span class="entry-title">PhysiKyu</span>
-            <span class="dates">Apr 2023 — Present</span>
-          </div>
-          <ul>
-            <li>Member of a student-led physics seminar community at Kyushu University</li>
-            <li>
-              Studied Shigeru Shinomoto and Hidetsugu Sakaguchi's <em>Mechanics</em> (supervised by Toshihide Maskawa),
-              Tomomasa Tatsumi's <em>Fluid Mechanics</em>, and Tatsuya Kubokawa's <em>Foundations of Modern Mathematical Statistics</em>
-              through reading-based seminars
-            </li>
-            <li>Expanded theoretical interests through weekly discussion and peer-led study</li>
-          </ul>
-        </div>
-        <div class="entry">
-          <div class="entry-head">
-            <span class="entry-title">Kyushu University Rubber Baseball Club</span>
-            <span class="dates">Apr 2023 — Present</span>
-          </div>
-          <ul>
-            <li>Member of the university's rubber baseball club since entering Kyushu University</li>
-          </ul>
-        </div>
-        <div class="entry">
-          <div class="entry-head">
-            <span class="entry-title">Research Presentation</span>
-            <span class="dates">2023 — 2025</span>
-          </div>
-          <ul>
-            <li>
-              Presented &ldquo;Development of an AI to Support Beginner Farmers by Integrating Environmental Data and Farmers'
-              Insights&rdquo; at the 2025 annual conference of the Japanese Society of Agricultural Informatics
-            </li>
-          </ul>
-        </div>
+        <ul>
+          <li>
+            <strong>PLANET-Q</strong> — Apr 2023 — Present
+            <ul>
+              <li>Member of Kyushu University's space development club, working on CanSat and hybrid rocket projects</li>
+              <li>Participated in two CanSat competitions and four joint hybrid rocket launch experiments</li>
+              <li>Used C, C++, Python, KiCad, and Fusion 360 in hands-on aerospace development</li>
+              <li>Strengthened debugging and systems thinking through hardware-software integration challenges</li>
+            </ul>
+          </li>
+          <li>
+            <strong>PhysiKyu</strong> — Apr 2023 — Present
+            <ul>
+              <li>Member of a student-led physics seminar community at Kyushu University</li>
+              <li>
+                Studied Shigeru Shinomoto and Hidetsugu Sakaguchi's <em>Mechanics</em> (supervised by Toshihide Maskawa),
+                Tomomasa Tatsumi's <em>Fluid Mechanics</em>, and Tatsuya Kubokawa's
+                <em>Foundations of Modern Mathematical Statistics</em> through reading-based seminars
+              </li>
+              <li>Expanded theoretical interests through weekly discussion and peer-led study</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Kyushu University Rubber Baseball Club</strong> — Apr 2023 — Present
+            <ul>
+              <li>Member of the university's rubber baseball club since entering Kyushu University</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Research Presentation</strong> — 2023 — 2025
+            <ul>
+              <li>
+                Presented &ldquo;Development of an AI to Support Beginner Farmers by Integrating Environmental Data and
+                Farmers' Insights&rdquo; at the 2025 annual conference of the Japanese Society of Agricultural Informatics
+              </li>
+            </ul>
+          </li>
+        </ul>
       </section>
 
-      <section>
+      <section id="skills">
         <h2>Skills</h2>
-        <div class="skills-grid">
-          <p class="skill-line"><strong>Programming Languages:</strong> C, C++, Python, TypeScript</p>
-          <p class="skill-line"><strong>Technical Areas:</strong> LLM applications, data-driven software, embedded systems</p>
-          <p class="skill-line"><strong>Engineering Tools:</strong> KiCad, Fusion 360</p>
-          <p class="skill-line"><strong>Engineering:</strong> Circuit design, 3D CAD</p>
-          <p class="skill-line"><strong>Domain:</strong> Aerospace Engineering, Agricultural AI</p>
-        </div>
+        <ul>
+          <li><strong>Programming Languages:</strong> C, C++, Python, TypeScript</li>
+          <li><strong>Technical Areas:</strong> LLM applications, data-driven software, embedded systems</li>
+          <li><strong>Engineering Tools:</strong> KiCad, Fusion 360</li>
+          <li><strong>Engineering:</strong> Circuit design, 3D CAD</li>
+          <li><strong>Domain:</strong> Aerospace Engineering, Agricultural AI</li>
+        </ul>
       </section>
 
-      <section>
+      <section id="languages">
         <h2>Languages</h2>
         <ul>
           <li>Japanese: Native</li>
@@ -368,18 +485,24 @@
         </ul>
       </section>
 
-      <section>
-        <h2>Additional Information</h2>
-        <ul>
-          <li>Date of Birth: Mar 18, 2005</li>
-          <li>Hometown: Saga Prefecture, Japan</li>
-        </ul>
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>
+          Email:
+          <a href="mailto:nsh92030@gmail.com">nsh92030@gmail.com</a>
+          <br />
+          GitHub:
+          <a href="https://github.com/NakanishiShuntaro" target="_blank" rel="noopener noreferrer"
+            >github.com/NakanishiShuntaro</a
+          >
+          <br />
+          LinkedIn:
+          <a href="https://www.linkedin.com/in/shuntaro-nakanishi-a44b55361" target="_blank" rel="noopener noreferrer"
+            >linkedin.com/in/shuntaro-nakanishi-a44b55361</a
+          >
+        </p>
+        <p>Date of Birth: Mar 18, 2005 · Hometown: Saga Prefecture, Japan · Location: Fukuoka, Japan</p>
       </section>
-
-      <footer>
-        Source: <a href="https://github.com/NakanishiShuntaro/github-pages-site">github-pages-site</a>
-        · Hosted on <a href="https://pages.github.com/">GitHub Pages</a>
-      </footer>
-    </div>
+    </main>
   </body>
 </html>
