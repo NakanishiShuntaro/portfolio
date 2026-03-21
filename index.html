@@ -171,6 +171,10 @@
       color: #3399ff;
     }
 
+    #contact .social-icons {
+      justify-content: flex-start;
+    }
+
     /* .lang-toggle 単体に display:flex を付けない（main 内のモバイル用トグルまで常時表示されるため） */
     .lang-toggle {
       justify-content: center;
@@ -459,18 +463,20 @@
 
     <section id="contact">
       <h2><span class="lang-ja">連絡先</span><span class="lang-en">Contact</span></h2>
-      <p class="lang-ja">
-        ご連絡は <a href="mailto:nsh92030@gmail.com">nsh92030@gmail.com</a> までお願いします。<br>
-        X: <a href="https://x.com/nakanishiS10651" target="_blank" rel="noopener noreferrer">@nakanishiS10651</a><br>
-        GitHub: <a href="https://github.com/NakanishiShuntaro" target="_blank" rel="noopener noreferrer">NakanishiShuntaro</a><br>
-        LinkedIn: <a href="https://www.linkedin.com/in/shuntaro-nakanishi-a44b55361" target="_blank" rel="noopener noreferrer">shuntaro-nakanishi-a44b55361</a>
-      </p>
-      <p class="lang-en">
-        Email: <a href="mailto:nsh92030@gmail.com">nsh92030@gmail.com</a><br>
-        X: <a href="https://x.com/nakanishiS10651" target="_blank" rel="noopener noreferrer">@nakanishiS10651</a><br>
-        GitHub: <a href="https://github.com/NakanishiShuntaro" target="_blank" rel="noopener noreferrer">NakanishiShuntaro</a><br>
-        LinkedIn: <a href="https://www.linkedin.com/in/shuntaro-nakanishi-a44b55361" target="_blank" rel="noopener noreferrer">shuntaro-nakanishi-a44b55361</a>
-      </p>
+      <div class="social-icons">
+        <a href="mailto:nsh92030@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://x.com/nakanishiS10651" target="_blank" rel="noopener noreferrer" aria-label="X">
+          <i class="fab fa-x-twitter"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/shuntaro-nakanishi-a44b55361" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/NakanishiShuntaro" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+      </div>
     </section>
   </main>
   <script>
