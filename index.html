@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ホーム</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #0f1419;
+        --fg: #e7e9ea;
+        --muted: #8b98a5;
+        --accent: #1d9bf0;
+      }
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #ffffff;
+          --fg: #0f1419;
+          --muted: #536471;
+          --accent: #1d9bf0;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Hiragino Sans",
+          "Noto Sans JP", sans-serif;
+        background: var(--bg);
+        color: var(--fg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        line-height: 1.6;
+      }
+      main {
+        max-width: 36rem;
+        text-align: center;
+      }
+      h1 {
+        font-size: clamp(1.75rem, 4vw, 2.25rem);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        margin: 0 0 0.75rem;
+      }
+      p {
+        margin: 0;
+        color: var(--muted);
+      }
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      footer {
+        margin-top: 2.5rem;
+        font-size: 0.875rem;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>ようこそ</h1>
+      <p>
+        GitHub Pages で公開中の静的サイトです。内容は
+        <code>index.html</code> を編集して変更できます。
+      </p>
+      <footer>
+        <a href="https://docs.github.com/pages">GitHub Pages ドキュメント</a>
+      </footer>
+    </main>
+  </body>
+</html>
