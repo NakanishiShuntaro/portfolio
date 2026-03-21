@@ -174,11 +174,19 @@
       color: #3399ff;
     }
 
+    /* .lang-toggle 単体に display:flex を付けない（main 内のモバイル用トグルまで常時表示されるため） */
     .lang-toggle {
-      display: flex;
       justify-content: center;
       gap: 0.4rem;
       margin: 0 0 1.25rem;
+    }
+
+    nav .lang-toggle {
+      display: flex;
+    }
+
+    main .lang-toggle.mobile-only-flex {
+      display: none !important;
     }
 
     .lang-btn {
@@ -273,6 +281,10 @@
         display: flex;
       }
 
+      main .lang-toggle.mobile-only-flex {
+        display: flex !important;
+      }
+
       .social-icons {
         gap: 1rem;
         justify-content: center;
@@ -328,14 +340,6 @@
         <i class="fab fa-github"></i>
       </a>
     </div>
-    <div class="social-links">
-      <a href="https://github.com/NakanishiShuntaro" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-        <img src="https://cdn.simpleicons.org/github/0055AA" alt="GitHub" style="height:1.4rem;vertical-align:middle;">
-      </a>
-      <a href="https://www.linkedin.com/in/shuntaro-nakanishi-a44b55361" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-        <img src="https://cdn.simpleicons.org/linkedin/0055AA" alt="LinkedIn" style="height:1.4rem;vertical-align:middle;">
-      </a>
-    </div>
   </nav>
 
   <main>
@@ -365,12 +369,6 @@
         </a>
         <a href="https://github.com/NakanishiShuntaro" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
           <i class="fab fa-github"></i>
-        </a>
-        <a href="https://github.com/NakanishiShuntaro" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          <img src="https://cdn.simpleicons.org/github/0055AA" alt="GitHub" style="height:1.4rem;vertical-align:middle;">
-        </a>
-        <a href="https://www.linkedin.com/in/shuntaro-nakanishi-a44b55361" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <img src="https://cdn.simpleicons.org/linkedin/0055AA" alt="LinkedIn" style="height:1.4rem;vertical-align:middle;">
         </a>
       </div>
 
