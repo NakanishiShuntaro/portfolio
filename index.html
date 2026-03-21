@@ -1,500 +1,843 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja" data-lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+    />
+    <title>中西俊太郎 - ホームページ</title>
+    <meta property="og:title" content="中西俊太郎 - ホームページ" />
+    <meta property="og:description" content="中西俊太郎のプロフィール" />
+    <meta
+      property="og:image"
+      content="https://github.com/NakanishiShuntaro.png"
+    />
+    <meta
+      property="og:url"
+      content="https://nakanishishuntaro.github.io/github-pages-site/"
+    />
+    <meta property="og:type" content="website" />
+    <script>
+      (function () {
+        const saved = localStorage.getItem("lang");
+        const browserLang = (navigator.language || "").toLowerCase();
+        const lang = saved || (browserLang.startsWith("ja") ? "ja" : "en");
+        document.documentElement.dataset.lang = lang;
+        document.documentElement.lang = lang;
+      })();
+    </script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
-  <title>中西俊太郎 - ホームページ</title>
-  <meta property="og:title" content="中西俊太郎 - ホームページ" />
-  <meta property="og:description" content="中西俊太郎のプロフィール" />
-  <meta property="og:image" content="https://github.com/NakanishiShuntaro.png" />
-  <meta property="og:url" content="https://nakanishishuntaro.github.io/github-pages-site/" />
-  <meta property="og:type" content="website" />
-  <script>
-    (function () {
-      const saved = localStorage.getItem("lang");
-      const browserLang = (navigator.language || "").toLowerCase();
-      const lang = saved || (browserLang.startsWith("ja") ? "ja" : "en");
-      document.documentElement.dataset.lang = lang;
-      document.documentElement.lang = lang;
-    })();
-  </script>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+      ul {
+        padding-left: 1.2em;
+        margin-top: 1em;
+        margin-bottom: 1.5em;
+      }
 
-    ul {
-      padding-left: 1.2em;
-      margin-top: 1em;
-      margin-bottom: 1.5em;
-    }
+      ul li {
+        margin-bottom: 0.5em;
+        line-height: 1.5;
+      }
 
-    ul li {
-      margin-bottom: 0.5em;
-      line-height: 1.5;
-    }
-
-    body {
-      font-family: sans-serif;
-      margin: 0;
-    }
-
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 224px;
-      height: 100vh;
-      background-color: #f4f4f4;
-      padding: 2rem 1rem;
-      overflow-y: auto;
-      transition: transform 0.3s ease;
-    }
-
-    nav h1 {
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-    }
-
-    nav ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    nav li {
-      margin: 1rem 0;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #0055aa;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    a {
-      color: #0055aa;
-      text-decoration: underline;
-    }
-
-    a:hover {
-      color: #3399ff;
-    }
-
-    main {
-      margin-left: 224px;
-      padding: 2rem;
-      max-width: 800px;
-    }
-
-    h2 {
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 0.3em;
-      margin-top: 2rem;
-    }
-
-    section {
-      margin-bottom: 3rem;
-    }
-
-    .profile-img {
-      width: 180px;
-      height: 180px;
-      border-radius: 45%;
-      object-fit: cover;
-      display: block;
-      margin: 0 auto 1.5rem auto;
-    }
-
-    .mobile-only-block {
-      display: none;
-    }
-
-    .mobile-only-flex {
-      display: none;
-    }
-
-    .desktop-only {
-      display: block;
-    }
-
-    .social-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      column-gap: 1rem;
-      row-gap: .6rem;
-      width: 100%;
-      margin-top: 1rem;
-      padding: 0;
-      background: none;
-      border: none;
-      box-shadow: none;
-    }
-
-    .social-links a {
-      color: #0055aa;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .social-links a:hover {
-      color: #3399ff;
-    }
-
-    .social-icons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      column-gap: 1rem;
-      row-gap: .6rem;
-      width: 100%;
-      margin-top: 1rem;
-      padding: 0;
-      background: none;
-      border: none;
-      box-shadow: none;
-    }
-
-    .social-icons a {
-      color: #0055aa;
-      font-size: 1.4rem;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .social-icons a:hover {
-      color: #3399ff;
-    }
-
-    #contact .social-icons {
-      justify-content: flex-start;
-    }
-
-    /* .lang-toggle 単体に display:flex を付けない（main 内のモバイル用トグルまで常時表示されるため） */
-    .lang-toggle {
-      justify-content: center;
-      gap: 0.4rem;
-      margin: 0 0 1.25rem;
-    }
-
-    nav .lang-toggle {
-      display: flex;
-    }
-
-    main .lang-toggle.mobile-only-flex {
-      display: none !important;
-    }
-
-    .lang-btn {
-      appearance: none;
-      border: 1px solid #c7c7c7;
-      background: #ffffff;
-      color: #0055aa;
-      border-radius: 999px;
-      padding: 0.35rem 0.75rem;
-      font-size: 0.8rem;
-      cursor: pointer;
-      transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-    }
-
-    .lang-btn:hover {
-      border-color: #0055aa;
-    }
-
-    html[data-lang="ja"] .lang-btn[data-set-lang="ja"],
-    html[data-lang="en"] .lang-btn[data-set-lang="en"] {
-      background: #0055aa;
-      border-color: #0055aa;
-      color: #ffffff;
-    }
-
-    html[data-lang="ja"] .lang-en,
-    html[data-lang="en"] .lang-ja {
-      display: none !important;
-    }
-
-    @media (prefers-color-scheme: dark) {
       body {
-        background-color: #121212;
-        color: #e0e0e0;
+        font-family: sans-serif;
+        margin: 0;
       }
 
       nav {
-        background-color: #1e1e1e;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 224px;
+        height: 100vh;
+        background-color: #f4f4f4;
+        padding: 2rem 1rem;
+        overflow-y: auto;
+        transition: transform 0.3s ease;
       }
 
-      nav a,
-      .social-icons a {
-        color: #66ccff;
+      nav h1 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
       }
 
-      nav a:hover,
-      .social-icons a:hover {
-        color: #99ddff;
+      nav ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      nav li {
+        margin: 1rem 0;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: #0055aa;
+      }
+
+      nav a:hover {
+        text-decoration: underline;
       }
 
       a {
-        color: #66ccff;
+        color: #0055aa;
+        text-decoration: underline;
       }
 
       a:hover {
-        color: #99ddff;
-      }
-
-      .lang-btn {
-        background: #2b2b2b;
-        border-color: #4c4c4c;
-        color: #66ccff;
-      }
-
-      html[data-lang="ja"] .lang-btn[data-set-lang="ja"],
-      html[data-lang="en"] .lang-btn[data-set-lang="en"] {
-        background: #66ccff;
-        border-color: #66ccff;
-        color: #121212;
-      }
-    }
-
-    @media screen and (max-width: 768px) {
-      nav {
-        display: none;
-      }
-
-      .hamburger {
-        display: none !important;
+        color: #3399ff;
       }
 
       main {
-        margin-left: 0;
-        padding: 1.5rem;
+        margin-left: 224px;
+        padding: 2rem;
+        max-width: 800px;
+      }
+
+      h2 {
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 0.3em;
+        margin-top: 2rem;
+      }
+
+      section {
+        margin-bottom: 3rem;
+      }
+
+      .profile-img {
+        width: 180px;
+        height: 180px;
+        border-radius: 45%;
+        object-fit: cover;
+        display: block;
+        margin: 0 auto 1.5rem auto;
       }
 
       .mobile-only-block {
-        display: block;
+        display: none;
       }
 
       .mobile-only-flex {
+        display: none;
+      }
+
+      .desktop-only {
+        display: block;
+      }
+
+      .social-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        column-gap: 1rem;
+        row-gap: 0.6rem;
+        width: 100%;
+        margin-top: 1rem;
+        padding: 0;
+        background: none;
+        border: none;
+        box-shadow: none;
+      }
+
+      .social-links a {
+        color: #0055aa;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .social-links a:hover {
+        color: #3399ff;
+      }
+
+      .social-icons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        column-gap: 1rem;
+        row-gap: 0.6rem;
+        width: 100%;
+        margin-top: 1rem;
+        padding: 0;
+        background: none;
+        border: none;
+        box-shadow: none;
+      }
+
+      .social-icons a {
+        color: #0055aa;
+        font-size: 1.4rem;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .social-icons a:hover {
+        color: #3399ff;
+      }
+
+      #contact .social-icons {
+        justify-content: flex-start;
+      }
+
+      /* .lang-toggle 単体に display:flex を付けない（main 内のモバイル用トグルまで常時表示されるため） */
+      .lang-toggle {
+        justify-content: center;
+        gap: 0.4rem;
+        margin: 0 0 1.25rem;
+      }
+
+      nav .lang-toggle {
         display: flex;
       }
 
       main .lang-toggle.mobile-only-flex {
-        display: flex !important;
+        display: none !important;
       }
 
-      .social-icons {
-        gap: 1rem;
-        justify-content: center;
-        margin-top: 1rem;
+      .lang-btn {
+        appearance: none;
+        border: 1px solid #c7c7c7;
+        background: #ffffff;
+        color: #0055aa;
+        border-radius: 999px;
+        padding: 0.35rem 0.75rem;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition:
+          background-color 0.2s ease,
+          color 0.2s ease,
+          border-color 0.2s ease;
       }
 
-      .social-links {
-        gap: 1rem;
-        justify-content: center;
-        margin-top: 1rem;
+      .lang-btn:hover {
+        border-color: #0055aa;
       }
 
-      .desktop-only {
-        display: none;
+      html[data-lang="ja"] .lang-btn[data-set-lang="ja"],
+      html[data-lang="en"] .lang-btn[data-set-lang="en"] {
+        background: #0055aa;
+        border-color: #0055aa;
+        color: #ffffff;
       }
-    }
-  </style>
 
-</head>
+      html[data-lang="ja"] .lang-en,
+      html[data-lang="en"] .lang-ja {
+        display: none !important;
+      }
 
-<body>
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #121212;
+          color: #e0e0e0;
+        }
 
-  <nav id="sidebar">
-    <h1><span class="lang-ja">中西俊太郎</span><span class="lang-en">Shuntaro Nakanishi</span></h1>
-    <div class="lang-toggle" role="group" aria-label="Language switcher">
-      <button type="button" class="lang-btn" data-set-lang="ja">日本語</button>
-      <button type="button" class="lang-btn" data-set-lang="en">English</button>
-    </div>
-    <img src="https://github.com/NakanishiShuntaro.png" alt="Profile photo" class="profile-img" />
-    <ul>
-      <li><a href="#profile"><span class="lang-ja">プロフィール</span><span class="lang-en">Profile</span></a></li>
-      <li><a href="#education"><span class="lang-ja">学歴</span><span class="lang-en">Education</span></a></li>
-      <li><a href="#work"><span class="lang-ja">職歴</span><span class="lang-en">Work Experience</span></a></li>
-      <li><a href="#projects"><span class="lang-ja">プロジェクト</span><span class="lang-en">Personal Projects</span></a></li>
-      <li><a href="#certifications"><span class="lang-ja">資格</span><span class="lang-en">Certifications</span></a></li>
-      <li><a href="#awards"><span class="lang-ja">受賞</span><span class="lang-en">Awards</span></a></li>
-      <li><a href="#activities"><span class="lang-ja">課外活動</span><span class="lang-en">Extracurricular Activities</span></a></li>
-      <li><a href="#skills"><span class="lang-ja">スキルと言語</span><span class="lang-en">Skills &amp; Languages</span></a></li>
-      <li><a href="#contact"><span class="lang-ja">連絡先</span><span class="lang-en">Contact</span></a></li>
-    </ul>
+        nav {
+          background-color: #1e1e1e;
+        }
 
-    <div class="social-icons">
-      <a href="mailto:nsh92030@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email">
-        <i class="fas fa-envelope"></i>
-      </a>
-      <a href="https://x.com/nakanishiS10651" target="_blank" rel="noopener noreferrer" aria-label="X">
-        <i class="fab fa-x-twitter"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/shuntaro-nakanishi-a44b55361" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <a href="https://github.com/NakanishiShuntaro" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
-  </nav>
+        nav a,
+        .social-icons a {
+          color: #66ccff;
+        }
 
-  <main>
-    <section id="profile">
-      <h2 class="desktop-only"><span class="lang-ja">プロフィール</span><span class="lang-en">About</span></h2>
-      <h2 class="mobile-only-block">
-        <span class="lang-ja">中西俊太郎</span>
-        <span class="lang-en">Shuntaro Nakanishi</span>
-      </h2>
+        nav a:hover,
+        .social-icons a:hover {
+          color: #99ddff;
+        }
 
-      <div class="lang-toggle mobile-only-flex" role="group" aria-label="Language switcher">
-        <button type="button" class="lang-btn" data-set-lang="ja">日本語</button>
-        <button type="button" class="lang-btn" data-set-lang="en">English</button>
+        a {
+          color: #66ccff;
+        }
+
+        a:hover {
+          color: #99ddff;
+        }
+
+        .lang-btn {
+          background: #2b2b2b;
+          border-color: #4c4c4c;
+          color: #66ccff;
+        }
+
+        html[data-lang="ja"] .lang-btn[data-set-lang="ja"],
+        html[data-lang="en"] .lang-btn[data-set-lang="en"] {
+          background: #66ccff;
+          border-color: #66ccff;
+          color: #121212;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        nav {
+          display: none;
+        }
+
+        .hamburger {
+          display: none !important;
+        }
+
+        main {
+          margin-left: 0;
+          padding: 1.5rem;
+        }
+
+        .mobile-only-block {
+          display: block;
+        }
+
+        .mobile-only-flex {
+          display: flex;
+        }
+
+        main .lang-toggle.mobile-only-flex {
+          display: flex !important;
+        }
+
+        .social-icons {
+          gap: 1rem;
+          justify-content: center;
+          margin-top: 1rem;
+        }
+
+        .social-links {
+          gap: 1rem;
+          justify-content: center;
+          margin-top: 1rem;
+        }
+
+        .desktop-only {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav id="sidebar">
+      <h1>
+        <span class="lang-ja">中西俊太郎</span
+        ><span class="lang-en">Shuntaro Nakanishi</span>
+      </h1>
+      <div class="lang-toggle" role="group" aria-label="Language switcher">
+        <button type="button" class="lang-btn" data-set-lang="ja">
+          日本語
+        </button>
+        <button type="button" class="lang-btn" data-set-lang="en">
+          English
+        </button>
       </div>
-
-      <img src="https://github.com/NakanishiShuntaro.png" alt="Profile photo" class="profile-img mobile-only-block" />
-
-      <p class="lang-ja">
-        航空宇宙工学、コンピュータサイエンス、物理学が好きです。
-      </p>
-      <p class="lang-en">
-        I'm interested in aerospace engineering, computer science, and physics.
-      </p>
-    </section>
-
-    <section id="education">
-      <h2><span class="lang-ja">学歴</span><span class="lang-en">Education</span></h2>
+      <img
+        src="https://github.com/NakanishiShuntaro.png"
+        alt="Profile photo"
+        class="profile-img"
+      />
       <ul>
-        <li class="lang-ja">2023年4月〜2027年3月：九州大学 工学部 航空宇宙工学科</li>
-        <li class="lang-en">Apr 2023 - Mar 2027: Kyushu University, Bachelor of Engineering, Department of Aeronautics and Astronautics</li>
-        <li class="lang-ja">所属・活動：<a href="https://planet-q.jimdofree.com/" target="_blank" rel="noopener noreferrer">PLANET-Q</a>、<a href="https://physikyu-github-io.vercel.app/" target="_blank" rel="noopener noreferrer">PhysiKyu</a></li>
-        <li class="lang-en">Activities and societies: <a href="https://planet-q.jimdofree.com/" target="_blank" rel="noopener noreferrer">PLANET-Q</a>, <a href="https://physikyu-github-io.vercel.app/" target="_blank" rel="noopener noreferrer">PhysiKyu</a></li>
-        <li class="lang-ja">佐賀県立致遠館中学校・高等学校 卒業</li>
-        <li class="lang-en">Graduated from Saga Prefectural Chienkan Junior and Senior High School</li>
-      </ul>
-    </section>
-
-    <section id="work">
-      <h2><span class="lang-ja">職歴</span><span class="lang-en">Work Experience</span></h2>
-      <ul>
-        <li class="lang-ja">2025年4月〜2026年1月：<a href="https://www.seraku.co.jp/" target="_blank" rel="noopener noreferrer">株式会社セラク</a>にてソフトウェアエンジニア（アルバイト）。<a href="https://mitou-fukuoka.org/" target="_blank" rel="noopener noreferrer">福岡未踏</a>のプロダクトの実用化を目指した開発として、Pythonを用いた農業向けAIエージェント開発に従事。</li>
-        <li class="lang-en">Apr 2025 - Jan 2026: <a href="https://www.seraku.co.jp/" target="_blank" rel="noopener noreferrer">SERAKU Co., Ltd.</a> — Software Engineer (part-time). Worked on development toward practical deployment of the <a href="https://mitou-fukuoka.org/" target="_blank" rel="noopener noreferrer">Fukuoka Mitou</a> product: an agriculture-related AI support project using Python and TypeScript.</li>
-        <li class="lang-ja">2024年9月〜2025年2月：福岡未踏でのプロジェクト。初心者農家向け AI アシスタントを開発。</li>
-        <li class="lang-en">Sep 2024 - Feb 2025: Fukuoka Mitou - Developed an AI-based agriculture assistant for beginner farmers</li>
-      </ul>
-    </section>
-
-    <section id="projects">
-      <h2><span class="lang-ja">プロジェクト</span><span class="lang-en">Personal Projects</span></h2>
-      <ul>
-        <li class="lang-ja">
-          <strong><a href="https://mitou-fukuoka.org/works/solve-tellmee" target="_blank" rel="noopener noreferrer">Tellmee</a></strong>
-          <a href="https://mitou-fukuoka.org/" target="_blank" rel="noopener noreferrer">福岡未踏的人材育成事業（福岡未踏）</a>でのプロジェクト。<br>
-          初心者農家向けの AI アシスタント。センサーデータの解釈、圃場状況の要約、次の行動提案を自然言語で提示する。<br>
-          よかクリエータ（優秀クリエータ）認定。<br>
-          PM: 岡安 崇史先生（九州大学農学部）。
+        <li>
+          <a href="#profile"
+            ><span class="lang-ja">プロフィール</span
+            ><span class="lang-en">Profile</span></a
+          >
         </li>
-        <li class="lang-en">
-          <strong><a href="https://mitou-fukuoka.org/works/solve-tellmee" target="_blank" rel="noopener noreferrer">Tellmee</a></strong>
-          A project in the <a href="https://mitou-fukuoka.org/" target="_blank" rel="noopener noreferrer">Fukuoka Mitou</a> program. Beginner-farmer support assistant built with Python and TypeScript. It interprets sensor data, presents field
-          conditions and recommended next actions in natural language, and improves future suggestions through farmer feedback. Recognized as a Certified Excellent Creator. PM: Prof. Takashi Okayasu (Faculty of Agriculture, Kyushu University).
+        <li>
+          <a href="#education"
+            ><span class="lang-ja">学歴</span
+            ><span class="lang-en">Education</span></a
+          >
+        </li>
+        <li>
+          <a href="#work"
+            ><span class="lang-ja">職歴</span
+            ><span class="lang-en">Work Experience</span></a
+          >
+        </li>
+        <li>
+          <a href="#projects"
+            ><span class="lang-ja">プロジェクト</span
+            ><span class="lang-en">Personal Projects</span></a
+          >
+        </li>
+        <li>
+          <a href="#certifications"
+            ><span class="lang-ja">資格</span
+            ><span class="lang-en">Certifications</span></a
+          >
+        </li>
+        <li>
+          <a href="#awards"
+            ><span class="lang-ja">受賞</span
+            ><span class="lang-en">Awards</span></a
+          >
+        </li>
+        <li>
+          <a href="#activities"
+            ><span class="lang-ja">課外活動</span
+            ><span class="lang-en">Extracurricular Activities</span></a
+          >
+        </li>
+        <li>
+          <a href="#skills"
+            ><span class="lang-ja">スキルと言語</span
+            ><span class="lang-en">Skills &amp; Languages</span></a
+          >
+        </li>
+        <li>
+          <a href="#contact"
+            ><span class="lang-ja">連絡先</span
+            ><span class="lang-en">Contact</span></a
+          >
         </li>
       </ul>
-    </section>
 
-    <section id="certifications">
-      <h2><span class="lang-ja">資格</span><span class="lang-en">Certifications</span></h2>
-      <ul>
-        <li class="lang-ja">応用情報技術者試験, 情報処理推進機構（IPA）, 2025年</li>
-        <li class="lang-en">Applied Information Technology Engineer, Information-technology Promotion Agency, Japan (IPA), 2025</li>
-        <li class="lang-ja">セキュリティ・キャンプ 2025 ミニ専門講座, 情報処理推進機構（IPA）, 2025年</li>
-        <li class="lang-en">Security Camp 2025 Mini Specialized Course, Information-technology Promotion Agency, Japan (IPA), 2025</li>
-        <li class="lang-ja">Astro Camp 2025 Satellite Development Seminar, ASE Lab, 2025年</li>
-        <li class="lang-en">Astro Camp 2025 Satellite Development Seminar, ASE Lab, 2025</li>
-        <li class="lang-ja">GCI2023 Winter / Deep Learning Fundamentals, 東京大学松尾研究室, 2023年</li>
-        <li class="lang-en">GCI2023 Winter / Deep Learning Fundamentals, Matsuo Laboratory, The University of Tokyo, 2023</li>
-      </ul>
-    </section>
-
-    <section id="awards">
-      <h2><span class="lang-ja">受賞</span><span class="lang-en">Awards &amp; Honors</span></h2>
-      <ul>
-        <li class="lang-ja">福岡未踏 2025 Certified Excellent Creator。初心者農家向け AI アシスタントの開発が評価されました。</li>
-        <li class="lang-en">Certified Excellent Creator, Fukuoka Mitou, 2025. Recognized for the AI-based agriculture assistant project developed during the program.</li>
-        <li class="lang-ja">能代宇宙イベント共同打上実験 2023-2024 でチーム受賞。MHI Award (2023), Autodesk Award (2023), Photron Award (2024).</li>
-        <li class="lang-en">Team Awards at Noshiro Joint Rocket Launch Experiment, 2023-2024. MHI Award (2023), Autodesk Award (2023), and Photron Award (2024).</li>
-      </ul>
-    </section>
-
-    <section id="activities">
-      <h2><span class="lang-ja">課外活動</span><span class="lang-en">Extracurricular Activities</span></h2>
-      <ul>
-        <li class="lang-ja"><a href="https://planet-q.jimdofree.com/" target="_blank" rel="noopener noreferrer">PLANET-Q</a>（2023年4月〜現在）：九州大学の宇宙開発サークル。CanSat とロケットの開発に取り組み、C、C++、Python、KiCad、Fusion 360 を使用。</li>
-        <li class="lang-en"><a href="https://planet-q.jimdofree.com/" target="_blank" rel="noopener noreferrer">PLANET-Q</a> (Apr 2023 - Present): Space development club at Kyushu University, working on CanSat and rocket projects with C, C++, Python, KiCad, and Fusion 360.</li>
-        <li class="lang-ja"><a href="https://physikyu-github-io.vercel.app/" target="_blank" rel="noopener noreferrer">PhysiKyu</a>（2023年4月〜現在）：学生主体の物理輪読コミュニティ。力学、流体力学、数理統計の輪読に参加。</li>
-        <li class="lang-en"><a href="https://physikyu-github-io.vercel.app/" target="_blank" rel="noopener noreferrer">PhysiKyu</a> (Apr 2023 - Present): Student-led physics seminar community studying mechanics, fluid mechanics, and mathematical statistics through reading-based seminars.</li>
-        <li class="lang-ja">研究発表（2025年）：日本農業情報学会年次大会にて、農家の知見と環境データを統合した初心者農家支援 AI に関する発表を実施。</li>
-        <li class="lang-en">Research Presentation (2025): Presented “Development of an AI to Support Beginner Farmers by Integrating Environmental Data and Farmers' Insights” at the annual conference of the Japanese Society of Agricultural Informatics.</li>
-      </ul>
-    </section>
-
-    <section id="skills">
-      <h2><span class="lang-ja">スキルと言語</span><span class="lang-en">Skills &amp; Languages</span></h2>
-      <ul>
-        <li class="lang-ja">プログラミング言語: C, C++, Python, TypeScript</li>
-        <li class="lang-en">Programming Languages: C, C++, Python, TypeScript</li>
-        <li class="lang-ja">技術領域: LLM アプリケーション, データ駆動ソフトウェア, 組み込みシステム</li>
-        <li class="lang-en">Technical Areas: LLM applications, data-driven software, embedded systems</li>
-        <li class="lang-ja">専門領域: 航空宇宙工学</li>
-        <li class="lang-en">Domain: Aerospace Engineering</li>
-        <li class="lang-ja">言語: 日本語（母語）, 英語（中級, TOEFL iBT 85, Jan 2026）</li>
-        <li class="lang-en">Languages: Japanese (Native), English (Intermediate, TOEFL iBT 85, Jan 2026)</li>
-      </ul>
-    </section>
-
-    <section id="contact">
-      <h2><span class="lang-ja">連絡先</span><span class="lang-en">Contact</span></h2>
       <div class="social-icons">
-        <a href="mailto:nsh92030@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email">
+        <a
+          href="mailto:nsh92030@gmail.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Email"
+        >
           <i class="fas fa-envelope"></i>
         </a>
-        <a href="https://x.com/nakanishiS10651" target="_blank" rel="noopener noreferrer" aria-label="X">
+        <a
+          href="https://x.com/nakanishiS10651"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="X"
+        >
           <i class="fab fa-x-twitter"></i>
         </a>
-        <a href="https://www.linkedin.com/in/shuntaro-nakanishi-a44b55361" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <a
+          href="https://www.linkedin.com/in/shuntaro-nakanishi-a44b55361"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+        >
           <i class="fab fa-linkedin"></i>
         </a>
-        <a href="https://github.com/NakanishiShuntaro" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <a
+          href="https://github.com/NakanishiShuntaro"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+        >
           <i class="fab fa-github"></i>
         </a>
       </div>
-    </section>
-  </main>
-  <script>
-    (function () {
-      function setLanguage(lang) {
-        document.documentElement.dataset.lang = lang;
-        document.documentElement.lang = lang;
-        document.title = lang === "ja" ? "中西俊太郎 - ホームページ" : "Shuntaro Nakanishi - About Me";
-        localStorage.setItem("lang", lang);
+    </nav>
+
+    <main>
+      <section id="profile">
+        <h2 class="desktop-only">
+          <span class="lang-ja">プロフィール</span
+          ><span class="lang-en">About</span>
+        </h2>
+        <h2 class="mobile-only-block">
+          <span class="lang-ja">中西俊太郎</span>
+          <span class="lang-en">Shuntaro Nakanishi</span>
+        </h2>
+
+        <div
+          class="lang-toggle mobile-only-flex"
+          role="group"
+          aria-label="Language switcher"
+        >
+          <button type="button" class="lang-btn" data-set-lang="ja">
+            日本語
+          </button>
+          <button type="button" class="lang-btn" data-set-lang="en">
+            English
+          </button>
+        </div>
+
+        <img
+          src="https://github.com/NakanishiShuntaro.png"
+          alt="Profile photo"
+          class="profile-img mobile-only-block"
+        />
+
+        <p class="lang-ja">
+          航空宇宙工学、コンピュータサイエンス、物理学が好きです。
+        </p>
+        <p class="lang-en">
+          I'm interested in aerospace engineering, computer science, and
+          physics.
+        </p>
+      </section>
+
+      <section id="education">
+        <h2>
+          <span class="lang-ja">学歴</span
+          ><span class="lang-en">Education</span>
+        </h2>
+        <ul>
+          <li class="lang-ja">
+            2023年4月〜2027年3月：九州大学 工学部 航空宇宙工学科
+          </li>
+          <li class="lang-en">
+            Apr 2023 - Mar 2027: Kyushu University, Bachelor of Engineering,
+            Department of Aeronautics and Astronautics
+          </li>
+          <li class="lang-ja">
+            所属・活動：<a
+              href="https://planet-q.jimdofree.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >PLANET-Q</a
+            >、<a
+              href="https://physikyu-github-io.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >PhysiKyu</a
+            >
+          </li>
+          <li class="lang-en">
+            Activities and societies:
+            <a
+              href="https://planet-q.jimdofree.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >PLANET-Q</a
+            >,
+            <a
+              href="https://physikyu-github-io.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >PhysiKyu</a
+            >
+          </li>
+          <li class="lang-ja">佐賀県立致遠館中学校・高等学校 卒業</li>
+          <li class="lang-en">
+            Graduated from Saga Prefectural Chienkan Junior and Senior High
+            School
+          </li>
+        </ul>
+      </section>
+
+      <section id="work">
+        <h2>
+          <span class="lang-ja">職歴</span
+          ><span class="lang-en">Work Experience</span>
+        </h2>
+        <ul>
+          <li class="lang-ja">
+            2025年4月〜2026年1月：<a
+              href="https://www.seraku.co.jp/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >株式会社セラク</a
+            >にてソフトウェアエンジニア（アルバイト）。<a
+              href="https://mitou-fukuoka.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >福岡未踏</a
+            >のプロダクトの実用化を目指した開発として、Pythonを用いた農業向けAIエージェント開発に従事。
+          </li>
+          <li class="lang-en">
+            Apr 2025 - Jan 2026:
+            <a
+              href="https://www.seraku.co.jp/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >SERAKU Co., Ltd.</a
+            >
+            — Software Engineer (part-time). Worked on development toward
+            practical deployment of the
+            <a
+              href="https://mitou-fukuoka.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Fukuoka Mitou</a
+            >
+            product: an agriculture-related AI support project using Python and
+            TypeScript.
+          </li>
+          <li class="lang-ja">
+            2024年9月〜2025年2月：福岡未踏でのプロジェクト。初心者農家向け AI
+            アシスタントを開発。
+          </li>
+          <li class="lang-en">
+            Sep 2024 - Feb 2025: Fukuoka Mitou - Developed an AI-based
+            agriculture assistant for beginner farmers
+          </li>
+        </ul>
+      </section>
+
+      <section id="projects">
+        <h2>
+          <span class="lang-ja">プロジェクト</span
+          ><span class="lang-en">Personal Projects</span>
+        </h2>
+        <ul>
+          <li class="lang-ja">
+            <strong
+              ><a
+                href="https://mitou-fukuoka.org/works/solve-tellmee"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Tellmee</a
+              ></strong
+            >
+            <a
+              href="https://mitou-fukuoka.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >福岡未踏的人材育成事業（福岡未踏）</a
+            >でのプロジェクト。<br />
+            初心者農家向けの AI
+            アシスタント。センサーデータの解釈、圃場状況の要約、次の行動提案を自然言語で提示する。<br />
+            よかクリエータ（優秀クリエータ）認定。<br />
+            PM: 岡安 崇史先生（九州大学農学部）。
+          </li>
+          <li class="lang-en">
+            <strong
+              ><a
+                href="https://mitou-fukuoka.org/works/solve-tellmee"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Tellmee</a
+              ></strong
+            >
+            A project in the
+            <a
+              href="https://mitou-fukuoka.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Fukuoka Mitou</a
+            >
+            program. Beginner-farmer support assistant built with Python and
+            TypeScript. It interprets sensor data, presents field conditions and
+            recommended next actions in natural language, and improves future
+            suggestions through farmer feedback. Recognized as a Certified
+            Excellent Creator. PM: Prof. Takashi Okayasu (Faculty of
+            Agriculture, Kyushu University).
+          </li>
+        </ul>
+      </section>
+
+      <section id="certifications">
+        <h2>
+          <span class="lang-ja">資格</span
+          ><span class="lang-en">Certifications</span>
+        </h2>
+        <ul>
+          <li class="lang-ja">
+            応用情報技術者試験, 情報処理推進機構（IPA）, 2025年
+          </li>
+          <li class="lang-en">
+            Applied Information Technology Engineer, Information-technology
+            Promotion Agency, Japan (IPA), 2025
+          </li>
+          <li class="lang-ja">
+            セキュリティ・キャンプ 2025 ミニ専門講座, 情報処理推進機構（IPA）,
+            2025年
+          </li>
+          <li class="lang-en">
+            Security Camp 2025 Mini Specialized Course, Information-technology
+            Promotion Agency, Japan (IPA), 2025
+          </li>
+          <li class="lang-ja">
+            Astro Camp 2025 Satellite Development Seminar, ASE Lab, 2025年
+          </li>
+          <li class="lang-en">
+            Astro Camp 2025 Satellite Development Seminar, ASE Lab, 2025
+          </li>
+          <li class="lang-ja">
+            GCI2023 Winter / Deep Learning Fundamentals, 東京大学松尾研究室,
+            2023年
+          </li>
+          <li class="lang-en">
+            GCI2023 Winter / Deep Learning Fundamentals, Matsuo Laboratory, The
+            University of Tokyo, 2023
+          </li>
+        </ul>
+      </section>
+
+      <section id="awards">
+        <h2>
+          <span class="lang-ja">受賞</span
+          ><span class="lang-en">Awards &amp; Honors</span>
+        </h2>
+        <ul>
+          <li class="lang-ja">
+            福岡未踏 2025 Certified Excellent Creator。初心者農家向け AI
+            アシスタントの開発が評価されました。
+          </li>
+          <li class="lang-en">
+            Certified Excellent Creator, Fukuoka Mitou, 2025. Recognized for the
+            AI-based agriculture assistant project developed during the program.
+          </li>
+          <li class="lang-ja">
+            能代宇宙イベント共同打上実験 2023-2024 でチーム受賞。MHI Award
+            (2023), Autodesk Award (2023), Photron Award (2024).
+          </li>
+          <li class="lang-en">
+            Team Awards at Noshiro Joint Rocket Launch Experiment, 2023-2024.
+            MHI Award (2023), Autodesk Award (2023), and Photron Award (2024).
+          </li>
+        </ul>
+      </section>
+
+      <section id="activities">
+        <h2>
+          <span class="lang-ja">課外活動</span
+          ><span class="lang-en">Extracurricular Activities</span>
+        </h2>
+        <ul>
+          <li class="lang-ja">
+            <a
+              href="https://planet-q.jimdofree.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >PLANET-Q</a
+            >（2023年4月〜現在）：九州大学の宇宙開発サークル。CanSat
+            とロケットの開発に取り組み、C、C++、Python、KiCad、Fusion 360
+            を使用。
+          </li>
+          <li class="lang-en">
+            <a
+              href="https://planet-q.jimdofree.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >PLANET-Q</a
+            >
+            (Apr 2023 - Present): Space development club at Kyushu University,
+            working on CanSat and rocket projects with C, C++, Python, KiCad,
+            and Fusion 360.
+          </li>
+          <li class="lang-ja">
+            <a
+              href="https://physikyu-github-io.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >PhysiKyu</a
+            >（2023年4月〜現在）：学生主体の物理輪読コミュニティ。力学、流体力学、数理統計の輪読に参加。
+          </li>
+          <li class="lang-en">
+            <a
+              href="https://physikyu-github-io.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >PhysiKyu</a
+            >
+            (Apr 2023 - Present): Student-led physics seminar community studying
+            mechanics, fluid mechanics, and mathematical statistics through
+            reading-based seminars.
+          </li>
+          <li class="lang-ja">
+            研究発表（2025年）：日本農業情報学会年次大会にて、農家の知見と環境データを統合した初心者農家支援
+            AI に関する発表を実施。
+          </li>
+          <li class="lang-en">
+            Research Presentation (2025): Presented “Development of an AI to
+            Support Beginner Farmers by Integrating Environmental Data and
+            Farmers' Insights” at the annual conference of the Japanese Society
+            of Agricultural Informatics.
+          </li>
+        </ul>
+      </section>
+
+      <section id="skills">
+        <h2>
+          <span class="lang-ja">スキルと言語</span
+          ><span class="lang-en">Skills &amp; Languages</span>
+        </h2>
+        <ul>
+          <li class="lang-ja">
+            プログラミング言語: C, C++, Python, TypeScript
+          </li>
+          <li class="lang-en">
+            Programming Languages: C, C++, Python, TypeScript
+          </li>
+          <li class="lang-ja">
+            技術領域: LLM アプリケーション, データ駆動ソフトウェア,
+            組み込みシステム
+          </li>
+          <li class="lang-en">
+            Technical Areas: LLM applications, data-driven software, embedded
+            systems
+          </li>
+          <li class="lang-ja">専門領域: 航空宇宙工学</li>
+          <li class="lang-en">Domain: Aerospace Engineering</li>
+          <li class="lang-ja">
+            言語: 日本語（母語）, 英語（中級, TOEFL iBT 85, Jan 2026）
+          </li>
+          <li class="lang-en">
+            Languages: Japanese (Native), English (Intermediate, TOEFL iBT 85,
+            Jan 2026)
+          </li>
+        </ul>
+      </section>
+
+      <section id="contact">
+        <h2>
+          <span class="lang-ja">連絡先</span
+          ><span class="lang-en">Contact</span>
+        </h2>
+        <div class="social-icons">
+          <a
+            href="mailto:nsh92030@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Email"
+          >
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a
+            href="https://x.com/nakanishiS10651"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="X"
+          >
+            <i class="fab fa-x-twitter"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/shuntaro-nakanishi-a44b55361"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+          >
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a
+            href="https://github.com/NakanishiShuntaro"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+      </section>
+    </main>
+    <script>
+      (function () {
+        function setLanguage(lang) {
+          document.documentElement.dataset.lang = lang;
+          document.documentElement.lang = lang;
+          document.title =
+            lang === "ja"
+              ? "中西俊太郎 - ホームページ"
+              : "Shuntaro Nakanishi - About Me";
+          localStorage.setItem("lang", lang);
+          document.querySelectorAll(".lang-btn").forEach((button) => {
+            button.setAttribute(
+              "aria-pressed",
+              String(button.dataset.setLang === lang),
+            );
+          });
+        }
+
         document.querySelectorAll(".lang-btn").forEach((button) => {
-          button.setAttribute("aria-pressed", String(button.dataset.setLang === lang));
+          button.addEventListener("click", function () {
+            setLanguage(button.dataset.setLang);
+          });
         });
-      }
 
-      document.querySelectorAll(".lang-btn").forEach((button) => {
-        button.addEventListener("click", function () {
-          setLanguage(button.dataset.setLang);
-        });
-      });
-
-      setLanguage(document.documentElement.dataset.lang || "ja");
-    })();
-  </script>
-</body>
-
+        setLanguage(document.documentElement.dataset.lang || "ja");
+      })();
+    </script>
+  </body>
 </html>
