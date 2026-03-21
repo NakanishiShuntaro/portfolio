@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja" data-lang="ja">
 
 <head>
   <meta charset="UTF-8" />
@@ -11,6 +11,15 @@
   <meta property="og:image" content="https://github.com/NakanishiShuntaro.png" />
   <meta property="og:url" content="https://nakanishishuntaro.github.io/github-pages-site/" />
   <meta property="og:type" content="website" />
+  <script>
+    (function () {
+      const saved = localStorage.getItem("lang");
+      const browserLang = (navigator.language || "").toLowerCase();
+      const lang = saved || (browserLang.startsWith("ja") ? "ja" : "en");
+      document.documentElement.dataset.lang = lang;
+      document.documentElement.lang = lang;
+    })();
+  </script>
   <style>
     * {
       box-sizing: border-box;
@@ -46,7 +55,7 @@
 
     nav h1 {
       font-size: 1.2rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
     }
 
     nav ul {
@@ -108,6 +117,14 @@
       display: none;
     }
 
+    .mobile-only-flex {
+      display: none;
+    }
+
+    .desktop-only {
+      display: block;
+    }
+
     .social-links {
       display: flex;
       flex-wrap: wrap;
@@ -157,12 +174,39 @@
       color: #3399ff;
     }
 
-    .mobile-only-flex {
-      display: none;
+    .lang-toggle {
+      display: flex;
+      justify-content: center;
+      gap: 0.4rem;
+      margin: 0 0 1.25rem;
     }
 
-    .desktop-only {
-      display: block;
+    .lang-btn {
+      appearance: none;
+      border: 1px solid #c7c7c7;
+      background: #ffffff;
+      color: #0055aa;
+      border-radius: 999px;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .lang-btn:hover {
+      border-color: #0055aa;
+    }
+
+    html[data-lang="ja"] .lang-btn[data-set-lang="ja"],
+    html[data-lang="en"] .lang-btn[data-set-lang="en"] {
+      background: #0055aa;
+      border-color: #0055aa;
+      color: #ffffff;
+    }
+
+    html[data-lang="ja"] .lang-en,
+    html[data-lang="en"] .lang-ja {
+      display: none !important;
     }
 
     @media (prefers-color-scheme: dark) {
@@ -191,6 +235,19 @@
 
       a:hover {
         color: #99ddff;
+      }
+
+      .lang-btn {
+        background: #2b2b2b;
+        border-color: #4c4c4c;
+        color: #66ccff;
+      }
+
+      html[data-lang="ja"] .lang-btn[data-set-lang="ja"],
+      html[data-lang="en"] .lang-btn[data-set-lang="en"] {
+        background: #66ccff;
+        border-color: #66ccff;
+        color: #121212;
       }
     }
 
@@ -240,17 +297,21 @@
 
   <nav id="sidebar">
     <h1>Shuntaro Nakanishi</h1>
+    <div class="lang-toggle" role="group" aria-label="Language switcher">
+      <button type="button" class="lang-btn" data-set-lang="ja">日本語</button>
+      <button type="button" class="lang-btn" data-set-lang="en">English</button>
+    </div>
     <img src="https://github.com/NakanishiShuntaro.png" alt="Profile photo" class="profile-img" />
     <ul>
-      <li><a href="#profile">Profile</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#work">Work Experience</a></li>
-      <li><a href="#projects">Personal Projects</a></li>
-      <li><a href="#certifications">Certifications</a></li>
-      <li><a href="#awards">Awards</a></li>
-      <li><a href="#activities">Extracurricular Activities</a></li>
-      <li><a href="#skills">Skills &amp; Languages</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#profile"><span class="lang-ja">プロフィール</span><span class="lang-en">Profile</span></a></li>
+      <li><a href="#education"><span class="lang-ja">学歴</span><span class="lang-en">Education</span></a></li>
+      <li><a href="#work"><span class="lang-ja">職歴</span><span class="lang-en">Work Experience</span></a></li>
+      <li><a href="#projects"><span class="lang-ja">プロジェクト</span><span class="lang-en">Personal Projects</span></a></li>
+      <li><a href="#certifications"><span class="lang-ja">資格</span><span class="lang-en">Certifications</span></a></li>
+      <li><a href="#awards"><span class="lang-ja">受賞</span><span class="lang-en">Awards</span></a></li>
+      <li><a href="#activities"><span class="lang-ja">課外活動</span><span class="lang-en">Extracurricular Activities</span></a></li>
+      <li><a href="#skills"><span class="lang-ja">スキルと言語</span><span class="lang-en">Skills &amp; Languages</span></a></li>
+      <li><a href="#contact"><span class="lang-ja">連絡先</span><span class="lang-en">Contact</span></a></li>
     </ul>
 
     <div class="social-icons">
@@ -279,8 +340,16 @@
 
   <main>
     <section id="profile">
-      <h2 class="desktop-only">About</h2>
-      <h2 class="mobile-only-block">Shuntaro Nakanishi</h2>
+      <h2 class="desktop-only"><span class="lang-ja">プロフィール</span><span class="lang-en">About</span></h2>
+      <h2 class="mobile-only-block">
+        <span class="lang-ja">Shuntaro Nakanishi</span>
+        <span class="lang-en">Shuntaro Nakanishi</span>
+      </h2>
+
+      <div class="lang-toggle mobile-only-flex" role="group" aria-label="Language switcher">
+        <button type="button" class="lang-btn" data-set-lang="ja">日本語</button>
+        <button type="button" class="lang-btn" data-set-lang="en">English</button>
+      </div>
 
       <img src="https://github.com/NakanishiShuntaro.png" alt="Profile photo" class="profile-img mobile-only-block" />
 
@@ -305,40 +374,48 @@
         </a>
       </div>
 
-      <p>
-        Undergraduate student in aerospace engineering at Kyushu University, based in Fukuoka, Japan. He has built
-        software with Python and TypeScript through SERAKU Co., Ltd. and the Fukuoka Mitou program, focusing on
-        practical AI systems for agriculture.
+      <p class="lang-ja">
+        九州大学で航空宇宙工学を学ぶ学部生です。Python と TypeScript を使った AI ソフトウェア開発に取り組み、農業、航空宇宙、組み込み分野で実用的な応用を目指しています。
       </p>
-      <p>
-        He is also active in space engineering through PLANET-Q, participates in a student-led physics seminar
-        community, and develops interdisciplinary interests across aerospace engineering, embedded systems, and
-        data-driven applications.
+      <p class="lang-en">
+        Undergraduate student in aerospace engineering at Kyushu University, based in Fukuoka, Japan. He builds AI
+        software with Python and TypeScript, with a focus on practical applications in agriculture, aerospace, and
+        embedded systems.
       </p>
     </section>
 
     <section id="education">
-      <h2>Education</h2>
+      <h2><span class="lang-ja">学歴</span><span class="lang-en">Education</span></h2>
       <ul>
-        <li>2023年4月〜2027年3月：Kyushu University, Bachelor of Engineering, Department of Aeronautics and Astronautics</li>
-        <li>Undergraduate student in Aerospace Engineering, Class of 2027</li>
-        <li>Activities and societies: PLANET-Q, PhysiKyu, Kyushu University Rubber Baseball Club</li>
-        <li>Graduated from Chienkan Junior and Senior High School</li>
+        <li class="lang-ja">2023年4月〜2027年3月：九州大学 工学部 航空宇宙工学科</li>
+        <li class="lang-en">Apr 2023 - Mar 2027: Kyushu University, Bachelor of Engineering, Department of Aeronautics and Astronautics</li>
+        <li class="lang-ja">航空宇宙工学を学ぶ学部生（2027年卒業予定）</li>
+        <li class="lang-en">Undergraduate student in Aerospace Engineering, Class of 2027</li>
+        <li class="lang-ja">所属・活動：PLANET-Q、PhysiKyu、九州大学軟式野球部</li>
+        <li class="lang-en">Activities and societies: PLANET-Q, PhysiKyu, Kyushu University Rubber Baseball Club</li>
+        <li class="lang-ja">致遠館中学校・高等学校 卒業</li>
+        <li class="lang-en">Graduated from Chienkan Junior and Senior High School</li>
       </ul>
     </section>
 
     <section id="work">
-      <h2>Work Experience</h2>
+      <h2><span class="lang-ja">職歴</span><span class="lang-en">Work Experience</span></h2>
       <ul>
-        <li>2025年4月〜2026年1月：SERAKU Co., Ltd. — Software Engineer (part-time, remote) using Python and TypeScript for an agriculture-related AI support project</li>
-        <li>2024年9月〜2025年2月：Fukuoka Mitou — Software Engineer Intern (hybrid) developing an AI-based agriculture assistant for beginner farmers</li>
+        <li class="lang-ja">2025年4月〜2026年1月：株式会社セラクにてソフトウェアエンジニア（アルバイト・リモート）。Python / TypeScript を用いた農業向け AI 支援プロジェクトに従事。</li>
+        <li class="lang-en">Apr 2025 - Jan 2026: SERAKU Co., Ltd. - Software Engineer (part-time, remote) using Python and TypeScript for an agriculture-related AI support project</li>
+        <li class="lang-ja">2024年9月〜2025年2月：福岡未踏でソフトウェアエンジニアインターン（ハイブリッド）。初心者農家向け AI アシスタントを開発。</li>
+        <li class="lang-en">Sep 2024 - Feb 2025: Fukuoka Mitou - Software Engineer Intern (hybrid) developing an AI-based agriculture assistant for beginner farmers</li>
       </ul>
     </section>
 
     <section id="projects">
-      <h2>Personal Projects</h2>
+      <h2><span class="lang-ja">プロジェクト</span><span class="lang-en">Personal Projects</span></h2>
       <ul>
-        <li>
+        <li class="lang-ja">
+          <strong><a href="https://mitou-fukuoka.org/works/solve-tellmee" target="_blank" rel="noopener noreferrer">Tellmee</a></strong>
+          初心者農家向けの AI アシスタント。Python / TypeScript で開発し、センサーデータの解釈、圃場状況の要約、次の行動提案を自然言語で提示します。
+        </li>
+        <li class="lang-en">
           <strong><a href="https://mitou-fukuoka.org/works/solve-tellmee" target="_blank" rel="noopener noreferrer">Tellmee</a></strong>
           Beginner-farmer support assistant built with Python and TypeScript. It interprets sensor data, presents field
           conditions and recommended next actions in natural language, and improves future suggestions through farmer feedback.
@@ -347,49 +424,72 @@
     </section>
 
     <section id="certifications">
-      <h2>Certifications</h2>
+      <h2><span class="lang-ja">資格</span><span class="lang-en">Certifications</span></h2>
       <ul>
-        <li>Applied Information Technology Engineer, Information-technology Promotion Agency, Japan (IPA), 2025. Credential ID: AP-2025-10-10308</li>
-        <li>Security Camp 2025 Mini Specialized Course, Information-technology Promotion Agency, Japan (IPA), 2025</li>
-        <li>Astro Camp 2025 Satellite Development Seminar, ASE Lab, 2025</li>
-        <li>GCI2023 Winter / Deep Learning Fundamentals, Matsuo Laboratory, The University of Tokyo, 2023</li>
+        <li class="lang-ja">応用情報技術者試験, 情報処理推進機構（IPA）, 2025年. Credential ID: AP-2025-10-10308</li>
+        <li class="lang-en">Applied Information Technology Engineer, Information-technology Promotion Agency, Japan (IPA), 2025. Credential ID: AP-2025-10-10308</li>
+        <li class="lang-ja">セキュリティ・キャンプ 2025 ミニ専門講座, 情報処理推進機構（IPA）, 2025年</li>
+        <li class="lang-en">Security Camp 2025 Mini Specialized Course, Information-technology Promotion Agency, Japan (IPA), 2025</li>
+        <li class="lang-ja">Astro Camp 2025 Satellite Development Seminar, ASE Lab, 2025年</li>
+        <li class="lang-en">Astro Camp 2025 Satellite Development Seminar, ASE Lab, 2025</li>
+        <li class="lang-ja">GCI2023 Winter / Deep Learning Fundamentals, 東京大学松尾研究室, 2023年</li>
+        <li class="lang-en">GCI2023 Winter / Deep Learning Fundamentals, Matsuo Laboratory, The University of Tokyo, 2023</li>
       </ul>
     </section>
 
     <section id="awards">
-      <h2>Awards &amp; Honors</h2>
+      <h2><span class="lang-ja">受賞</span><span class="lang-en">Awards &amp; Honors</span></h2>
       <ul>
-        <li>Certified Excellent Creator, Fukuoka Mitou, 2025. Recognized for the AI-based agriculture assistant project developed during the program.</li>
-        <li>Team Awards at Noshiro Joint Rocket Launch Experiment, 2023–2024. MHI Award (2023), Autodesk Award (2023), and Photron Award (2024).</li>
+        <li class="lang-ja">福岡未踏 2025 Certified Excellent Creator。初心者農家向け AI アシスタントの開発が評価されました。</li>
+        <li class="lang-en">Certified Excellent Creator, Fukuoka Mitou, 2025. Recognized for the AI-based agriculture assistant project developed during the program.</li>
+        <li class="lang-ja">能代宇宙イベント共同打上実験 2023-2024 でチーム受賞。MHI Award (2023), Autodesk Award (2023), Photron Award (2024).</li>
+        <li class="lang-en">Team Awards at Noshiro Joint Rocket Launch Experiment, 2023-2024. MHI Award (2023), Autodesk Award (2023), and Photron Award (2024).</li>
       </ul>
     </section>
 
     <section id="activities">
-      <h2>Extracurricular Activities</h2>
+      <h2><span class="lang-ja">課外活動</span><span class="lang-en">Extracurricular Activities</span></h2>
       <ul>
-        <li>PLANET-Q (2023年4月〜現在): Space development club at Kyushu University, working on CanSat and hybrid rocket projects with C, C++, Python, KiCad, and Fusion 360.</li>
-        <li>PhysiKyu (2023年4月〜現在): Student-led physics seminar community studying mechanics, fluid mechanics, and mathematical statistics through reading-based seminars.</li>
-        <li>Kyushu University Rubber Baseball Club (2023年4月〜現在): Member of the university's rubber baseball club since entering Kyushu University.</li>
-        <li>Research Presentation (2025): Presented “Development of an AI to Support Beginner Farmers by Integrating Environmental Data and Farmers' Insights” at the annual conference of the Japanese Society of Agricultural Informatics.</li>
+        <li class="lang-ja">PLANET-Q（2023年4月〜現在）：九州大学の宇宙開発サークル。CanSat とハイブリッドロケットの開発に取り組み、C、C++、Python、KiCad、Fusion 360 を使用。</li>
+        <li class="lang-en">PLANET-Q (Apr 2023 - Present): Space development club at Kyushu University, working on CanSat and hybrid rocket projects with C, C++, Python, KiCad, and Fusion 360.</li>
+        <li class="lang-ja">PhysiKyu（2023年4月〜現在）：学生主体の物理輪読コミュニティ。力学、流体力学、数理統計の輪読に参加。</li>
+        <li class="lang-en">PhysiKyu (Apr 2023 - Present): Student-led physics seminar community studying mechanics, fluid mechanics, and mathematical statistics through reading-based seminars.</li>
+        <li class="lang-ja">九州大学軟式野球部（2023年4月〜現在）：入学以来所属。</li>
+        <li class="lang-en">Kyushu University Rubber Baseball Club (Apr 2023 - Present): Member of the university's rubber baseball club since entering Kyushu University.</li>
+        <li class="lang-ja">研究発表（2025年）：日本農業情報学会年次大会にて、農家の知見と環境データを統合した初心者農家支援 AI に関する発表を実施。</li>
+        <li class="lang-en">Research Presentation (2025): Presented “Development of an AI to Support Beginner Farmers by Integrating Environmental Data and Farmers' Insights” at the annual conference of the Japanese Society of Agricultural Informatics.</li>
       </ul>
     </section>
 
     <section id="skills">
-      <h2>Skills &amp; Languages</h2>
+      <h2><span class="lang-ja">スキルと言語</span><span class="lang-en">Skills &amp; Languages</span></h2>
       <ul>
-        <li>Programming Languages: C, C++, Python, TypeScript</li>
-        <li>Technical Areas: LLM applications, data-driven software, embedded systems</li>
-        <li>Engineering Tools: KiCad, Fusion 360</li>
-        <li>Engineering: Circuit design, 3D CAD</li>
-        <li>Domain: Aerospace Engineering, Agricultural AI</li>
-        <li>Languages: Japanese (Native), English (Intermediate, TOEFL iBT 85, Jan 2026)</li>
+        <li class="lang-ja">プログラミング言語: C, C++, Python, TypeScript</li>
+        <li class="lang-en">Programming Languages: C, C++, Python, TypeScript</li>
+        <li class="lang-ja">技術領域: LLM アプリケーション, データ駆動ソフトウェア, 組み込みシステム</li>
+        <li class="lang-en">Technical Areas: LLM applications, data-driven software, embedded systems</li>
+        <li class="lang-ja">エンジニアリングツール: KiCad, Fusion 360</li>
+        <li class="lang-en">Engineering Tools: KiCad, Fusion 360</li>
+        <li class="lang-ja">設計: 回路設計, 3D CAD</li>
+        <li class="lang-en">Engineering: Circuit design, 3D CAD</li>
+        <li class="lang-ja">専門領域: 航空宇宙工学, 農業 AI</li>
+        <li class="lang-en">Domain: Aerospace Engineering, Agricultural AI</li>
+        <li class="lang-ja">言語: 日本語（母語）, 英語（中級, TOEFL iBT 85, Jan 2026）</li>
+        <li class="lang-en">Languages: Japanese (Native), English (Intermediate, TOEFL iBT 85, Jan 2026)</li>
       </ul>
     </section>
 
     <section id="contact">
-      <h2>Contact</h2>
-      <p>
+      <h2><span class="lang-ja">連絡先</span><span class="lang-en">Contact</span></h2>
+      <p class="lang-ja">
         ご連絡は <a href="mailto:nsh92030@gmail.com">nsh92030@gmail.com</a> までお願いします。<br>
+        X: <a href="https://x.com/nakanishiS10651" target="_blank" rel="noopener noreferrer">@nakanishiS10651</a><br>
+        GitHub: <a href="https://github.com/NakanishiShuntaro" target="_blank" rel="noopener noreferrer">NakanishiShuntaro</a><br>
+        LinkedIn: <a href="https://www.linkedin.com/in/shuntaro-nakanishi-a44b55361" target="_blank" rel="noopener noreferrer">shuntaro-nakanishi-a44b55361</a><br>
+        生年月日: 2005年3月18日 / 出身: 佐賀県 / 所在地: 福岡県
+      </p>
+      <p class="lang-en">
+        Email: <a href="mailto:nsh92030@gmail.com">nsh92030@gmail.com</a><br>
         X: <a href="https://x.com/nakanishiS10651" target="_blank" rel="noopener noreferrer">@nakanishiS10651</a><br>
         GitHub: <a href="https://github.com/NakanishiShuntaro" target="_blank" rel="noopener noreferrer">NakanishiShuntaro</a><br>
         LinkedIn: <a href="https://www.linkedin.com/in/shuntaro-nakanishi-a44b55361" target="_blank" rel="noopener noreferrer">shuntaro-nakanishi-a44b55361</a><br>
@@ -397,6 +497,27 @@
       </p>
     </section>
   </main>
+  <script>
+    (function () {
+      function setLanguage(lang) {
+        document.documentElement.dataset.lang = lang;
+        document.documentElement.lang = lang;
+        document.title = lang === "ja" ? "中西駿太郎 - ホームページ" : "Shuntaro Nakanishi - About Me";
+        localStorage.setItem("lang", lang);
+        document.querySelectorAll(".lang-btn").forEach((button) => {
+          button.setAttribute("aria-pressed", String(button.dataset.setLang === lang));
+        });
+      }
+
+      document.querySelectorAll(".lang-btn").forEach((button) => {
+        button.addEventListener("click", function () {
+          setLanguage(button.dataset.setLang);
+        });
+      });
+
+      setLanguage(document.documentElement.dataset.lang || "ja");
+    })();
+  </script>
 </body>
 
 </html>
