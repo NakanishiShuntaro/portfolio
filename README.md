@@ -1,6 +1,6 @@
 # github-pages-site
 
-GitHub Pages 用の最小構成の静的サイトです。
+GitHub Pages 用の静的サイト。トップページ（`index.html`）に履歴書（CV）の内容を掲載しています。
 
 ## ローカルで確認
 
@@ -30,4 +30,4 @@ python3 -m http.server 8080
 
 | ファイル      | 説明           |
 | ------------- | -------------- |
-| `index.html`  | トップページ   |
+| `index.html`  | CV（履歴書）ページ |
