@@ -1,11 +1,11 @@
-# github-pages-site
+# portfolio
 
 GitHub Pages 用の静的サイト。トップページ（`index.html`）に履歴書（CV）の内容を掲載。レイアウトは固定サイドバー＋本文のプロフィールサイト形式（[参考](https://ensan-hcl.github.io/miwakeita/) と同系統の構成）。
 
 ## ローカルで確認
 
 ```bash
-cd github-pages-site
+cd portfolio
 python3 -m http.server 8080
 ```
 
