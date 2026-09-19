@@ -1,786 +1,217 @@
 <!DOCTYPE html>
-<html lang="ja" data-lang="ja">
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
-  <link rel="icon" type="image/png" href="https://github.com/NakanishiShuntaro.png" />
-  <link rel="apple-touch-icon" href="https://github.com/NakanishiShuntaro.png" />
-  <title>中西俊太郎 - ポートフォリオ</title>
-  <meta property="og:title" content="中西俊太郎 - ポートフォリオ / Shuntaro Nakanishi" />
-  <meta property="og:description" content="中西俊太郎のポートフォリオ。航空宇宙工学、流体力学（CFD）、機械学習、宇宙開発。" />
-  <meta property="og:image" content="https://github.com/NakanishiShuntaro.png" />
-  <meta property="og:url" content="https://nakanishishuntaro.github.io/portfolio/" />
-  <meta property="og:type" content="website" />
-  <script>
-    (function () {
-      const saved = localStorage.getItem("lang");
-      const browserLang = (navigator.language || "").toLowerCase();
-      const lang = saved || (browserLang.startsWith("ja") ? "ja" : "en");
-      document.documentElement.dataset.lang = lang;
-      document.documentElement.lang = lang;
-    })();
-  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Shuntaro Nakanishi: research in large-eddy simulation, turbulence modeling, and scientific machine learning.">
+  <meta property="og:title" content="Shuntaro Nakanishi | Portfolio">
+  <meta property="og:description" content="Research, presentations, awards, and engineering experience of Shuntaro Nakanishi.">
+  <meta property="og:image" content="https://github.com/NakanishiShuntaro.png">
+  <meta property="og:url" content="https://nakanishishuntaro.github.io/portfolio/">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" href="https://github.com/NakanishiShuntaro.png">
+  <title>Shuntaro Nakanishi | Portfolio</title>
   <style>
-    * {
-      box-sizing: border-box;
+    :root {
+      color-scheme: light;
+      --ink: #1e2935;
+      --muted: #536274;
+      --blue: #123f69;
+      --line: #dce5ec;
+      --surface: #f5f8fa;
     }
-
-    ul {
-      padding-left: 1.2em;
-      margin-top: 0.8em;
-      margin-bottom: 1.2em;
-    }
-
-    ul li {
-      margin-bottom: 0.5em;
-      line-height: 1.6;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      margin: 0;
-      color: #333333;
-      background-color: #ffffff;
-      line-height: 1.6;
-    }
-
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 230px;
-      height: 100vh;
-      background-color: #f8f9fa;
-      border-right: 1px solid #e9ecef;
-      padding: 2rem 1rem;
-      overflow-y: auto;
-      transition: transform 0.3s ease;
-    }
-
-    nav h1 {
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-
-    nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 1.2rem 0;
-    }
-
-    nav li {
-      margin: 0.75rem 0;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #0055aa;
-      font-size: 0.92rem;
-      transition: color 0.2s;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-      color: #003366;
-    }
-
-    a {
-      color: #0055aa;
-      text-decoration: underline;
-    }
-
-    a:hover {
-      color: #3399ff;
-    }
-
-    main {
-      margin-left: 230px;
-      padding: 2.5rem 3rem;
-      max-width: 860px;
-    }
-
-    h2 {
-      border-bottom: 2px solid #003366;
-      padding-bottom: 0.4em;
-      margin-top: 2.5rem;
-      color: #003366;
-      font-size: 1.45rem;
-    }
-
-    h3 {
-      margin-top: 1.4rem;
-      margin-bottom: 0.5rem;
-      font-size: 1.15rem;
-      color: #222222;
-    }
-
-    section {
-      margin-bottom: 2.5rem;
-    }
-
-    .profile-img {
-      width: 170px;
-      height: 170px;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-      margin: 0 auto 1.2rem auto;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .mobile-only-block {
-      display: none;
-    }
-
-    .mobile-only-flex {
-      display: none;
-    }
-
-    .desktop-only {
-      display: block;
-    }
-
-    .social-icons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      column-gap: 1rem;
-      row-gap: .6rem;
-      width: 100%;
-      margin-top: 1.2rem;
-      padding: 0;
-    }
-
-    .social-icons a {
-      color: #0055aa;
-      font-size: 1.3rem;
-      text-decoration: none;
-      transition: color 0.2s, transform 0.2s;
-    }
-
-    .social-icons a:hover {
-      color: #3399ff;
-      transform: translateY(-2px);
-    }
-
-    #contact .social-icons {
-      justify-content: flex-start;
-      margin-top: 0.8rem;
-    }
-
-    .lang-toggle {
-      justify-content: center;
-      gap: 0.4rem;
-      margin: 0 0 1.25rem;
-    }
-
-    nav .lang-toggle {
-      display: flex;
-    }
-
-    main .lang-toggle.mobile-only-flex {
-      display: none !important;
-    }
-
-    .lang-btn {
-      appearance: none;
-      border: 1px solid #c7c7c7;
-      background: #ffffff;
-      color: #0055aa;
-      border-radius: 999px;
-      padding: 0.35rem 0.75rem;
-      font-size: 0.8rem;
-      cursor: pointer;
-      transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-    }
-
-    .lang-btn:hover {
-      border-color: #0055aa;
-    }
-
-    html[data-lang="ja"] .lang-btn[data-set-lang="ja"],
-    html[data-lang="en"] .lang-btn[data-set-lang="en"] {
-      background: #003366;
-      border-color: #003366;
-      color: #ffffff;
-    }
-
-    html[data-lang="ja"] .lang-en,
-    html[data-lang="en"] .lang-ja {
-      display: none !important;
-    }
-
-    .entry-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      margin-bottom: 0.2rem;
-    }
-
-    .entry-header .title {
-      font-weight: bold;
-      font-size: 1.05rem;
-    }
-
-    .entry-header .date {
-      color: #666666;
-      font-size: 0.9rem;
-    }
-
-    .entry-sub {
-      color: #444444;
-      font-style: italic;
-      margin-bottom: 0.4rem;
-      font-size: 0.95rem;
-    }
-
-    .entry-card {
-      margin-bottom: 1.6rem;
-    }
-
-    .tag {
-      display: inline-block;
-      background: #eef3f8;
-      color: #003366;
-      font-size: 0.8rem;
-      padding: 0.15rem 0.5rem;
-      border-radius: 4px;
-      margin-right: 0.4rem;
-      margin-bottom: 0.4rem;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      body {
-        background-color: #121212;
-        color: #e0e0e0;
-      }
-
-      nav {
-        background-color: #1a1a1a;
-        border-right-color: #2a2a2a;
-      }
-
-      h2 {
-        border-bottom-color: #4da3ff;
-        color: #66b3ff;
-      }
-
-      h3 {
-        color: #f0f0f0;
-      }
-
-      nav a,
-      .social-icons a {
-        color: #66b3ff;
-      }
-
-      nav a:hover,
-      .social-icons a:hover {
-        color: #99ccff;
-      }
-
-      a {
-        color: #66b3ff;
-      }
-
-      a:hover {
-        color: #99ccff;
-      }
-
-      .entry-header .date,
-      .entry-sub {
-        color: #aaaaaa;
-      }
-
-      .tag {
-        background: #202b38;
-        color: #8ac2ff;
-      }
-
-      .lang-btn {
-        background: #2b2b2b;
-        border-color: #4c4c4c;
-        color: #66b3ff;
-      }
-
-      html[data-lang="ja"] .lang-btn[data-set-lang="ja"],
-      html[data-lang="en"] .lang-btn[data-set-lang="en"] {
-        background: #004d99;
-        border-color: #004d99;
-        color: #ffffff;
-      }
-    }
-
-    @media screen and (max-width: 768px) {
-      nav {
-        display: none;
-      }
-
-      main {
-        margin-left: 0;
-        padding: 1.5rem;
-      }
-
-      .mobile-only-block {
-        display: block;
-      }
-
-      .mobile-only-flex {
-        display: flex;
-      }
-
-      main .lang-toggle.mobile-only-flex {
-        display: flex !important;
-      }
-
-      .social-icons {
-        gap: 1rem;
-        justify-content: center;
-        margin-top: 1rem;
-      }
-
-      .desktop-only {
-        display: none;
-      }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #fff; color: var(--ink); font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; }
+    a { color: var(--blue); text-underline-offset: 2px; }
+    a:hover { color: #1769a8; }
+    a:focus-visible { outline: 2px solid #1769a8; outline-offset: 3px; }
+    .skip-link { position: absolute; left: 1rem; top: -5rem; z-index: 10; padding: .5rem 1rem; background: #fff; }
+    .skip-link:focus { top: 1rem; }
+    aside { position: fixed; inset: 0 auto 0 0; width: 238px; overflow: auto; padding: 2rem 1.25rem; background: var(--surface); border-right: 1px solid var(--line); }
+    .portrait { display: block; width: 132px; height: 132px; margin: 0 auto 1rem; border-radius: 50%; object-fit: cover; }
+    .sidebar-name { margin: 0; color: var(--blue); text-align: center; font-size: 1.15rem; line-height: 1.3; }
+    .sidebar-subtitle { margin: .4rem 0 1.4rem; color: var(--muted); text-align: center; font-size: .85rem; }
+    aside ul { list-style: none; margin: 0; padding: 0; }
+    aside li { margin: .28rem 0; }
+    aside nav a { display: block; padding: .28rem .4rem; border-radius: 5px; text-decoration: none; font-size: .91rem; }
+    aside nav a:hover, aside nav a:focus-visible { background: #e8f0f6; }
+    .sidebar-links { display: flex; flex-wrap: wrap; justify-content: center; gap: .65rem; margin-top: 1.5rem; font-size: .86rem; }
+    main { width: min(920px, calc(100% - 238px)); margin-left: 238px; padding: 2.8rem clamp(1.5rem, 4.5vw, 4rem) 5rem; }
+    header { padding-bottom: 1.55rem; border-bottom: 1px solid var(--line); }
+    h1 { margin: 0; color: var(--blue); font-size: clamp(2rem, 4vw, 2.7rem); line-height: 1.2; }
+    .intro { max-width: 52rem; margin: .75rem 0 0; color: var(--muted); }
+    .contact-line { display: flex; flex-wrap: wrap; gap: .4rem 1.1rem; margin-top: .95rem; font-size: .92rem; }
+    section { scroll-margin-top: 1.5rem; margin-top: 2.7rem; }
+    h2 { margin: 0 0 1.15rem; padding-bottom: .32rem; border-bottom: 2px solid var(--blue); color: var(--blue); font-size: 1.35rem; }
+    h3 { margin: 0; font-size: 1.08rem; line-height: 1.35; }
+    p { margin: .45rem 0 .8rem; }
+    .entry { margin: 0 0 1.55rem; }
+    .entry-head { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: .1rem 1rem; }
+    .date { color: var(--muted); font-size: .9rem; white-space: nowrap; }
+    .detail { margin: .14rem 0 .35rem; color: var(--muted); font-style: italic; }
+    ul.detail-list { margin: .45rem 0 0; padding-left: 1.3rem; }
+    .detail-list li { margin: .35rem 0; }
+    .tags { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0 0 1.5rem; }
+    .tag { border-radius: 4px; padding: .23rem .6rem; background: #ebf2f7; color: var(--blue); font-size: .85rem; }
+    .citation { padding-left: 1.15rem; text-indent: -1.15rem; margin-bottom: 1rem; }
+    .skills p { margin: .55rem 0; }
+    .small { font-size: .9rem; color: var(--muted); }
+    @media (max-width: 760px) {
+      aside { position: static; width: auto; padding: 1.1rem 1.25rem; border-right: 0; border-bottom: 1px solid var(--line); }
+      aside .portrait, .sidebar-subtitle, aside nav { display: none; }
+      .sidebar-name { text-align: left; }
+      .sidebar-links { justify-content: flex-start; margin-top: .45rem; }
+      main { width: 100%; margin: 0; padding: 1.7rem 1.25rem 3rem; }
+      section { margin-top: 2.25rem; }
     }
   </style>
 </head>
-
 <body>
-
-  <nav id="sidebar">
-    <h1><span class="lang-ja">中西 俊太郎</span><span class="lang-en">Shuntaro Nakanishi</span></h1>
-    <div class="lang-toggle" role="group" aria-label="Language switcher">
-      <button type="button" class="lang-btn" data-set-lang="ja">日本語</button>
-      <button type="button" class="lang-btn" data-set-lang="en">English</button>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <aside>
+    <img class="portrait" src="https://github.com/NakanishiShuntaro.png" alt="Rocket launch photograph">
+    <p class="sidebar-name"><strong>Shuntaro Nakanishi</strong></p>
+    <p class="sidebar-subtitle">Research and engineering portfolio</p>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#research">Research Experience</a></li>
+        <li><a href="#work">Work Experience</a></li>
+        <li><a href="#awards">Honors and Awards</a></li>
+        <li><a href="#presentations">Conference Presentations</a></li>
+        <li><a href="#skills">Technical Skills</a></li>
+        <li><a href="#activities">Extracurricular Activities</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-links">
+      <a href="mailto:nakanishi.shuntaro.638@s.kyushu-u.ac.jp">Email</a>
+      <a href="https://github.com/NakanishiShuntaro" target="_blank" rel="noopener noreferrer">GitHub</a>
     </div>
-    <img src="https://github.com/NakanishiShuntaro.png" alt="Profile photo" class="profile-img" />
-    <ul>
-      <li><a href="#profile"><span class="lang-ja">プロフィール</span><span class="lang-en">About</span></a></li>
-      <li><a href="#research"><span class="lang-ja">研究</span><span class="lang-en">Research</span></a></li>
-      <li><a href="#education"><span class="lang-ja">学歴</span><span class="lang-en">Education</span></a></li>
-      <li><a href="#work"><span class="lang-ja">職歴</span><span class="lang-en">Work Experience</span></a></li>
-      <li><a href="#projects"><span class="lang-ja">プロジェクト</span><span class="lang-en">Projects</span></a></li>
-      <li><a href="#presentations"><span class="lang-ja">学会発表</span><span class="lang-en">Presentations</span></a></li>
-      <li><a href="#awards"><span class="lang-ja">受賞・助成金</span><span class="lang-en">Awards &amp; Grants</span></a></li>
-      <li><a href="#activities"><span class="lang-ja">課外活動</span><span class="lang-en">Activities</span></a></li>
-      <li><a href="#certifications"><span class="lang-ja">資格</span><span class="lang-en">Certifications</span></a></li>
-      <li><a href="#skills"><span class="lang-ja">スキル</span><span class="lang-en">Technical Skills</span></a></li>
-      <li><a href="#contact"><span class="lang-ja">連絡先</span><span class="lang-en">Contact</span></a></li>
-    </ul>
+  </aside>
 
-    <div class="social-icons">
-      <a href="mailto:nakanishi.shuntaro.638@s.kyushu-u.ac.jp" target="_blank" rel="noopener noreferrer" aria-label="Email (University)">
-        <i class="fas fa-envelope"></i>
-      </a>
-      <a href="https://github.com/NakanishiShuntaro" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-        <i class="fab fa-github"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/shuntaro-nakanishi-a44b55361" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <a href="https://x.com/nakanishiS10651" target="_blank" rel="noopener noreferrer" aria-label="X">
-        <i class="fab fa-x-twitter"></i>
-      </a>
-    </div>
-  </nav>
-
-  <main>
-    <section id="profile">
-      <h2 class="desktop-only"><span class="lang-ja">プロフィール</span><span class="lang-en">About</span></h2>
-      <h2 class="mobile-only-block">
-        <span class="lang-ja">中西 俊太郎</span>
-        <span class="lang-en">Shuntaro Nakanishi</span>
-      </h2>
-
-      <div class="lang-toggle mobile-only-flex" role="group" aria-label="Language switcher">
-        <button type="button" class="lang-btn" data-set-lang="ja">日本語</button>
-        <button type="button" class="lang-btn" data-set-lang="en">English</button>
+  <main id="main">
+    <header id="about">
+      <h1>Shuntaro Nakanishi</h1>
+      <p class="intro">Undergraduate researcher at Kyushu University working on large-eddy simulation, data-driven turbulence modeling, and scientific machine learning for computational fluid dynamics.</p>
+      <div class="contact-line">
+        <span>Fukuoka, Japan</span>
+        <a href="mailto:nakanishi.shuntaro.638@s.kyushu-u.ac.jp">nakanishi.shuntaro.638@s.kyushu-u.ac.jp</a>
+        <a href="tel:+817093518831">+81-70-9351-8831</a>
       </div>
+    </header>
 
-      <img src="https://github.com/NakanishiShuntaro.png" alt="Profile photo" class="profile-img mobile-only-block" />
-
-      <p class="lang-ja">
-        九州大学 工学部 航空宇宙工学科 学部4年。計算流体力学（CFD）、乱流モデリング、機械学習・データ駆動科学に関心を持っています。安倍・久谷研究室にてTensor Basis Neural Network（TBNN）を用いたラージエディシミュレーション（LES）向け非線形サブグリッドスケール（SGS）応力モデリングの研究に取り組んでいます。また、学生宇宙開発団体 PLANET-Q にてハイブリッドロケットの電装系（アビオニクス）開発や、福岡未踏発の農業AI支援システムの開発・商用展開（株式会社セラク）など、ハードウェアからソフトウェア・AIまで幅広く実践してきました。
-      </p>
-      <p class="lang-en">
-        Senior undergraduate student in Aeronautics and Astronautics at Kyushu University. My research interests center on Computational Fluid Dynamics (CFD), turbulence modeling, and data-driven science. Currently conducting research on data-driven nonlinear subgrid-scale (SGS) modeling for Large-Eddy Simulation (LES) using a Tensor Basis Neural Network (TBNN) at Abe-Hisatani Laboratory. I also have hands-on experience in rocketry avionics with PLANET-Q, and in end-to-end development and commercial deployment of agricultural AI systems through the Fukuoka Mitou Program and SERAKU Co., Ltd.
-      </p>
+    <section id="education">
+      <h2>Education</h2>
+      <div class="entry">
+        <div class="entry-head"><h3>The University of Tokyo</h3><span class="date">Apr 2027 (Planned)</span></div>
+        <p class="detail">Master's Program, Department of Mechanical Engineering · Tokyo, Japan</p>
+        <ul class="detail-list">
+          <li>If admitted to a PhD program, I plan to enroll in the PhD program instead.</li>
+          <li>Admitted through the <a href="https://www2.mech.t.u-tokyo.ac.jp/admissions/?lang=en" target="_blank" rel="noopener noreferrer">Special Oral Selection</a> for exceptionally outstanding applicants, involving document screening and an oral examination; exempted from the written entrance examination.</li>
+        </ul>
+      </div>
+      <div class="entry">
+        <div class="entry-head"><h3>Kyushu University</h3><span class="date">Apr 2023 – Mar 2027 (Expected)</span></div>
+        <p class="detail">Bachelor of Engineering in Aeronautics and Astronautics · Fukuoka, Japan</p>
+        <ul class="detail-list">
+          <li><strong>Relevant Coursework:</strong> Fluid Dynamics, Compressible Fluid Flow, Aerodynamics, Aerospace Propulsion, Numerical Analysis, Differential Equations</li>
+        </ul>
+      </div>
     </section>
 
     <section id="research">
-      <h2><span class="lang-ja">研究</span><span class="lang-en">Research Experience &amp; Interests</span></h2>
-      
-      <div class="entry-card">
-        <h3><span class="lang-ja">研究関心（Research Interests）</span><span class="lang-en">Research Interests</span></h3>
-        <p class="lang-ja">
-          <span class="tag">計算流体力学 (CFD)</span>
-          <span class="tag">乱流モデリング (Turbulence Modeling)</span>
-          <span class="tag">データ駆動科学 (Data-Driven Science)</span>
-          <span class="tag">深層学習 (Deep Learning)</span>
-        </p>
-        <p class="lang-en">
-          <span class="tag">Computational Fluid Dynamics (CFD)</span>
-          <span class="tag">Turbulence Modeling</span>
-          <span class="tag">Data-Driven Science</span>
-          <span class="tag">Deep Learning</span>
-        </p>
+      <h2>Research Experience</h2>
+      <div class="tags" aria-label="Research interests">
+        <span class="tag">Large-Eddy Simulation</span>
+        <span class="tag">Data-Driven Turbulence Modeling</span>
+        <span class="tag">Scientific Machine Learning</span>
+        <span class="tag">Computational Fluid Dynamics</span>
       </div>
-
-      <div class="entry-card">
-        <div class="entry-header">
-          <span class="title">
-            <span class="lang-ja">九州大学 工学部 航空宇宙工学科（航空宇宙工学部門 安倍・久谷研究室）</span>
-            <span class="lang-en">Kyushu University, Department of Aeronautics and Astronautics (Abe-Hisatani Laboratory)</span>
-          </span>
-          <span class="date">Apr 2026 – Present</span>
-        </div>
-        <div class="entry-sub">
-          <span class="lang-ja">学部生研究員（指導教員：安倍 賢一 教授）</span>
-          <span class="lang-en">Undergraduate Researcher (Advisor: Prof. Kenichi Abe)</span>
-        </div>
-        <ul>
-          <li class="lang-ja"><strong>卒業論文テーマ：</strong>『Tensor Basis Neural Networkを用いたLES用非線形SGSモデルに関する研究』</li>
-          <li class="lang-en"><strong>Undergraduate Thesis:</strong> <em>Nonlinear SGS Modeling for LES Using a Tensor Basis Neural Network</em></li>
-          <li class="lang-ja">機械学習手法であるTensor Basis Neural Network（TBNN）を用いた、ラージエディシミュレーション（LES）向けデータ駆動型非線形サブグリッドスケール（SGS）応力モデルの研究に従事。</li>
-          <li class="lang-en">Conduct research on data-driven nonlinear subgrid-scale (SGS) stress modeling for large-eddy simulation (LES) using a Tensor Basis Neural Network (TBNN).</li>
-          <li class="lang-ja">従来の渦粘性モデルを超える乱流予測精度の向上を目指し、高次テンソル基底項がSGS応力予測に与える影響の解明に取り組む。</li>
-          <li class="lang-en">Investigate how higher-order tensor-basis terms affect SGS stress predictions to improve turbulence model accuracy over conventional eddy-viscosity models.</li>
+      <div class="entry">
+        <div class="entry-head"><h3>Kyushu University, Department of Aeronautics and Astronautics</h3><span class="date">Apr 2026 – Present</span></div>
+        <p class="detail">Undergraduate Researcher · Advisor: Prof. Kenichi Abe</p>
+        <ul class="detail-list">
+          <li><strong>Undergraduate Thesis:</strong> <em>A Study on Nonlinear SGS Models for LES Based on the Tensor Basis Neural Network Using Machine Learning</em></li>
+          <li>Achieved accuracy comparable to using all 10 of Pope's tensor bases with only the first four (T<sup>(1)</sup>–T<sup>(4)</sup>) in <em>a posteriori</em> simulations of channel flow at Re<sub>τ</sub> = 395, reducing velocity overprediction primarily in the buffer and outer layers relative to conventional isotropic models.</li>
+          <li>Investigating T<sup>(6)</sup> as a potential extension of conventional strain-rate-tensor-based SGS models, motivated by its linear dependence on the strain-rate tensor in laminar channel flow.</li>
+          <li>Reduced mean-velocity relative L<sub>2</sub> error against DNS from 19.54% with a conventional isotropic model to 3.73% by learning only the coefficient of the isotropic tensor T<sup>(6)</sup>, without incorporating anisotropic tensor terms, using a composite loss function that equally evaluates both the normalized anisotropy tensor and physical stress scale instead of the standard loss function evaluating only the SGS stress anisotropy tensor.</li>
         </ul>
       </div>
-
-      <div class="entry-card">
-        <div class="entry-header">
-          <span class="title">
-            <span class="lang-ja">九州大学 農学部（岡安研究室）</span>
-            <span class="lang-en">Kyushu University, Faculty of Agriculture</span>
-          </span>
-          <span class="date">Sep 2024 – Mar 2025</span>
-        </div>
-        <div class="entry-sub">
-          <span class="lang-ja">学生研究員 / 開発リーダー（指導教員：岡安 崇史 教授）</span>
-          <span class="lang-en">Student Researcher / Lead Developer (Advisor: Prof. Takashi Okayasu)</span>
-        </div>
-        <ul>
-          <li class="lang-ja"><strong>研究プロジェクト：</strong>『初心者農家向け生成AIアシスタントの開発』（福岡未踏採択プロジェクト）</li>
-          <li class="lang-en"><strong>Research Project:</strong> <em>Generative AI Assistant for Beginner Farmers</em> (Funded by the Fukuoka Mitou Program)</li>
-          <li class="lang-ja">プロジェクトを着想し、農業IoTセンサーデータを自然言語の圃場要約や具体的な栽培指針へと変換するGPT-4基盤のAIアシスタントを一から開発。</li>
-          <li class="lang-en">Conceived the project idea and developed a GPT-4-based AI assistant from scratch, translating agricultural IoT sensor data into natural-language field summaries and actionable cultivation guidance.</li>
-          <li class="lang-ja">個々の農家の観察記録や好みを反映してプロンプトコンテキストと提案品質を最適化する適応型フィードバック機構を設計。</li>
-          <li class="lang-en">Designed an adaptive feedback mechanism incorporating individual farmers' observations and preferences to optimize prompt contexts and recommendation quality.</li>
-          <li class="lang-ja">構想立案・提案から採択14チーム中トップ認定（よかクリエータ）、その後の商用展開に至るまで、プロジェクトを一貫して主導。</li>
-          <li class="lang-en">Independently executed the project end-to-end — from initial concept and proposal to top certification among 14 cohort teams and subsequent commercial deployment.</li>
+      <div class="entry">
+        <div class="entry-head"><h3>Kyushu University, Faculty of Agriculture</h3><span class="date">Sep 2024 – Mar 2025</span></div>
+        <p class="detail">Student Researcher / Lead Developer · Advisor: Prof. Takashi Okayasu</p>
+        <ul class="detail-list">
+          <li><strong>Research Project:</strong> <em>Generative AI Assistant for Beginner Farmers</em> (funded by the Fukuoka Mitou Program, a competitive government-backed innovation program for young software developers)</li>
+          <li>Developed a GPT-4-based agricultural assistant that progressively personalizes strawberry cultivation recommendations to individual farms as observations accumulate, integrating IoT sensor telemetry, agronomic knowledge, and growers' multiple-choice responses.</li>
+          <li>Earned the “Yoka Creator” certification with the top evaluation among 14 funded projects, independently leading the project from concept to implementation and evaluation and securing an industry partnership with SERAKU Co., Ltd. for commercial integration.</li>
         </ul>
-      </div>
-    </section>
-
-    <section id="education">
-      <h2><span class="lang-ja">学歴</span><span class="lang-en">Education</span></h2>
-      <div class="entry-card">
-        <div class="entry-header">
-          <span class="title">
-            <span class="lang-ja">九州大学 工学部 航空宇宙工学科</span>
-            <span class="lang-en">Kyushu University, Department of Aeronautics and Astronautics</span>
-          </span>
-          <span class="date">Apr 2023 – Mar 2027 (Expected)</span>
-        </div>
-        <div class="entry-sub">
-          <span class="lang-ja">学士課程（工学） / 2027年3月 卒業見込み</span>
-          <span class="lang-en">Bachelor of Engineering in Aeronautics and Astronautics</span>
-        </div>
-        <ul>
-          <li class="lang-ja"><strong>主要履修科目：</strong>流体力学、圧縮性流体力学、空気力学、航空宇宙推進工学、数値解析、微分方程式</li>
-          <li class="lang-en"><strong>Relevant Coursework:</strong> Fluid Dynamics, Compressible Fluid Flow, Aerodynamics, Aerospace Propulsion, Numerical Analysis, Differential Equations</li>
-          <li class="lang-ja">課外活動・所属：<a href="https://planet-q.jimdofree.com/" target="_blank" rel="noopener noreferrer">PLANET-Q</a>（学生宇宙開発チーム）、<a href="https://physikyu-github-io.vercel.app/" target="_blank" rel="noopener noreferrer">PhysiKyu</a>（物理輪読コミュニティ）</li>
-          <li class="lang-en">Activities: <a href="https://planet-q.jimdofree.com/" target="_blank" rel="noopener noreferrer">PLANET-Q</a> (Space Development Club), <a href="https://physikyu-github-io.vercel.app/" target="_blank" rel="noopener noreferrer">PhysiKyu</a> (Physics Seminar)</li>
-        </ul>
-      </div>
-      <div class="entry-card">
-        <div class="entry-header">
-          <span class="title">
-            <span class="lang-ja">佐賀県立致遠館中学校・高等学校</span>
-            <span class="lang-en">Saga Prefectural Chienkan Junior and Senior High School</span>
-          </span>
-          <span class="date">Graduated Mar 2023</span>
-        </div>
       </div>
     </section>
 
     <section id="work">
-      <h2><span class="lang-ja">職歴</span><span class="lang-en">Work Experience</span></h2>
-      <div class="entry-card">
-        <div class="entry-header">
-          <span class="title">
-            <span class="lang-ja"><a href="https://www.seraku.co.jp/" target="_blank" rel="noopener noreferrer">株式会社セラク</a></span>
-            <span class="lang-en"><a href="https://www.seraku.co.jp/" target="_blank" rel="noopener noreferrer">SERAKU Co., Ltd.</a></span>
-          </span>
-          <span class="date">Apr 2025 – Mar 2026</span>
-        </div>
-        <div class="entry-sub">
-          <span class="lang-ja">ソフトウェアエンジニア（インターン / アルバイト） / 福岡</span>
-          <span class="lang-en">Software Engineering Intern / Fukuoka, Japan</span>
-        </div>
-        <ul>
-          <li class="lang-ja">福岡未踏プロジェクトで開発したAI支援システムの実用化・商用展開を担当し、セラクの農業IoTプラットフォーム『みどりクラウド』への統合を推進。</li>
-          <li class="lang-en">Engineered the production deployment of the AI assistance system originally developed in the Fukuoka Mitou project, integrating it into SERAKU's commercial agricultural IoT platform, <em>Midori Cloud</em>.</li>
-          <li class="lang-ja">農業IoTセンサーデータとLLMによる推論を連携させ、農家向けの具体的かつ実践的な栽培助言を生成するデータパイプラインを開発・統合。</li>
-          <li class="lang-en">Developed and integrated pipelines connecting agricultural IoT sensor data with LLM-based reasoning to provide actionable cultivation advice for farmers.</li>
-          <li class="lang-ja">R&amp;Dチームや農業関係者と連携し、実際の生産現場におけるシステムの信頼性と実用性を検証。</li>
-          <li class="lang-en">Collaborated with the R&amp;D team and agricultural stakeholders to validate system reliability and practical usability in production farming environments.</li>
+      <h2>Work Experience</h2>
+      <div class="entry">
+        <div class="entry-head"><h3>SERAKU Co., Ltd.</h3><span class="date">Apr 2025 – Mar 2026</span></div>
+        <p class="detail">Software Engineering Intern · Tokyo, Japan</p>
+        <ul class="detail-list">
+          <li>Enabled production deployment of the Fukuoka Mitou AI assistant into SERAKU's commercial IoT platform, <em>Midori Cloud</em>, by designing backend APIs and data pipelines that connect real-time agricultural sensor telemetry with LLM reasoning.</li>
         </ul>
       </div>
     </section>
 
-    <section id="projects">
-      <h2><span class="lang-ja">プロジェクト</span><span class="lang-en">Projects</span></h2>
-      <div class="entry-card">
-        <div class="entry-header">
-          <span class="title">
-            <a href="https://mitou-fukuoka.org/works/solve-tellmee" target="_blank" rel="noopener noreferrer">Tellmee</a>
-          </span>
-          <span class="date">Sep 2024 – Mar 2025</span>
-        </div>
-        <div class="entry-sub">
-          <span class="lang-ja"><a href="https://mitou-fukuoka.org/" target="_blank" rel="noopener noreferrer">福岡未踏的人材発掘・育成プロジェクト</a> 採択（支援金50万円） / PM: 岡安 崇史 教授</span>
-          <span class="lang-en"><a href="https://mitou-fukuoka.org/" target="_blank" rel="noopener noreferrer">Fukuoka Mitou Program</a> (JPY 500,000 Grant) / PM: Prof. Takashi Okayasu</span>
-        </div>
-        <ul>
-          <li class="lang-ja">初心者農家向けの生成AIアシスタント。各種IoT環境センサーデータ（温度・湿度・日射量・土壌水分等）の解析、圃場状況の要約、次に取るべき推奨作業を自然言語で提示。</li>
-          <li class="lang-en">AI-based support assistant for beginner farmers. Interprets agricultural IoT sensor data, generates natural-language field summaries, and provides actionable next-step recommendations.</li>
-          <li class="lang-ja">農家のフィードバックや観察記録をコンテキストに取り込む適応型機構を開発。採択14件の中でトップ評価（よかクリエータ認定）を獲得し、株式会社セラクでの商用サービス統合へ展開。</li>
-          <li class="lang-en">Designed an adaptive prompt context mechanism based on farmer feedback. Achieved top certification ("Yoka Creator") among 14 cohort teams and subsequently transitioned to commercial deployment with SERAKU Co., Ltd.</li>
-        </ul>
+    <section id="awards">
+      <h2>Honors, Awards, and Grants</h2>
+      <div class="entry">
+        <div class="entry-head"><h3>Fukuoka Mitou Project Grant</h3><span class="date">Sep 2024 – Feb 2025</span></div>
+        <p>Secured JPY 500,000 in competitive project funding from the Fukuoka Mitou Program for “Development of an AI-based Agriculture Assistant for Beginner Farmers.”</p>
       </div>
-
-      <div class="entry-card">
-        <div class="entry-header">
-          <span class="title">
-            <span class="lang-ja">ハイブリッドロケット電装系（アビオニクス）開発</span>
-            <span class="lang-en">Hybrid Rocket Avionics &amp; Telemetry Systems</span>
-          </span>
-          <span class="date">Apr 2023 – Present</span>
-        </div>
-        <div class="entry-sub">
-          <span class="lang-ja">九州大学 学生宇宙開発チーム <a href="https://planet-q.jimdofree.com/" target="_blank" rel="noopener noreferrer">PLANET-Q</a></span>
-          <span class="lang-en">Kyushu University Space Development Club <a href="https://planet-q.jimdofree.com/" target="_blank" rel="noopener noreferrer">PLANET-Q</a></span>
-        </div>
-        <ul>
-          <li class="lang-ja">KiCadを用いた自作プリント基板（PCB）設計、センサー・マイコン制御、LoRa長距離無線テレメトリシステムの実装。</li>
-          <li class="lang-en">Designed custom printed circuit boards (PCB) with KiCad, implemented microcontroller firmware, serial communications, and LoRa wireless telemetry.</li>
-          <li class="lang-ja">高度3,700m到達・パラシュート開傘・完全回収を達成。学生自作エンジンの地上燃焼試験を実施（<a href="https://www.youtube.com/watch?v=oie49Va7zNE" target="_blank" rel="noopener noreferrer">地上燃焼試験映像</a>）。能代宇宙イベントにてAutodesk賞、三菱重工（MHI）賞、フォトロン賞を受賞。</li>
-          <li class="lang-en">Achieved apogee up to 3,700 m with parachute deployment and complete flight recovery. Conducted static combustion tests of student-built rocket engines (<a href="https://www.youtube.com/watch?v=oie49Va7zNE" target="_blank" rel="noopener noreferrer">combustion test video</a>). Won Autodesk, MHI, and Photron awards at the Noshiro Space Event.</li>
-        </ul>
+      <div class="entry">
+        <div class="entry-head"><h3><a href="https://mitou-fukuoka.org/2025/02/10/2024-250201-seikahokokukai/" target="_blank" rel="noopener noreferrer">“Yoka Creator” Certification</a></h3><span class="date">Feb 2025</span></div>
+        <p>Earned certification as a top-tier creator by the Fukuoka Mitou Program, receiving the highest evaluation among 14 funded software projects.</p>
+      </div>
+      <div class="entry">
+        <div class="entry-head"><h3>Noshiro Space Event Awards</h3><span class="date">Oct 2023, Nov 2024</span></div>
+        <p>As a member of PLANET-Q, received the Autodesk Award and Mitsubishi Heavy Industries (MHI) Award (2023, 2024) and the Photron Award (2024) for hybrid rocket development at Japan's largest student rocket competition.</p>
       </div>
     </section>
 
     <section id="presentations">
-      <h2><span class="lang-ja">学会発表</span><span class="lang-en">Conference Presentations</span></h2>
-      <ul>
-        <li>
-          <span class="lang-ja">
-            <strong>中西 俊太郎</strong>、木原 尚希、安倍 賢一、「機械学習を用いたTensor Basis Neural Networkに基づくLES用非線形SGSモデルに関する研究」、<em><a href="https://branch.jsass.or.jp/west/?p=1919" target="_blank" rel="noopener noreferrer">日本航空宇宙学会西部支部講演会(2026)</a></em>、福岡、2026年11月（口頭発表予定）。
-          </span>
-          <span class="lang-en">
-            <strong>Nakanishi, S.</strong>, Kihara, H., and Abe, K., "A Study on Nonlinear SGS Models for LES Based on the Tensor Basis Neural Network Using Machine Learning," <em><a href="https://branch.jsass.or.jp/west/?p=1919" target="_blank" rel="noopener noreferrer">The Japan Society for Aeronautical and Space Sciences (JSASS) Western Branch Conference</a></em>, Fukuoka, Japan, Nov 2026 (Scheduled for oral presentation).
-          </span>
-        </li>
-        <li style="margin-top: 0.8rem;">
-          <span class="lang-ja">
-            <strong>中西 俊太郎</strong>、佐藤 周平、岡安 崇史、持田 宏平、「環境データと農家の「気づき」を統合した農業初心者支援AIの開発」、<em>農業情報学会2025年度年次大会</em>、京都、2025年5月（口頭発表）。
-          </span>
-          <span class="lang-en">
-            <strong>Nakanishi, S.</strong>, Sato, S., Okayasu, T., and Mochida, K., "Development of an AI to Support Beginner Farmers by Integrating Environmental Data and Farmers' Insights," <em>Annual Conference of the Japanese Society of Agricultural Informatics</em>, Kyoto, Japan, May 2025 (Oral presentation).
-          </span>
-        </li>
-      </ul>
+      <h2>Conference Presentations</h2>
+      <p class="citation"><strong>Nakanishi, S.</strong>, Kihara, H., and Abe, K., “A Study on Nonlinear SGS Models for LES Based on the Tensor Basis Neural Network Using Machine Learning,” <em><a href="https://branch.jsass.or.jp/west/?p=1919" target="_blank" rel="noopener noreferrer">The Japan Society for Aeronautical and Space Sciences (JSASS) Western Branch Conference</a></em>, Fukuoka, Japan, Nov 2026 (scheduled for oral presentation).</p>
+      <p class="citation"><strong>Nakanishi, S.</strong>, Sato, S., Okayasu, T., and Mochida, K., “Development of an AI to Support Beginner Farmers by Integrating Environmental Data and Farmers' Insights,” <em>Annual Conference of the Japanese Society of Agricultural Informatics</em>, Kyoto, Japan, May 2025 (oral presentation).</p>
     </section>
 
-    <section id="awards">
-      <h2><span class="lang-ja">受賞・助成金</span><span class="lang-en">Honors, Awards, and Grants</span></h2>
-      <ul>
-        <li>
-          <span class="lang-ja">
-            <strong>福岡未踏プロジェクト採択・支援金獲得</strong>（2024年9月〜2025年2月）<br>
-            「初心者農家向け生成AIアシスタントの開発」プロジェクトにおいて、福岡未踏的人材発掘・育成プロジェクトに採択され、プロジェクト助成金50万円を獲得。
-          </span>
-          <span class="lang-en">
-            <strong>Fukuoka Mitou Project Grant</strong> (Sep 2024 – Feb 2025)<br>
-            Secured JPY 500,000 in competitive project funding from the Fukuoka Mitou Program for "Development of an AI-based Agriculture Assistant for Beginner Farmers."
-          </span>
-        </li>
-        <li style="margin-top: 0.8rem;">
-          <span class="lang-ja">
-            <strong>福岡未踏「よかクリエータ」認定（最高評価クリエータ）</strong>（2025年2月）<br>
-            福岡未踏的人材発掘・育成プロジェクトにおいて、採択14プロジェクトの中で最高評価を獲得し「よかクリエータ」に認定。
-          </span>
-          <span class="lang-en">
-            <strong>"Yoka Creator" Certification (Top-Tier Creator Recognition)</strong> (Feb 2025)<br>
-            Earned certification as a top-tier creator by the Fukuoka Mitou Program, receiving the highest evaluation among 14 funded software projects.
-          </span>
-        </li>
-        <li style="margin-top: 0.8rem;">
-          <span class="lang-ja">
-            <strong>能代宇宙イベント 各賞受賞</strong>（2023年10月、2024年11月）<br>
-            国内最大の学生ロケット競技大会「能代宇宙イベント」にて、PLANET-Qのハイブリッドロケット開発によりAutodesk賞、三菱重工（MHI）賞（2023年、2024年）、フォトロン賞（2024年）を受賞。
-          </span>
-          <span class="lang-en">
-            <strong>Noshiro Space Event Awards</strong> (Oct 2023, Nov 2024)<br>
-            Received the Autodesk Award and Mitsubishi Heavy Industries (MHI) Award (2023, 2024) and the Photron Award (2024) at Japan's largest student rocket competition for hybrid rocket development with PLANET-Q.
-          </span>
-        </li>
-      </ul>
+    <section id="skills" class="skills">
+      <h2>Technical Skills</h2>
+      <p><strong>Programming &amp; Tools:</strong> Python, C/C++, Git, Linux, OpenFOAM</p>
+      <p><strong>Fluid Dynamics &amp; Computation:</strong> Computational Fluid Dynamics (CFD), Large-Eddy Simulation (LES), Turbulence Modeling</p>
+      <p><strong>Hardware &amp; Embedded Systems:</strong> PCB Design, Microcontrollers, CAN Bus, LoRa Telemetry, Serial Communication</p>
     </section>
 
     <section id="activities">
-      <h2><span class="lang-ja">課外活動</span><span class="lang-en">Extracurricular Activities</span></h2>
-      <div class="entry-card">
-        <div class="entry-header">
-          <span class="title">
-            <a href="https://planet-q.jimdofree.com/" target="_blank" rel="noopener noreferrer">PLANET-Q</a>
-            <span class="lang-ja">（九州大学 学生宇宙開発チーム）</span>
-            <span class="lang-en">(Kyushu University Space Development Club)</span>
-          </span>
-          <span class="date">Apr 2023 – Present</span>
-        </div>
-        <div class="entry-sub">
-          <span class="lang-ja">電装班（アビオニクス担当）</span>
-          <span class="lang-en">Avionics Team Member</span>
-        </div>
-        <ul>
-          <li class="lang-ja">CanSatおよびハイブリッドロケットプロジェクトにおける電装システム（アビオニクス）の開発（PCB設計、シリアル通信、LoRa無線テレメトリの実装など）。</li>
-          <li class="lang-en">Developed avionics systems for CanSat and hybrid rocket projects, including printed circuit board (PCB) design, serial communication, and LoRa wireless telemetry.</li>
-          <li class="lang-ja">最高到達高度3,700mのハイブリッドロケット打ち上げ、パラシュート展開、機体完全回収、フライトログ回収を達成。</li>
-          <li class="lang-en">Achieved hybrid rocket flights reaching an apogee of up to 3,700 m with parachute deployment, full vehicle recovery, and flight log retrieval.</li>
-          <li class="lang-ja">学生自作ロケットエンジンの地上燃焼試験を実施（<a href="https://www.youtube.com/watch?v=oie49Va7zNE" target="_blank" rel="noopener noreferrer">地上燃焼試験動画</a>）。</li>
-          <li class="lang-en">Conducted static combustion tests of student-built rocket engines (<a href="https://www.youtube.com/watch?v=oie49Va7zNE" target="_blank" rel="noopener noreferrer">combustion test video</a>).</li>
-        </ul>
-      </div>
-
-      <div class="entry-card">
-        <div class="entry-header">
-          <span class="title">
-            <a href="https://physikyu-github-io.vercel.app/" target="_blank" rel="noopener noreferrer">PhysiKyu</a>
-          </span>
-          <span class="date">Apr 2023 – Present</span>
-        </div>
-        <div class="entry-sub">
-          <span class="lang-ja">物理輪読コミュニティ</span>
-          <span class="lang-en">Physics Seminar Community</span>
-        </div>
-        <ul>
-          <li class="lang-ja">学生主体の物理輪読コミュニティ。力学、流体力学、数理統計などの専門書の輪読ゼミに参加。</li>
-          <li class="lang-en">Student-led physics seminar community studying mechanics, fluid mechanics, and mathematical statistics through reading-based seminars.</li>
+      <h2>Extracurricular Activities</h2>
+      <div class="entry">
+        <div class="entry-head"><h3>PLANET-Q (Kyushu University Space Development Club)</h3><span class="date">Apr 2023 – Present</span></div>
+        <p class="detail">Avionics Team Member</p>
+        <ul class="detail-list">
+          <li>Designed the club's first distributed CAN bus network to improve avionics noise immunity and communication reliability, contributing to successful separation mechanism actuation, full vehicle recovery, and complete flight data logging across launches reaching apogees up to 3,700 m.</li>
+          <li>Contributed to consistent combustion characteristics and fail-safe operation across two static firing tests (<a href="https://www.youtube.com/watch?v=oie49Va7zNE" target="_blank" rel="noopener noreferrer">video</a>) by engineering embedded control electronics and valve actuation systems for precise oxidizer flow regulation and emergency depressurization.</li>
         </ul>
       </div>
     </section>
 
     <section id="certifications">
-      <h2><span class="lang-ja">資格</span><span class="lang-en">Certifications</span></h2>
-      <ul>
-        <li>
-          <span class="lang-ja">
-            <strong>応用情報技術者試験（AP）</strong>（2025年1月合格）<br>
-            経済産業省 / 独立行政法人情報処理推進機構（IPA）。コンピュータシステム、システムアーキテクチャ、ネットワーク、データベース、情報セキュリティ、ソフトウェア設計などの高度な知識・応用技術を認定する国家資格。
-          </span>
-          <span class="lang-en">
-            <strong>Applied Information Technology Engineer</strong> (Jan 2025)<br>
-            Ministry of Economy, Trade and Industry (METI) / Information-technology Promotion Agency, Japan (IPA). Advanced-level national IT certification in Japan, certifying applied technical competence across computer systems architecture, networking, databases, information security, and software design.
-          </span>
-        </li>
-        <li style="margin-top: 0.8rem;">
-          <span class="lang-ja"><strong>セキュリティ・キャンプ 2025 ミニ専門講座</strong>，情報処理推進機構（IPA），2025年</span>
-          <span class="lang-en"><strong>Security Camp 2025 Mini Specialized Course</strong>, Information-technology Promotion Agency, Japan (IPA), 2025</span>
-        </li>
-        <li style="margin-top: 0.8rem;">
-          <span class="lang-ja"><strong>Astro Camp 2025 Satellite Development Seminar</strong>，ASE Lab，2025年</span>
-          <span class="lang-en"><strong>Astro Camp 2025 Satellite Development Seminar</strong>, ASE Lab, 2025</span>
-        </li>
-        <li style="margin-top: 0.8rem;">
-          <span class="lang-ja"><strong>GCI2023 Winter / Deep Learning Fundamentals</strong>，東京大学 松尾研究室，2023年</span>
-          <span class="lang-en"><strong>GCI2023 Winter / Deep Learning Fundamentals</strong>, Matsuo Laboratory, The University of Tokyo, 2023</span>
-        </li>
-      </ul>
-    </section>
-
-    <section id="skills">
-      <h2><span class="lang-ja">スキル</span><span class="lang-en">Technical Skills</span></h2>
-      <ul>
-        <li>
-          <strong class="lang-ja">プログラミング &amp; 開発ツール：</strong><strong class="lang-en">Programming &amp; Tools: </strong>
-          <span>Python, PyTorch, C/C++, Git, Linux, OpenFOAM</span>
-        </li>
-        <li>
-          <strong class="lang-ja">流体力学 &amp; 計算工学：</strong><strong class="lang-en">Fluid Dynamics &amp; Computation: </strong>
-          <span class="lang-ja">計算流体力学（CFD）、ラージエディシミュレーション（LES）、乱流モデリング</span>
-          <span class="lang-en">Computational Fluid Dynamics (CFD), Large-Eddy Simulation (LES), Turbulence Modeling</span>
-        </li>
-        <li>
-          <strong class="lang-ja">ハードウェア &amp; 組込みシステム：</strong><strong class="lang-en">Hardware &amp; Embedded Systems: </strong>
-          <span class="lang-ja">プリント基板設計（PCB Design / KiCad）、マイコン制御、LoRa無線テレメトリ、シリアル通信</span>
-          <span class="lang-en">PCB Design (KiCad), Microcontrollers, LoRa Telemetry, Serial Communication</span>
-        </li>
-        <li>
-          <strong class="lang-ja">語学：</strong><strong class="lang-en">Languages: </strong>
-          <span class="lang-ja">日本語（母語）、英語（TOEFL iBT 85, 2026年1月）</span>
-          <span class="lang-en">Japanese (Native), English (TOEFL iBT 85, Jan 2026)</span>
-        </li>
-      </ul>
-    </section>
-
-    <section id="contact">
-      <h2><span class="lang-ja">連絡先</span><span class="lang-en">Contact</span></h2>
-      <p class="lang-ja">
-        <i class="fas fa-map-marker-alt"></i> 福岡県福岡市<br>
-        <i class="fas fa-envelope"></i> 大学メール：<a href="mailto:nakanishi.shuntaro.638@s.kyushu-u.ac.jp">nakanishi.shuntaro.638@s.kyushu-u.ac.jp</a><br>
-        <i class="fas fa-envelope-open-text"></i> 個人メール：<a href="mailto:nsh92030@gmail.com">nsh92030@gmail.com</a>
-      </p>
-      <p class="lang-en">
-        <i class="fas fa-map-marker-alt"></i> Fukuoka, Japan<br>
-        <i class="fas fa-envelope"></i> University Email: <a href="mailto:nakanishi.shuntaro.638@s.kyushu-u.ac.jp">nakanishi.shuntaro.638@s.kyushu-u.ac.jp</a><br>
-        <i class="fas fa-envelope-open-text"></i> Personal Email: <a href="mailto:nsh92030@gmail.com">nsh92030@gmail.com</a>
-      </p>
-      <div class="social-icons">
-        <a href="mailto:nakanishi.shuntaro.638@s.kyushu-u.ac.jp" target="_blank" rel="noopener noreferrer" aria-label="Email">
-          <i class="fas fa-envelope"></i>
-        </a>
-        <a href="https://github.com/NakanishiShuntaro" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          <i class="fab fa-github"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/shuntaro-nakanishi-a44b55361" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="https://x.com/nakanishiS10651" target="_blank" rel="noopener noreferrer" aria-label="X">
-          <i class="fab fa-x-twitter"></i>
-        </a>
+      <h2>Certifications</h2>
+      <div class="entry">
+        <div class="entry-head"><h3>Applied Information Technology Engineer</h3><span class="date">Jan 2025</span></div>
+        <p class="detail">Ministry of Economy, Trade and Industry / Information-technology Promotion Agency, Japan</p>
+        <p>Advanced-level national IT certification in Japan, certifying applied technical competence across computer systems architecture, networking, databases, information security, and software design.</p>
       </div>
     </section>
+    <p class="small">For inquiries, contact <a href="mailto:nakanishi.shuntaro.638@s.kyushu-u.ac.jp">nakanishi.shuntaro.638@s.kyushu-u.ac.jp</a>.</p>
   </main>
-
-  <script>
-    (function () {
-      function setLanguage(lang) {
-        document.documentElement.dataset.lang = lang;
-        document.documentElement.lang = lang;
-        document.title = lang === "ja" ? "中西俊太郎 - ポートフォリオ" : "Shuntaro Nakanishi - Portfolio";
-        localStorage.setItem("lang", lang);
-        document.querySelectorAll(".lang-btn").forEach((button) => {
-          button.setAttribute("aria-pressed", String(button.dataset.setLang === lang));
-        });
-      }
-
-      document.querySelectorAll(".lang-btn").forEach((button) => {
-        button.addEventListener("click", function () {
-          setLanguage(button.dataset.setLang);
-        });
-      });
-
-      setLanguage(document.documentElement.dataset.lang || "ja");
-    })();
-  </script>
 </body>
-
 </html>
