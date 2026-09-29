@@ -59,7 +59,7 @@
         "description": [
           "<strong>Research Project:</strong> <em><a href=\"https://mitou-fukuoka.org/works/solve-tellmee/\" target=\"_blank\" rel=\"noopener noreferrer\">Generative AI Assistant for Beginner Farmers</a></em> (funded by the Fukuoka Mitou Program, a competitive government-backed innovation program for young software developers)",
           "Developed a GPT-4-based agricultural assistant that progressively personalizes strawberry cultivation recommendations to individual farms as observations accumulate, integrating IoT sensor telemetry, agronomic knowledge, and growers' multiple-choice responses.",
-          "Earned the “Yoka Creator” certification with the top evaluation among 14 funded projects, independently leading the project from concept to implementation and evaluation and securing an industry partnership with SERAKU Co., Ltd. for commercial integration."
+          "Earned the “Yoka Creator” certification as one of two recognized projects among the 14 projects in the Solve course, independently leading the project from concept to implementation and evaluation and securing an industry partnership with SERAKU Co., Ltd. for commercial integration."
         ],
         "year": "Sep 2024 – Mar 2025",
         "institution": "Student Researcher / Lead Developer · Advisor: Prof. Takashi Okayasu"
@@ -94,7 +94,7 @@
       {
         "title": "<a href=\"https://mitou-fukuoka.org/2025/02/10/2024-250201-seikahokokukai/\" target=\"_blank\" rel=\"noopener noreferrer\">“Yoka Creator” Certification</a>",
         "description": [
-          "Earned certification as a top-tier creator by the Fukuoka Mitou Program, receiving the highest evaluation among 14 funded software projects."
+          "Earned certification as a top-tier creator by the Fukuoka Mitou Program, as one of two recognized projects among the 14 projects in the Solve course."
         ],
         "year": "Feb 2025"
       },

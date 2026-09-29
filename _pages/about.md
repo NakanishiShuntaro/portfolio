@@ -5,12 +5,13 @@ permalink: /
 subtitle: Kyushu University | Large-Eddy Simulation | Turbulence Modeling | Scientific Machine Learning
 profile:
   align: right
-  image: profile.png
-  image_alt: Rocket launch photograph from Shuntaro Nakanishi's GitHub profile
+  image: shuntaro-portrait.jpg
+  image_alt: Shuntaro Nakanishi
   image_circular: false
   more_info: >
     <p>中西 俊太郎</p>
     <p>Fukuoka, Japan</p>
+    <p class="photo-credit"><a href="https://mitou-fukuoka.org/works/solve-tellmee/">Photo: Fukuoka Mitou</a></p>
 news: true
 latest_posts: false
 selected_projects: true

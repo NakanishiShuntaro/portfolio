@@ -1,7 +1,6 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const mode_toggle = document.getElementById("light-toggle");
-
-    mode_toggle.addEventListener("click", function() {
-        toggleTheme(localStorage.getItem("theme"));
-    });
+// Register independently of DOMContentLoaded so the switch also works after late loading.
+document.addEventListener('click', function(event) {
+    if (event.target.closest('#light-toggle')) {
+        toggleTheme(document.documentElement.getAttribute('data-theme'));
+    }
 });

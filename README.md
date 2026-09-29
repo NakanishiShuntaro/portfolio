@@ -33,3 +33,7 @@ bundle exec jekyll build
 ```
 
 The GitHub workflow only validates and uploads a build artifact. It does not publish the prototype. Publishing this Jekyll site with custom plugins will require a GitHub Pages Actions deployment workflow; the default GitHub Pages Jekyll build does not run the full theme plugin set.
+
+## Photos and default theme
+
+The site starts in dark mode; explicit visitor choices are remembered in the site-specific `nakanishi-theme` storage key. Photos and project visuals are used from the three sites authorized by the site owner. Captions link to the original pages; exact image URLs are listed in `assets/img/sources.json`. The program recognition description follows the official event report (two recognized projects among 14 Solve projects).

@@ -43,7 +43,7 @@ let setTheme = (theme) => {
     document.documentElement.removeAttribute("data-theme");
   }
 
-  localStorage.setItem("theme", theme);
+  try { localStorage.setItem("nakanishi-theme", theme); } catch (_) { /* Storage may be unavailable. */ }
 
   // Updates the background of medium-zoom overlay.
   if (typeof medium_zoom !== "undefined") {
@@ -87,15 +87,13 @@ let transTheme = () => {
   }, 500);
 };
 
-let initTheme = (theme) => {
-  if (theme == null || theme == "null") {
-    const userPref = window.matchMedia;
-    if (userPref && userPref("(prefers-color-scheme: dark)").matches) {
-      theme = "dark";
-    }
-  }
-
-  setTheme(theme);
+let readSavedTheme = () => {
+  try { return localStorage.getItem("nakanishi-theme"); } catch (_) { return null; }
 };
 
-initTheme(localStorage.getItem("theme"));
+let initTheme = (theme) => {
+  // Start in dark mode unless the visitor explicitly chose a supported theme.
+  setTheme(theme === "light" || theme === "dark" ? theme : "dark");
+};
+
+initTheme(readSavedTheme());

@@ -57,3 +57,12 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--global-theme-co
 .projects .card-text, .projects h2.category { color: var(--global-text-color-light); }
 .cv .table td:first-child { white-space: nowrap; }
 .social .contact-icons a { display: inline-block; margin: 0 8px; }
+
+// Keep source photographs and product visuals legible at their natural aspect ratio.
+.project-hero, .project-document, .project-event { display: block; width: 100%; height: auto; }
+.project-rocket { display: block; width: min(100%, 402px); height: auto; margin: 0 auto; }
+.project-award { display: block; width: min(100%, 600px); height: auto; margin: 0 auto; }
+.projects .card img { height: 150px; width: 100%; object-fit: cover; }
+.projects .card img[src*="tellmee"] { object-fit: contain; background: #fff; }
+.projects .card img[src*="planetq-stella"] { object-position: center 60%; }
+.profile .more-info .photo-credit { font-family: Roboto, sans-serif; font-size: 10px; margin-top: 7px; line-height: 1.4; }
