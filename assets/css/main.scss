@@ -1,0 +1,59 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+@charset "utf-8";
+
+// Dimensions
+$max-content-width: {{ site.max_width }};
+
+@import
+  "variables",
+  "themes",
+  "layout",
+  "base",
+  "distill",
+  "cv",
+  "font-awesome/fontawesome",
+  "font-awesome/brands",
+  "font-awesome/solid",
+  "font-awesome/regular"
+;
+
+// Personalization fixes for the inherited al-folio layouts.
+.table { color: var(--global-text-color); }
+.news th { white-space: nowrap; }
+.news td { overflow-wrap: anywhere; }
+.cv .badge { white-space: normal; line-height: 1.45; max-width: 130px; }
+.cv .institution { overflow-wrap: anywhere; }
+.cv .list-group-item { background: var(--global-card-bg-color); color: var(--global-text-color); }
+body { padding-bottom: 0; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--global-theme-color); outline-offset: 4px; }
+.skip-link { position: fixed; top: -80px; left: 16px; z-index: 1100; padding: 10px 16px; background: var(--global-bg-color); }
+.skip-link:focus { top: 8px; }
+@media (max-width: 575px) {
+  .news th { width: 24% !important; font-size: 13px; }
+  .news td { font-size: 14px; }
+  .cv .table-cv { max-width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+@media (max-width: 575px) {
+  #toc-sidebar { display: none; }
+  .post .post-title { font-size: clamp(1.8rem, 8vw, 2.5rem); }
+  .post .profile {
+    float: none !important;
+    width: 100%;
+    margin: 0 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .post .profile figure { width: 96px; flex-shrink: 0; margin: 0; }
+  .post .profile .more-info { font-size: 14px; }
+  .post .profile .more-info p { display: block; }
+  .social .contact-icons { font-size: 3rem; }
+}
+.projects .card-text, .projects h2.category { color: var(--global-text-color-light); }
+.cv .table td:first-child { white-space: nowrap; }
+.social .contact-icons a { display: inline-block; margin: 0 8px; }

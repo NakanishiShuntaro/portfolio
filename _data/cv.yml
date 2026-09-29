@@ -1,0 +1,156 @@
+[
+  {
+    "title": "General Information",
+    "type": "map",
+    "contents": [
+      {
+        "name": "Full Name",
+        "value": "Shuntaro Nakanishi (中西 俊太郎)"
+      },
+      {
+        "name": "Location",
+        "value": "Fukuoka, Japan"
+      },
+      {
+        "name": "Email",
+        "value": "<a href=\"mailto:nakanishi.shuntaro.638@s.kyushu-u.ac.jp\">nakanishi.shuntaro.638@s.kyushu-u.ac.jp</a>"
+      }
+    ]
+  },
+  {
+    "title": "Education",
+    "type": "time_table",
+    "contents": [
+      {
+        "title": "The University of Tokyo",
+        "description": [
+          "I plan to be enrolled at the University of Tokyo from April through July 2027, then enter a PhD program or a funded master's program abroad if admitted."
+        ],
+        "year": "Apr 2027 (Planned)",
+        "institution": "Admitted to the Master's Program, Department of Mechanical Engineering, for April 2027 entry · Tokyo, Japan"
+      },
+      {
+        "title": "Kyushu University",
+        "description": [
+          "<strong>Relevant Coursework:</strong> Fluid Dynamics, Compressible Fluid Flow, Aerodynamics, Aerospace Propulsion, Numerical Analysis, Differential Equations"
+        ],
+        "year": "Apr 2023 – Mar 2027 (Expected)",
+        "institution": "Bachelor of Engineering in Aeronautics and Astronautics · Fukuoka, Japan"
+      }
+    ]
+  },
+  {
+    "title": "Research Experience",
+    "type": "time_table",
+    "contents": [
+      {
+        "title": "Kyushu University, Department of Aeronautics and Astronautics",
+        "description": [
+          "<strong>Undergraduate Thesis:</strong> <em>A Study on Nonlinear SGS Models for LES Based on the Tensor Basis Neural Network Using Machine Learning</em>",
+          "Achieved accuracy comparable to using all 10 of Pope's tensor bases with only the first four (T<sup>(1)</sup>–T<sup>(4)</sup>) in <em>a posteriori</em> simulations of channel flow at Re<sub>τ</sub> = 395, reducing velocity overprediction primarily in the buffer and outer layers relative to conventional isotropic models.",
+          "Investigating T<sup>(6)</sup> as a potential extension of conventional strain-rate-tensor-based SGS models, motivated by its linear dependence on the strain-rate tensor in laminar channel flow.",
+          "Reduced mean-velocity relative L<sub>2</sub> error against DNS from 19.54% with a conventional isotropic model to 3.73% by learning only the coefficient of the isotropic tensor T<sup>(6)</sup>, without incorporating anisotropic tensor terms, using a composite loss function that equally evaluates both the normalized anisotropy tensor and physical stress scale instead of the standard loss function evaluating only the SGS stress anisotropy tensor."
+        ],
+        "year": "Apr 2026 – Present",
+        "institution": "Undergraduate Researcher · Advisor: Prof. Kenichi Abe"
+      },
+      {
+        "title": "Kyushu University, Faculty of Agriculture",
+        "description": [
+          "<strong>Research Project:</strong> <em><a href=\"https://mitou-fukuoka.org/works/solve-tellmee/\" target=\"_blank\" rel=\"noopener noreferrer\">Generative AI Assistant for Beginner Farmers</a></em> (funded by the Fukuoka Mitou Program, a competitive government-backed innovation program for young software developers)",
+          "Developed a GPT-4-based agricultural assistant that progressively personalizes strawberry cultivation recommendations to individual farms as observations accumulate, integrating IoT sensor telemetry, agronomic knowledge, and growers' multiple-choice responses.",
+          "Earned the “Yoka Creator” certification with the top evaluation among 14 funded projects, independently leading the project from concept to implementation and evaluation and securing an industry partnership with SERAKU Co., Ltd. for commercial integration."
+        ],
+        "year": "Sep 2024 – Mar 2025",
+        "institution": "Student Researcher / Lead Developer · Advisor: Prof. Takashi Okayasu"
+      }
+    ]
+  },
+  {
+    "title": "Work Experience",
+    "type": "time_table",
+    "contents": [
+      {
+        "title": "SERAKU Co., Ltd.",
+        "description": [
+          "Enabled production deployment of the Fukuoka Mitou AI assistant into SERAKU's commercial IoT platform, <em>Midori Cloud</em>, by designing backend APIs and data pipelines that connect real-time agricultural sensor telemetry with LLM reasoning."
+        ],
+        "year": "Apr 2025 – Mar 2026",
+        "institution": "Software Engineering Intern · Tokyo, Japan"
+      }
+    ]
+  },
+  {
+    "title": "Honors, Awards, and Grants",
+    "type": "time_table",
+    "contents": [
+      {
+        "title": "Fukuoka Mitou Project Grant",
+        "description": [
+          "Secured JPY 500,000 in competitive project funding from the Fukuoka Mitou Program for “Development of an AI-based Agriculture Assistant for Beginner Farmers.”"
+        ],
+        "year": "Sep 2024 – Feb 2025"
+      },
+      {
+        "title": "<a href=\"https://mitou-fukuoka.org/2025/02/10/2024-250201-seikahokokukai/\" target=\"_blank\" rel=\"noopener noreferrer\">“Yoka Creator” Certification</a>",
+        "description": [
+          "Earned certification as a top-tier creator by the Fukuoka Mitou Program, receiving the highest evaluation among 14 funded software projects."
+        ],
+        "year": "Feb 2025"
+      },
+      {
+        "title": "Noshiro Space Event Awards",
+        "description": [
+          "As a member of PLANET-Q, received the Autodesk Award and Mitsubishi Heavy Industries (MHI) Award (2023, 2024) and the Photron Award (2024) for hybrid rocket development at Japan's largest student rocket competition."
+        ],
+        "year": "Oct 2023, Nov 2024"
+      }
+    ]
+  },
+  {
+    "title": "Conference Presentations",
+    "type": "list",
+    "contents": [
+      "<strong>Nakanishi, S.</strong>, Kihara, H., and Abe, K., “A Study on Nonlinear SGS Models for LES Based on the Tensor Basis Neural Network Using Machine Learning,” <em><a href=\"https://branch.jsass.or.jp/west/?p=1919\" target=\"_blank\" rel=\"noopener noreferrer\">The Japan Society for Aeronautical and Space Sciences (JSASS) Western Branch Conference</a></em>, Fukuoka, Japan, Nov 2026 (scheduled for oral presentation).",
+      "<strong>Nakanishi, S.</strong>, Sato, S., Okayasu, T., and Mochida, K., “Development of an AI to Support Beginner Farmers by Integrating Environmental Data and Farmers' Insights,” <em>Annual Conference of the Japanese Society of Agricultural Informatics</em>, Kyoto, Japan, May 2025 (oral presentation)."
+    ]
+  },
+  {
+    "title": "Technical Skills",
+    "type": "list",
+    "contents": [
+      "<strong>Programming &amp; Tools:</strong> Python, C/C++, Git, Linux, OpenFOAM",
+      "<strong>Fluid Dynamics &amp; Computation:</strong> Computational Fluid Dynamics (CFD), Large-Eddy Simulation (LES), Turbulence Modeling",
+      "<strong>Hardware &amp; Embedded Systems:</strong> PCB Design, Microcontrollers, CAN Bus, LoRa Telemetry, Serial Communication"
+    ]
+  },
+  {
+    "title": "Extracurricular Activities",
+    "type": "time_table",
+    "contents": [
+      {
+        "title": "PLANET-Q (Kyushu University Space Development Club)",
+        "description": [
+          "Designed the club's first distributed CAN bus network to improve avionics noise immunity and communication reliability, contributing to successful separation mechanism actuation, full vehicle recovery, and complete flight data logging across launches reaching apogees up to 3,700 m.",
+          "Contributed to consistent combustion characteristics and fail-safe operation across two static firing tests (<a href=\"https://www.youtube.com/watch?v=oie49Va7zNE\" target=\"_blank\" rel=\"noopener noreferrer\">video</a>) by engineering embedded control electronics and valve actuation systems for precise oxidizer flow regulation and emergency depressurization."
+        ],
+        "year": "Apr 2023 – Present",
+        "institution": "Avionics Team Member"
+      }
+    ]
+  },
+  {
+    "title": "Certifications",
+    "type": "time_table",
+    "contents": [
+      {
+        "title": "Applied Information Technology Engineer",
+        "description": [
+          "Advanced-level national IT certification in Japan, certifying applied technical competence across computer systems architecture, networking, databases, information security, and software design."
+        ],
+        "year": "Jan 2025",
+        "institution": "Ministry of Economy, Trade and Industry / Information-technology Promotion Agency, Japan"
+      }
+    ]
+  }
+]
