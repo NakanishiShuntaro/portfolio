@@ -52,11 +52,6 @@ const projects = (await getCollection('projects')).sort(
                 {project.data.period} · {project.data.affiliation}
               </p>
               <p class="entry-desc">{project.data.description}</p>
-              <div class="action-row">
-                <a class="action-btn" href={withBase(`/projects/${project.id}/`)}>
-                  Read more →
-                </a>
-              </div>
             </div>
           </article>
         );

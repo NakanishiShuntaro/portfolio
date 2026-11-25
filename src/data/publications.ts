@@ -40,7 +40,7 @@ export const PUBLICATIONS: Publication[] = [
     type: 'Oral presentation',
     preview: '/assets/img/tellmee-overview.png',
     links: [
-      { label: 'Project', href: 'https://mitou-fukuoka.org/works/solve-tellmee/' },
+      { label: 'Conference', href: 'https://www.jsai.or.jp/%E5%B9%B4%E6%AC%A1%E5%A4%A7%E4%BC%9A%E7%AD%89/%E5%B9%B4%E6%AC%A1%E5%A4%A7%E4%BC%9A' },
       { label: 'Slides (PDF)', href: '/assets/slides/tellmee/research_slides.pdf', isLocal: true },
     ],
     selected: true,
