@@ -1,0 +1,102 @@
+---
+import { SITE, withBase } from '../data/site';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description = SITE.description } = Astro.props;
+const pageTitle = title ? `${title} | ${SITE.name}` : SITE.name;
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={SITE.ogImage} />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script is:inline>
+      (() => {
+        const stored = localStorage.getItem('nakanishi-theme');
+        const theme = stored === 'light' || stored === 'dark' ? stored : 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href={withBase('/')}>{SITE.name}</a>
+        <div class="nav-group">
+          <nav aria-label="Main navigation">
+            <ul class="nav-links">
+              {
+                SITE.nav.map((item) => {
+                  const href = withBase(item.path);
+                  const isActive =
+                    item.path === '/'
+                      ? currentPath === href || currentPath === href.replace(/\/$/, '')
+                      : currentPath.startsWith(href);
+                  return (
+                    <li>
+                      <a href={href} class={isActive ? 'active' : undefined}>
+                        {item.label}
+                      </a>
+                    </li>
+                  );
+                })
+              }
+            </ul>
+          </nav>
+          <button
+            id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Toggle color theme"
+            title="Toggle light/dark mode"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>© {new Date().getFullYear()} {SITE.name}</span>
+        <span>Built with <a href="https://astro.build/" target="_blank" rel="noopener noreferrer">Astro</a> · Hosted on GitHub Pages</span>
+      </div>
+    </footer>
+
+    <script is:inline>
+      const btn = document.getElementById('theme-toggle');
+      btn?.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme') || 'dark';
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('nakanishi-theme', next);
+      });
+    </script>
+  </body>
+</html>

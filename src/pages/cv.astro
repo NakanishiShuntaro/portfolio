@@ -1,0 +1,161 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE, withBase } from '../data/site';
+import cv from '../data/cv.json';
+---
+
+<BaseLayout title="CV" description="Curriculum Vitae of Shuntaro Nakanishi.">
+  <div class="cv-header">
+    <div>
+      <h1>Curriculum Vitae</h1>
+      <p class="muted" style="margin: 0;">{SITE.name} · {SITE.nameJa}</p>
+    </div>
+    <a class="btn btn-primary" href={withBase(SITE.cvPdfPath)} target="_blank" rel="noopener noreferrer">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+        <polyline points="14 2 14 8 20 8"></polyline>
+        <line x1="16" y1="13" x2="8" y2="13"></line>
+        <line x1="16" y1="17" x2="8" y2="17"></line>
+      </svg>
+      View CV PDF
+    </a>
+  </div>
+
+  <section class="cv-section">
+    <h2>Education</h2>
+    {
+      cv.education.map((edu) => (
+        <div class="cv-entry">
+          <div class="cv-entry-head">
+            <span>{edu.institution}</span>
+            <span class="muted">{edu.location}</span>
+          </div>
+          <div class="cv-entry-sub">
+            <em>{edu.role}</em>
+            <span>{edu.period}</span>
+          </div>
+        </div>
+      ))
+    }
+  </section>
+
+  <section class="cv-section">
+    <h2>Research Interests</h2>
+    <p style="margin: 0;">{cv.researchInterests}</p>
+  </section>
+
+  <section class="cv-section">
+    <h2>Research Experience</h2>
+    {
+      cv.researchExperience.map((exp) => (
+        <div class="cv-entry">
+          <div class="cv-entry-head">
+            <span>{exp.institution}</span>
+            <span class="muted">{exp.location}</span>
+          </div>
+          <div class="cv-entry-sub">
+            <em>{exp.role}</em>
+            <span>{exp.period}</span>
+          </div>
+          <ul class="cv-bullets">
+            {exp.bullets.map((b) => <li set:html={b} />)}
+          </ul>
+        </div>
+      ))
+    }
+  </section>
+
+  <section class="cv-section">
+    <h2>Conference Presentations</h2>
+    <ul class="cv-bullets" style="margin-top: 0;">
+      {cv.presentations.map((p) => <li set:html={p} />)}
+    </ul>
+  </section>
+
+  <section class="cv-section">
+    <h2>Honors, Awards, and Grants</h2>
+    {
+      cv.honors.map((h) => (
+        <div class="cv-entry">
+          <div class="cv-entry-head">
+            <span>{h.title}</span>
+            <span class="muted">{h.period}</span>
+          </div>
+          <p style="margin: 0.35rem 0 0; font-size: 0.94rem;" set:html={h.detail} />
+        </div>
+      ))
+    }
+  </section>
+
+  <section class="cv-section">
+    <h2>Work Experience</h2>
+    {
+      cv.workExperience.map((w) => (
+        <div class="cv-entry">
+          <div class="cv-entry-head">
+            <span>{w.institution}</span>
+            <span class="muted">{w.location}</span>
+          </div>
+          <div class="cv-entry-sub">
+            <em>{w.role}</em>
+            <span>{w.period}</span>
+          </div>
+          <ul class="cv-bullets">
+            {w.bullets.map((b) => <li set:html={b} />)}
+          </ul>
+        </div>
+      ))
+    }
+  </section>
+
+  <section class="cv-section">
+    <h2>Leadership and Extracurricular Activities</h2>
+    {
+      cv.leadership.map((l) => (
+        <div class="cv-entry">
+          <div class="cv-entry-head">
+            <span>{l.institution}</span>
+            <span class="muted">{l.location}</span>
+          </div>
+          <div class="cv-entry-sub">
+            <em>{l.role}</em>
+            <span>{l.period}</span>
+          </div>
+          <ul class="cv-bullets">
+            {l.bullets.map((b) => <li set:html={b} />)}
+          </ul>
+        </div>
+      ))
+    }
+  </section>
+
+  <section class="cv-section">
+    <h2>Technical Skills</h2>
+    <ul class="cv-bullets" style="margin-top: 0;">
+      {
+        cv.skills.map((s) => (
+          <li>
+            <strong>{s.category}:</strong> {s.items}
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="cv-section">
+    <h2>Certifications</h2>
+    {
+      cv.certifications.map((c) => (
+        <div class="cv-entry">
+          <div class="cv-entry-head">
+            <span>{c.title}</span>
+            <span class="muted">{c.date}</span>
+          </div>
+          <div class="cv-entry-sub">
+            <span>{c.issuer}</span>
+          </div>
+        </div>
+      ))
+    }
+  </section>
+</BaseLayout>

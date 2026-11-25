@@ -1,0 +1,148 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE, withBase } from '../data/site';
+import { NEWS } from '../data/news';
+import { PUBLICATIONS } from '../data/publications';
+
+const projects = (await getCollection('projects'))
+  .filter((p) => p.data.selected)
+  .sort((a, b) => a.data.importance - b.data.importance);
+
+const selectedPubs = PUBLICATIONS.filter((p) => p.selected);
+---
+
+<BaseLayout>
+  <section class="hero">
+    <div>
+      <h1>{SITE.name}</h1>
+      <p class="hero-subtitle">{SITE.subtitle}</p>
+      <div class="hero-bio">
+        <p>
+          I am an undergraduate researcher at <strong>Kyushu University</strong>, working with
+          <strong>Prof. Kenichi Abe</strong> in the Department of Aeronautics and Astronautics. My
+          research interests focus on large-eddy simulation, data-driven turbulence modeling, and
+          scientific machine learning for computational fluid dynamics.
+        </p>
+        <p>
+          My current research explores nonlinear subgrid-scale models using
+          <a href={withBase('/projects/turbulence/')}>tensor basis neural networks</a>, with
+          particular attention to their performance in <em>a posteriori</em> channel-flow
+          simulations.
+        </p>
+        <p>
+          My past experience includes developing an
+          <a href={withBase('/projects/agriculture/')}>AI assistant for beginner farmers</a> through
+          the Fukuoka Mitou Program, software engineering at SERAKU, and
+          <a href={withBase('/projects/avionics/')}>hybrid rocket avionics</a> with PLANET-Q, Kyushu
+          University's space development club.
+        </p>
+      </div>
+
+      <div class="social-row">
+        <a class="social-pill" href={withBase(SITE.cvPdfPath)} target="_blank" rel="noopener noreferrer">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+          </svg>
+          CV (PDF)
+        </a>
+        {
+          SITE.social.map((s) => (
+            <a
+              class="social-pill"
+              href={s.href}
+              target={s.href.startsWith('http') ? '_blank' : undefined}
+              rel={s.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+            >
+              {s.label}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <aside class="portrait-card">
+      <img src={withBase('/assets/img/shuntaro-portrait.jpg')} alt="Shuntaro Nakanishi" />
+      <div class="portrait-meta">
+        <p><strong>{SITE.nameJa}</strong></p>
+        <p>{SITE.location}</p>
+        <p>
+          <a href="https://mitou-fukuoka.org/works/solve-tellmee/" target="_blank" rel="noopener noreferrer">
+            Photo: Fukuoka Mitou
+          </a>
+        </p>
+      </div>
+    </aside>
+  </section>
+
+  <section>
+    <h2>News</h2>
+    <ul class="news-list">
+      {
+        NEWS.map((item) => (
+          <li class="news-item">
+            <span class="news-date">{item.displayDate}</span>
+            <span set:html={item.html} />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section>
+    <h2>Selected Projects</h2>
+    <div class="project-grid">
+      {
+        projects.map((project) => (
+          <a class="card" href={withBase(`/projects/${project.id}/`)}>
+            <img class="card-thumb" src={withBase(project.data.img)} alt={project.data.title} loading="lazy" />
+            <div class="card-body">
+              <h3 class="card-title">{project.data.title}</h3>
+              <p class="card-desc">{project.data.description}</p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section>
+    <h2>Selected Presentations</h2>
+    <div class="pub-list">
+      {
+        selectedPubs.map((pub) => (
+          <article class="pub-card">
+            <img class="pub-preview" src={withBase(pub.preview)} alt={pub.title} loading="lazy" />
+            <div>
+              <h3 class="pub-title">{pub.title}</h3>
+              <p class="pub-authors">
+                {pub.authors.map((a, idx) => (
+                  <>
+                    {a === 'Shuntaro Nakanishi' ? <strong>{a}</strong> : a}
+                    {idx < pub.authors.length - 1 ? ', ' : ''}
+                  </>
+                ))}
+              </p>
+              <p class="pub-venue">
+                <em>{pub.venue}</em>, {pub.location}, {pub.date} ({pub.type}).
+              </p>
+              <div class="btn-row" style="margin-bottom: 0;">
+                {pub.links.map((link) => (
+                  <a
+                    class="btn"
+                    href={link.isLocal ? withBase(link.href) : link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

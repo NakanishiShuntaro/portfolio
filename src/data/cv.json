@@ -1,0 +1,92 @@
+{
+  "education": [
+    {
+      "institution": "The University of Tokyo",
+      "location": "Tokyo, Japan",
+      "role": "Incoming Master's Student, Mechanical Engineering (prior to Fall 2027 graduate study)",
+      "period": "Apr – Jul 2027"
+    },
+    {
+      "institution": "Kyushu University",
+      "location": "Fukuoka, Japan",
+      "role": "Bachelor of Engineering in Aeronautics and Astronautics",
+      "period": "Apr 2023 – Mar 2027 (Expected)"
+    }
+  ],
+  "researchInterests": "Computational fluid dynamics, data-driven turbulence modeling, large eddy simulation, and nonlinear dynamics.",
+  "researchExperience": [
+    {
+      "institution": "Kyushu University, Department of Aeronautics and Astronautics",
+      "location": "Fukuoka, Japan",
+      "role": "Undergraduate Researcher (Advisor: Prof. Kenichi Abe)",
+      "period": "Apr 2026 – Present",
+      "bullets": [
+        "Trained nonlinear subgrid-scale (SGS) closures using Tensor Basis Neural Networks (TBNNs) in PyTorch on filtered high-resolution large eddy simulation (LES) data and coupled them into OpenFOAM (C++) via LibTorch for <em>a posteriori</em> turbulent channel-flow LES at Re<sub>τ</sub> = 395.",
+        "Demonstrated against direct numerical simulation (DNS) reference data that a reduced four-tensor basis reproduces mean velocity and total Reynolds shear stress profiles comparably to the full ten-tensor basis.",
+        "Introduced a physical-role grouping analysis for basis tensors, showing that dominant groups maintained closely aligned time-averaged contributions across both bases (cosine similarity 0.984–0.998) despite substantial variations in individual learned coefficients."
+      ]
+    },
+    {
+      "institution": "Kyushu University, Faculty of Agriculture",
+      "location": "Fukuoka, Japan",
+      "role": "Project Developer, Fukuoka Mitou Program (Advisor: Prof. Takashi Okayasu)",
+      "period": "Sep 2024 – Feb 2025",
+      "bullets": [
+        "Designed and implemented <a href=\"https://mitou-fukuoka.org/works/solve-tellmee/\" target=\"_blank\" rel=\"noopener noreferrer\">Tellmee</a>, a multi-agent LLM assistant integrating IoT sensor readings, agronomic manuals, and growers' observations for strawberry cultivation; the prototype later transitioned to commercial integration with SERAKU Co., Ltd.",
+        "Implemented retrieval using Hypothetical Document Embeddings (HyDE) and crop growth-stage filters, and compared recommendations with and without growers' observations, showing that incorporating field notes enabled more symptom-specific guidance."
+      ]
+    }
+  ],
+  "presentations": [
+    "<strong>Nakanishi, S.</strong>, Kihara, H., and Abe, K., “A Study on Nonlinear SGS Models for LES Based on the Tensor Basis Neural Network Using Machine Learning,” <em><a href=\"https://branch.jsass.or.jp/west/?p=1919\" target=\"_blank\" rel=\"noopener noreferrer\">The Japan Society for Aeronautical and Space Sciences (JSASS) Western Branch Conference</a></em>, Fukuoka, Japan, 20 Nov 2026 (Oral presentation).",
+    "<strong>Nakanishi, S.</strong>, Sato, S., Okayasu, T., and Mochida, K., “Development of an AI to Support Beginner Farmers by Integrating Environmental Data and Farmers' Insights,” <em>Annual Conference of the Japanese Society of Agricultural Informatics</em>, Kyoto, Japan, 25 May 2025 (Oral presentation)."
+  ],
+  "honors": [
+    {
+      "title": "Fukuoka Mitou Program – Tellmee",
+      "period": "Sep 2024 – Feb 2025",
+      "detail": "Received JPY 500,000 in competitive project funding and the <a href=\"https://mitou-fukuoka.org/2025/02/10/2024-250201-seikahokokukai/\" target=\"_blank\" rel=\"noopener noreferrer\">Yoka Creator Award</a> (Feb 2025), the top recognition awarded to 2 of 14 projects in the Solve course."
+    },
+    {
+      "title": "Noshiro Space Event Team Awards (PLANET-Q)",
+      "period": "Oct 2023, Nov 2024",
+      "detail": "Received the Autodesk Award (2023, 2024), Mitsubishi Heavy Industries Award (2023, 2024), and Photron Award (2024) as a member of the PLANET-Q rocket development team."
+    }
+  ],
+  "workExperience": [
+    {
+      "institution": "SERAKU Co., Ltd.",
+      "location": "Tokyo, Japan (Remote)",
+      "role": "Software Engineering Intern",
+      "period": "Apr 2025 – Mar 2026",
+      "bullets": [
+        "Developed backend APIs and data pipelines in Python to connect real-time sensor readings with Tellmee and support its integration into Midori Cloud, SERAKU's commercial IoT platform."
+      ]
+    }
+  ],
+  "leadership": [
+    {
+      "institution": "PLANET-Q (Kyushu University Space Development Club)",
+      "location": "Fukuoka, Japan",
+      "role": "Avionics Team Member (Contributed to the development of five rockets)",
+      "period": "Apr 2023 – Present",
+      "bullets": [
+        "Consolidated three microcontrollers into one, designed the club's first CAN bus network, and modularized flight software, enabling parallel device development and shortening integration across subsequent launches.",
+        "Built and operated flight telemetry for a launch reaching 3,431 m, verifying barometric separation triggers and providing splashdown GPS coordinates to the recovery team.",
+        "Led the avionics team developing the oxidizer flow-regulation valve control system and embedded safety circuitry used in two ground hot-fire tests (<a href=\"https://www.youtube.com/watch?v=oie49Va7zNE\" target=\"_blank\" rel=\"noopener noreferrer\">video</a>) and in flight; authored launch safety documentation approved by faculty reviewers."
+      ]
+    }
+  ],
+  "skills": [
+    { "category": "Languages", "items": "Python, C/C++" },
+    { "category": "Scientific Computing & Tools", "items": "PyTorch (LibTorch), OpenFOAM, Git, Linux" },
+    { "category": "Embedded Systems", "items": "PCB design, microcontrollers, CAN bus, LoRa telemetry, serial communication" }
+  ],
+  "certifications": [
+    {
+      "title": "Applied Information Technology Engineer Examination (National Certification)",
+      "issuer": "Information-technology Promotion Agency, Japan (IPA)",
+      "date": "Jan 2025"
+    }
+  ]
+}

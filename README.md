@@ -1,39 +1,35 @@
-# Shuntaro Nakanishi — academic website prototype
+# Shuntaro Nakanishi — Academic Portfolio
 
-Adapted from https://github.com/kotakondo/kotakondo.github.io (source commit `39d0e23f2d5974aca30bef3a13522c4c833e0ee3`), using its Jekyll/al-folio layouts, styles, and scripts. Theme license: [LICENSE](LICENSE).
+Academic website built with [Astro](https://astro.build/) and deployed to GitHub Pages (`https://nakanishishuntaro.github.io/portfolio/`).
 
-This prototype lives on `prototype/academic-homepage`. Personal content is based on the existing portfolio and the September 28, 2026 CV in the adjacent `cv` folder. It includes About, Projects, Publications (conference presentations), CV, and news. Upcoming work is explicitly labeled. Project diagrams are conceptual illustrations.
-
-## Preview
-
-Use Ruby 3.3 or newer with Bundler. On this Mac, Homebrew Ruby is available in `/opt/homebrew/opt/ruby/bin`; add it to `PATH` before running these commands:
+## Local Development
 
 ```sh
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-bundle install
-bundle exec jekyll serve --host 127.0.0.1 --port 8843
+npm install
+npm run dev
 ```
-
-Open http://127.0.0.1:8843/portfolio/ . The configured `/portfolio` base path matches the existing GitHub Pages repository.
-
-## Edit content
-
-- `_pages/about.md`: introduction and profile
-- `_config.yml`: name, contact links, theme and site URL
-- `_projects/*.md`: project pages
-- `_news/*.md`: updates
-- `_bibliography/papers.bib`: presentations; keep scheduled status in `note`
-- `_data/cv.yml`: CV content
-- `assets/pdf/Shuntaro_Nakanishi_CV.pdf`: downloadable CV
 
 ## Build
 
 ```sh
-bundle exec jekyll build
+npm run build
 ```
 
-The GitHub workflow only validates and uploads a build artifact. It does not publish the prototype. Publishing this Jekyll site with custom plugins will require a GitHub Pages Actions deployment workflow; the default GitHub Pages Jekyll build does not run the full theme plugin set.
+Output is generated in `dist/`.
 
-## Photos and default theme
+## Updating Content
 
-The site starts in dark mode; explicit visitor choices are remembered in the site-specific `nakanishi-theme` storage key. Photos and project visuals are used from the three sites authorized by the site owner. Captions link to the original pages; exact image URLs are listed in `assets/img/sources.json`. The program recognition description follows the official event report (two recognized projects among 14 Solve projects).
+- **CV PDF**: Built locally from `/Users/a81802/Documents/30_Applications/graduate-school/cv/Shuntaro_Nakanishi_CV_updated_*.tex` and copied to `public/assets/pdf/Shuntaro_Nakanishi_CV.pdf` via:
+  ```sh
+  /Users/a81802/Documents/30_Applications/graduate-school/cv/publish_cv_to_portfolio.sh
+  # or add --push to commit & push the updated PDF directly
+  ```
+- **Web CV**: `src/data/cv.json`
+- **Publications / Presentations**: `src/data/publications.ts`
+- **News**: `src/data/news.ts`
+- **Projects**: `src/content/projects/*.md`
+- **Research Slides**: `public/assets/slides/tbnn-les/research_slides.pdf`
+
+## Deployment
+
+Pushing to `main` triggers `.github/workflows/build.yml`, which builds `dist/` and deploys to GitHub Pages.

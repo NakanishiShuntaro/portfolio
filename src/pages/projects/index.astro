@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { withBase } from '../../data/site';
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => a.data.importance - b.data.importance
+);
+---
+
+<BaseLayout
+  title="Projects"
+  description="Research and engineering projects in fluid dynamics, agricultural AI, and aerospace systems."
+>
+  <h1>Projects</h1>
+  <p class="muted" style="margin-bottom: 1.75rem;">
+    Research and engineering projects in fluid dynamics, agricultural AI, and aerospace systems.
+  </p>
+
+  <div class="project-grid">
+    {
+      projects.map((project) => (
+        <a class="card" href={withBase(`/projects/${project.id}/`)}>
+          <img class="card-thumb" src={withBase(project.data.img)} alt={project.data.title} />
+          <div class="card-body">
+            <h2 class="card-title" style="border: none; margin: 0 0 0.35rem; padding: 0;">
+              {project.data.title}
+            </h2>
+            <p class="card-desc">{project.data.description}</p>
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</BaseLayout>

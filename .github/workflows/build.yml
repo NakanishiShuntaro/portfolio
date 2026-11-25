@@ -1,23 +1,45 @@
-name: Build academic website
+name: Build and deploy Astro portfolio
+
 on:
   push:
     branches: [main, "prototype/**"]
   pull_request:
   workflow_dispatch:
+
 permissions:
   contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: ${{ github.ref == 'refs/heads/main' && 'portfolio-pages' || github.run_id }}
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: ruby/setup-ruby@v1
+      - uses: actions/setup-node@v4
         with:
-          ruby-version: '3.3'
-          bundler-cache: true
-      - name: Build
-        run: bundle exec jekyll build
-      - uses: actions/upload-artifact@v4
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build Astro site
+        run: npm run build
+      - uses: actions/upload-pages-artifact@v3
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         with:
-          name: academic-website
-          path: _site
+          path: dist
+
+  deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
