@@ -1,4 +1,5 @@
 :root {
+  color-scheme: light;
   --bg: #fcfcfb;
   --surface: #f5f4f0;
   --border: #e5e3dc;
@@ -18,6 +19,7 @@
 }
 
 :root[data-theme='dark'] {
+  color-scheme: dark;
   --bg: #141413;
   --surface: #1d1d1b;
   --border: #2c2b27;
@@ -70,7 +72,15 @@ a:hover {
   text-decoration-color: currentColor;
 }
 
-img {
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+img,
+video {
   max-width: 100%;
   height: auto;
   display: block;
@@ -80,7 +90,7 @@ img {
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding-inline: 1.5rem;
 }
 
 /* Header */
@@ -104,6 +114,7 @@ img {
   color: var(--text);
   text-decoration: none;
   letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
 .brand:hover {
@@ -133,6 +144,7 @@ img {
   text-decoration: none;
   padding-bottom: 2px;
   border-bottom: 1.5px solid transparent;
+  white-space: nowrap;
 }
 
 .nav-links a:hover {
@@ -183,7 +195,7 @@ img {
 /* Main & Typography */
 main {
   flex: 1;
-  padding: 3.25rem 0 4.5rem;
+  padding-block: 3.25rem 4.5rem;
 }
 
 h1, h2, h3 {
@@ -236,21 +248,6 @@ strong {
   grid-template-columns: 1fr 196px;
   gap: 2.75rem;
   align-items: start;
-}
-
-.name-line {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.25rem 0.75rem;
-}
-
-.name-ja {
-  font-family: var(--font-sans);
-  font-size: 0.92rem;
-  font-weight: 400;
-  color: var(--text-muted);
-  letter-spacing: 0.04em;
 }
 
 .hero-subtitle {
@@ -404,6 +401,8 @@ strong {
   font-size: 1.15rem;
   font-weight: 500;
   margin: 0 0 0.25rem;
+  padding: 0;
+  border: none;
   line-height: 1.35;
 }
 
@@ -535,7 +534,7 @@ strong {
 
 .action-btn-primary:hover {
   background: var(--accent);
-  color: #ffffff;
+  color: var(--bg);
 }
 
 /* Section header with right link */
@@ -660,7 +659,7 @@ strong {
 
 .btn-primary:hover {
   background: var(--accent);
-  color: #ffffff;
+  color: var(--bg);
 }
 
 /* CV page (paper-like flat layout) */
@@ -762,7 +761,7 @@ strong {
 /* Responsive */
 @media (max-width: 720px) {
   main {
-    padding: 2.25rem 0 3.5rem;
+    padding-block: 2.25rem 3.5rem;
   }
 
   h1 {
@@ -797,5 +796,15 @@ strong {
 
   .nav-links {
     gap: 0.95rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .header-inner {
+    height: auto;
+    min-height: 60px;
+    padding-block: 0.7rem;
+    flex-wrap: wrap;
+    row-gap: 0.4rem;
   }
 }

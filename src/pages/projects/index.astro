@@ -45,7 +45,7 @@ const projects = (await getCollection('projects')).sort(
               )}
             </a>
             <div>
-              <h2 class="entry-title" style="border: none; margin: 0 0 0.25rem; padding: 0;">
+              <h2 class="entry-title">
                 <a href={withBase(`/projects/${project.id}/`)}>{project.data.title}</a>
               </h2>
               <p class="entry-meta">

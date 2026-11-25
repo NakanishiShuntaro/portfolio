@@ -10,6 +10,7 @@ interface Props {
 const { title, description = SITE.description } = Astro.props;
 const pageTitle = title ? `${title} — ${SITE.name}` : SITE.name;
 const currentPath = Astro.url.pathname;
+const canonicalUrl = Astro.site ? new URL(currentPath, Astro.site).href : undefined;
 ---
 
 <!doctype html>
@@ -18,11 +19,15 @@ const currentPath = Astro.url.pathname;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
+    <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
     <meta name="description" content={description} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
     <meta property="og:image" content={SITE.ogImage} />
     <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
