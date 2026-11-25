@@ -8,44 +8,58 @@ const years = [...new Set(PUBLICATIONS.map((p) => p.year))].sort((a, b) => b - a
 
 <BaseLayout title="Publications" description="Conference presentations by Shuntaro Nakanishi.">
   <h1>Publications</h1>
-  <p class="muted">Conference presentations.</p>
+  <p class="muted" style="margin: 0 0 1.5rem;">Conference presentations.</p>
 
   {
     years.map((year) => (
       <section>
         <h2>{year}</h2>
-        <div class="pub-list">
-          {PUBLICATIONS.filter((p) => p.year === year).map((pub) => (
-            <article class="pub-card">
-              <img class="pub-preview" src={withBase(pub.preview)} alt={pub.title} loading="lazy" />
-              <div>
-                <h3 class="pub-title">{pub.title}</h3>
-                <p class="pub-authors">
-                  {pub.authors.map((a, idx) => (
-                    <>
-                      {a === 'Shuntaro Nakanishi' ? <strong>{a}</strong> : a}
-                      {idx < pub.authors.length - 1 ? ', ' : ''}
-                    </>
-                  ))}
-                </p>
-                <p class="pub-venue">
-                  <em>{pub.venue}</em>, {pub.location}, {pub.date} ({pub.type}).
-                </p>
-                <div class="btn-row" style="margin-bottom: 0;">
-                  {pub.links.map((link) => (
-                    <a
-                      class="btn"
-                      href={link.isLocal ? withBase(link.href) : link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {link.label}
-                    </a>
-                  ))}
+        <div class="entry-list">
+          {PUBLICATIONS.filter((p) => p.year === year).map((pub) => {
+            const isPlot = pub.id === 'nakanishi2026tbnn';
+            return (
+              <article class="pub-row">
+                <div class="pub-thumb-wrap">
+                  <img
+                    class={`pub-thumb${isPlot ? ' contain' : ''}`}
+                    src={withBase(pub.preview)}
+                    alt={pub.title}
+                    loading="lazy"
+                  />
                 </div>
-              </div>
-            </article>
-          ))}
+                <div>
+                  <h3 class="pub-title">{pub.title}</h3>
+                  <p class="pub-authors">
+                    {pub.authors.map((a, idx) => (
+                      <>
+                        {a === 'Shuntaro Nakanishi' ? (
+                          <span class="pub-author-self">{a}</span>
+                        ) : (
+                          a
+                        )}
+                        {idx < pub.authors.length - 1 ? ', ' : ''}
+                      </>
+                    ))}
+                  </p>
+                  <p class="pub-venue">
+                    <em>{pub.venue}</em>, {pub.location}, {pub.date} ({pub.type}).
+                  </p>
+                  <div class="action-row">
+                    {pub.links.map((link) => (
+                      <a
+                        class="action-btn"
+                        href={link.isLocal ? withBase(link.href) : link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
     ))

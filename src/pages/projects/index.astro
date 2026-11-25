@@ -13,23 +13,40 @@ const projects = (await getCollection('projects')).sort(
   description="Research and engineering projects in fluid dynamics, agricultural AI, and aerospace systems."
 >
   <h1>Projects</h1>
-  <p class="muted" style="margin-bottom: 1.75rem;">
-    Research and engineering projects in fluid dynamics, agricultural AI, and aerospace systems.
+  <p class="muted" style="margin: 0 0 2rem;">
+    Research and engineering work in computational fluid dynamics, applied AI, and aerospace systems.
   </p>
 
-  <div class="project-grid">
+  <div class="entry-list">
     {
-      projects.map((project) => (
-        <a class="card" href={withBase(`/projects/${project.id}/`)}>
-          <img class="card-thumb" src={withBase(project.data.img)} alt={project.data.title} />
-          <div class="card-body">
-            <h2 class="card-title" style="border: none; margin: 0 0 0.35rem; padding: 0;">
-              {project.data.title}
-            </h2>
-            <p class="card-desc">{project.data.description}</p>
-          </div>
-        </a>
-      ))
+      projects.map((project) => {
+        const isPlot = project.id === 'turbulence';
+        return (
+          <article class="entry-row">
+            <a class="entry-thumb-link" href={withBase(`/projects/${project.id}/`)}>
+              <img
+                class={`entry-thumb${isPlot ? ' contain' : ''}`}
+                src={withBase(project.data.img)}
+                alt={project.data.title}
+              />
+            </a>
+            <div>
+              <h2 class="entry-title" style="border: none; margin: 0 0 0.25rem; padding: 0;">
+                <a href={withBase(`/projects/${project.id}/`)}>{project.data.title}</a>
+              </h2>
+              <p class="entry-meta">
+                {project.data.period} · {project.data.affiliation}
+              </p>
+              <p class="entry-desc">{project.data.description}</p>
+              <div class="action-row">
+                <a class="action-btn" href={withBase(`/projects/${project.id}/`)}>
+                  Read more →
+                </a>
+              </div>
+            </div>
+          </article>
+        );
+      })
     }
   </div>
 </BaseLayout>

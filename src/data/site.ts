@@ -1,9 +1,9 @@
 export const SITE = {
   name: 'Shuntaro Nakanishi',
   nameJa: '中西 俊太郎',
-  subtitle: 'Kyushu University · Large-Eddy Simulation · Turbulence Modeling · Scientific Machine Learning',
+  subtitle: 'Department of Aeronautics and Astronautics, Kyushu University',
   description:
-    "Shuntaro Nakanishi's academic website. Undergraduate researcher at Kyushu University working on turbulence modeling and scientific machine learning.",
+    "Shuntaro Nakanishi's academic website. Undergraduate researcher at Kyushu University working on large-eddy simulation, data-driven turbulence modeling, and scientific machine learning.",
   location: 'Fukuoka, Japan',
   email: 'nakanishi.shuntaro.638@s.kyushu-u.ac.jp',
   ogImage: 'https://nakanishishuntaro.github.io/portfolio/assets/img/shuntaro-portrait.jpg',

@@ -10,70 +10,79 @@ const projects = (await getCollection('projects'))
   .sort((a, b) => a.data.importance - b.data.importance);
 
 const selectedPubs = PUBLICATIONS.filter((p) => p.selected);
+
+const projectLinks: Record<string, { label: string; href: string; external?: boolean }[]> = {
+  turbulence: [
+    { label: 'Project page', href: '/projects/turbulence/' },
+    { label: 'Slides (PDF)', href: '/assets/slides/tbnn-les/research_slides.pdf', external: true },
+  ],
+  agriculture: [
+    { label: 'Project page', href: '/projects/agriculture/' },
+    { label: 'Slides (PDF)', href: '/assets/slides/tellmee/research_slides.pdf', external: true },
+  ],
+  avionics: [
+    { label: 'Project page', href: '/projects/avionics/' },
+  ],
+};
 ---
 
 <BaseLayout>
   <section class="hero">
     <div>
-      <h1>{SITE.name}</h1>
+      <div class="name-line">
+        <h1>{SITE.name}</h1>
+        <span class="name-ja">{SITE.nameJa}</span>
+      </div>
       <p class="hero-subtitle">{SITE.subtitle}</p>
       <div class="hero-bio">
         <p>
           I am an undergraduate researcher at <strong>Kyushu University</strong>, working with
           <strong>Prof. Kenichi Abe</strong> in the Department of Aeronautics and Astronautics. My
-          research interests focus on large-eddy simulation, data-driven turbulence modeling, and
-          scientific machine learning for computational fluid dynamics.
+          research focuses on large-eddy simulation, data-driven turbulence modeling, and scientific
+          machine learning for computational fluid dynamics.
         </p>
         <p>
-          My current research explores nonlinear subgrid-scale models using
-          <a href={withBase('/projects/turbulence/')}>tensor basis neural networks</a>, with
-          particular attention to their performance in <em>a posteriori</em> channel-flow
-          simulations.
+          Currently, I study nonlinear subgrid-scale closures using
+          <a href={withBase('/projects/turbulence/')}>tensor basis neural networks</a> coupled with
+          OpenFOAM via LibTorch, examining their <em>a posteriori</em> behavior in turbulent
+          channel flow at Re<sub>τ</sub> = 395.
         </p>
         <p>
-          My past experience includes developing an
-          <a href={withBase('/projects/agriculture/')}>AI assistant for beginner farmers</a> through
-          the Fukuoka Mitou Program, software engineering at SERAKU, and
-          <a href={withBase('/projects/avionics/')}>hybrid rocket avionics</a> with PLANET-Q, Kyushu
-          University's space development club.
+          Previously, I built an
+          <a href={withBase('/projects/agriculture/')}>agricultural AI assistant</a> (Tellmee)
+          through the Fukuoka Mitou Program, interned as a software engineer at SERAKU, and worked on
+          <a href={withBase('/projects/avionics/')}>hybrid rocket avionics</a> with PLANET-Q.
         </p>
       </div>
 
-      <div class="social-row">
-        <a class="social-pill" href={withBase(SITE.cvPdfPath)} target="_blank" rel="noopener noreferrer">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-            <polyline points="14 2 14 8 20 8"></polyline>
-          </svg>
-          CV (PDF)
-        </a>
+      <div class="link-bar" aria-label="Links">
+        <a href={withBase(SITE.cvPdfPath)} target="_blank" rel="noopener noreferrer">CV (PDF)</a>
         {
           SITE.social.map((s) => (
-            <a
-              class="social-pill"
-              href={s.href}
-              target={s.href.startsWith('http') ? '_blank' : undefined}
-              rel={s.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-            >
-              {s.label}
-            </a>
+            <>
+              <span class="link-sep" aria-hidden="true">/</span>
+              <a
+                href={s.href}
+                target={s.href.startsWith('http') ? '_blank' : undefined}
+                rel={s.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              >
+                {s.label}
+              </a>
+            </>
           ))
         }
       </div>
     </div>
 
-    <aside class="portrait-card">
+    <figure class="portrait">
       <img src={withBase('/assets/img/shuntaro-portrait.jpg')} alt="Shuntaro Nakanishi" />
-      <div class="portrait-meta">
-        <p><strong>{SITE.nameJa}</strong></p>
-        <p>{SITE.location}</p>
-        <p>
-          <a href="https://mitou-fukuoka.org/works/solve-tellmee/" target="_blank" rel="noopener noreferrer">
-            Photo: Fukuoka Mitou
-          </a>
-        </p>
-      </div>
-    </aside>
+      <figcaption>
+        {SITE.location} ·{' '}
+        <a href="https://mitou-fukuoka.org/works/solve-tellmee/" target="_blank" rel="noopener noreferrer">
+          Photo
+        </a>
+      </figcaption>
+    </figure>
   </section>
 
   <section>
@@ -83,7 +92,7 @@ const selectedPubs = PUBLICATIONS.filter((p) => p.selected);
         NEWS.map((item) => (
           <li class="news-item">
             <span class="news-date">{item.displayDate}</span>
-            <span set:html={item.html} />
+            <span class="news-text" set:html={item.html} />
           </li>
         ))
       }
@@ -91,57 +100,107 @@ const selectedPubs = PUBLICATIONS.filter((p) => p.selected);
   </section>
 
   <section>
-    <h2>Selected Projects</h2>
-    <div class="project-grid">
+    <div class="section-head">
+      <h2>Research &amp; Projects</h2>
+      <a class="section-more" href={withBase('/projects/')}>All projects →</a>
+    </div>
+    <div class="entry-list">
       {
-        projects.map((project) => (
-          <a class="card" href={withBase(`/projects/${project.id}/`)}>
-            <img class="card-thumb" src={withBase(project.data.img)} alt={project.data.title} loading="lazy" />
-            <div class="card-body">
-              <h3 class="card-title">{project.data.title}</h3>
-              <p class="card-desc">{project.data.description}</p>
-            </div>
-          </a>
-        ))
+        projects.map((project) => {
+          const isPlot = project.id === 'turbulence';
+          const links = projectLinks[project.id] ?? [
+            { label: 'Project page', href: `/projects/${project.id}/` },
+          ];
+          return (
+            <article class="entry-row">
+              <a class="entry-thumb-link" href={withBase(`/projects/${project.id}/`)}>
+                <img
+                  class={`entry-thumb${isPlot ? ' contain' : ''}`}
+                  src={withBase(project.data.img)}
+                  alt={project.data.title}
+                  loading="lazy"
+                />
+              </a>
+              <div>
+                <h3 class="entry-title">
+                  <a href={withBase(`/projects/${project.id}/`)}>{project.data.title}</a>
+                </h3>
+                <p class="entry-meta">
+                  {project.data.period} · {project.data.affiliation}
+                </p>
+                <p class="entry-desc">{project.data.description}</p>
+                <div class="action-row">
+                  {links.map((link) => (
+                    <a
+                      class="action-btn"
+                      href={withBase(link.href)}
+                      target={link.external ? '_blank' : undefined}
+                      rel={link.external ? 'noopener noreferrer' : undefined}
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </article>
+          );
+        })
       }
     </div>
   </section>
 
   <section>
-    <h2>Selected Presentations</h2>
-    <div class="pub-list">
+    <div class="section-head">
+      <h2>Presentations</h2>
+      <a class="section-more" href={withBase('/publications/')}>All presentations →</a>
+    </div>
+    <div class="entry-list">
       {
-        selectedPubs.map((pub) => (
-          <article class="pub-card">
-            <img class="pub-preview" src={withBase(pub.preview)} alt={pub.title} loading="lazy" />
-            <div>
-              <h3 class="pub-title">{pub.title}</h3>
-              <p class="pub-authors">
-                {pub.authors.map((a, idx) => (
-                  <>
-                    {a === 'Shuntaro Nakanishi' ? <strong>{a}</strong> : a}
-                    {idx < pub.authors.length - 1 ? ', ' : ''}
-                  </>
-                ))}
-              </p>
-              <p class="pub-venue">
-                <em>{pub.venue}</em>, {pub.location}, {pub.date} ({pub.type}).
-              </p>
-              <div class="btn-row" style="margin-bottom: 0;">
-                {pub.links.map((link) => (
-                  <a
-                    class="btn"
-                    href={link.isLocal ? withBase(link.href) : link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {link.label}
-                  </a>
-                ))}
+        selectedPubs.map((pub) => {
+          const isPlot = pub.id === 'nakanishi2026tbnn';
+          return (
+            <article class="pub-row">
+              <div class="pub-thumb-wrap">
+                <img
+                  class={`pub-thumb${isPlot ? ' contain' : ''}`}
+                  src={withBase(pub.preview)}
+                  alt={pub.title}
+                  loading="lazy"
+                />
               </div>
-            </div>
-          </article>
-        ))
+              <div>
+                <h3 class="pub-title">{pub.title}</h3>
+                <p class="pub-authors">
+                  {pub.authors.map((a, idx) => (
+                    <>
+                      {a === 'Shuntaro Nakanishi' ? (
+                        <span class="pub-author-self">{a}</span>
+                      ) : (
+                        a
+                      )}
+                      {idx < pub.authors.length - 1 ? ', ' : ''}
+                    </>
+                  ))}
+                </p>
+                <p class="pub-venue">
+                  <em>{pub.venue}</em>, {pub.location}, {pub.date} ({pub.type}).
+                </p>
+                <div class="action-row">
+                  {pub.links.map((link) => (
+                    <a
+                      class="action-btn"
+                      href={link.isLocal ? withBase(link.href) : link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </article>
+          );
+        })
       }
     </div>
   </section>

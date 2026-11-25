@@ -40,8 +40,3 @@ As a member of PLANET-Q, I received the **Autodesk Award** and **Mitsubishi Heav
   <a class="btn" href="https://planet-q.jimdofree.com/" target="_blank" rel="noopener noreferrer">PLANET-Q</a>
   <a class="btn" href="https://www.youtube.com/watch?v=oie49Va7zNE" target="_blank" rel="noopener noreferrer">Static firing video</a>
 </div>
-
-<figure class="project-figure">
-  <img src="/portfolio/assets/img/avionics.svg" alt="Conceptual project schematic" loading="lazy" />
-  <figcaption>Conceptual schematic; not a simulation result or experimental measurement.</figcaption>
-</figure>

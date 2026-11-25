@@ -22,7 +22,7 @@ export const PUBLICATIONS: Publication[] = [
     date: '20 Nov 2026',
     year: 2026,
     type: 'Oral presentation',
-    preview: '/assets/img/turbulence.svg',
+    preview: '/assets/img/tbnn-profiles.png',
     links: [
       { label: 'Conference', href: 'https://branch.jsass.or.jp/west/?p=1919' },
       { label: 'Slides (PDF)', href: '/assets/slides/tbnn-les/research_slides.pdf', isLocal: true },

@@ -8,12 +8,12 @@ interface Props {
 }
 
 const { title, description = SITE.description } = Astro.props;
-const pageTitle = title ? `${title} | ${SITE.name}` : SITE.name;
+const pageTitle = title ? `${title} — ${SITE.name}` : SITE.name;
 const currentPath = Astro.url.pathname;
 ---
 
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -26,13 +26,13 @@ const currentPath = Astro.url.pathname;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap"
       rel="stylesheet"
     />
     <script is:inline>
       (() => {
-        const stored = localStorage.getItem('nakanishi-theme');
-        const theme = stored === 'light' || stored === 'dark' ? stored : 'dark';
+        const stored = localStorage.getItem('nakanishi-theme-v2');
+        const theme = stored === 'light' || stored === 'dark' ? stored : 'light';
         document.documentElement.setAttribute('data-theme', theme);
       })();
     </script>
@@ -69,7 +69,10 @@ const currentPath = Astro.url.pathname;
             aria-label="Toggle color theme"
             title="Toggle light/dark mode"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <circle cx="12" cy="12" r="4"></circle>
               <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
             </svg>
@@ -85,17 +88,17 @@ const currentPath = Astro.url.pathname;
     <footer class="site-footer">
       <div class="container footer-inner">
         <span>© {new Date().getFullYear()} {SITE.name}</span>
-        <span>Built with <a href="https://astro.build/" target="_blank" rel="noopener noreferrer">Astro</a> · Hosted on GitHub Pages</span>
+        <span class="mono">{SITE.location}</span>
       </div>
     </footer>
 
     <script is:inline>
       const btn = document.getElementById('theme-toggle');
       btn?.addEventListener('click', () => {
-        const current = document.documentElement.getAttribute('data-theme') || 'dark';
-        const next = current === 'dark' ? 'light' : 'dark';
+        const current = document.documentElement.getAttribute('data-theme') || 'light';
+        const next = current === 'light' ? 'dark' : 'light';
         document.documentElement.setAttribute('data-theme', next);
-        localStorage.setItem('nakanishi-theme', next);
+        localStorage.setItem('nakanishi-theme-v2', next);
       });
     </script>
   </body>

@@ -8,16 +8,10 @@ import cv from '../data/cv.json';
   <div class="cv-header">
     <div>
       <h1>Curriculum Vitae</h1>
-      <p class="muted" style="margin: 0;">{SITE.name} · {SITE.nameJa}</p>
+      <p class="muted" style="margin: 0.2rem 0 0;">{SITE.name} · {SITE.nameJa}</p>
     </div>
-    <a class="btn btn-primary" href={withBase(SITE.cvPdfPath)} target="_blank" rel="noopener noreferrer">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-        <polyline points="14 2 14 8 20 8"></polyline>
-        <line x1="16" y1="13" x2="8" y2="13"></line>
-        <line x1="16" y1="17" x2="8" y2="17"></line>
-      </svg>
-      View CV PDF
+    <a class="action-btn action-btn-primary" href={withBase(SITE.cvPdfPath)} target="_blank" rel="noopener noreferrer">
+      Download PDF →
     </a>
   </div>
 
@@ -28,11 +22,11 @@ import cv from '../data/cv.json';
         <div class="cv-entry">
           <div class="cv-entry-head">
             <span>{edu.institution}</span>
-            <span class="muted">{edu.location}</span>
+            <span class="cv-entry-loc">{edu.location}</span>
           </div>
           <div class="cv-entry-sub">
             <em>{edu.role}</em>
-            <span>{edu.period}</span>
+            <span class="cv-period">{edu.period}</span>
           </div>
         </div>
       ))
@@ -51,11 +45,11 @@ import cv from '../data/cv.json';
         <div class="cv-entry">
           <div class="cv-entry-head">
             <span>{exp.institution}</span>
-            <span class="muted">{exp.location}</span>
+            <span class="cv-entry-loc">{exp.location}</span>
           </div>
           <div class="cv-entry-sub">
             <em set:html={exp.role} />
-            <span>{exp.period}</span>
+            <span class="cv-period">{exp.period}</span>
           </div>
           <ul class="cv-bullets">
             {exp.bullets.map((b) => <li set:html={b} />)}
@@ -79,9 +73,9 @@ import cv from '../data/cv.json';
         <div class="cv-entry">
           <div class="cv-entry-head">
             <span>{h.title}</span>
-            <span class="muted">{h.period}</span>
+            <span class="cv-period">{h.period}</span>
           </div>
-          <p style="margin: 0.35rem 0 0; font-size: 0.94rem;" set:html={h.detail} />
+          <p style="margin: 0.3rem 0 0; font-size: 0.92rem;" set:html={h.detail} />
         </div>
       ))
     }
@@ -94,11 +88,11 @@ import cv from '../data/cv.json';
         <div class="cv-entry">
           <div class="cv-entry-head">
             <span>{w.institution}</span>
-            <span class="muted">{w.location}</span>
+            <span class="cv-entry-loc">{w.location}</span>
           </div>
           <div class="cv-entry-sub">
             <em>{w.role}</em>
-            <span>{w.period}</span>
+            <span class="cv-period">{w.period}</span>
           </div>
           <ul class="cv-bullets">
             {w.bullets.map((b) => <li set:html={b} />)}
@@ -115,11 +109,11 @@ import cv from '../data/cv.json';
         <div class="cv-entry">
           <div class="cv-entry-head">
             <span>{l.institution}</span>
-            <span class="muted">{l.location}</span>
+            <span class="cv-entry-loc">{l.location}</span>
           </div>
           <div class="cv-entry-sub">
             <em>{l.role}</em>
-            <span>{l.period}</span>
+            <span class="cv-period">{l.period}</span>
           </div>
           <ul class="cv-bullets">
             {l.bullets.map((b) => <li set:html={b} />)}
@@ -149,7 +143,7 @@ import cv from '../data/cv.json';
         <div class="cv-entry">
           <div class="cv-entry-head">
             <span>{c.title}</span>
-            <span class="muted">{c.date}</span>
+            <span class="cv-period">{c.date}</span>
           </div>
           <div class="cv-entry-sub">
             <span>{c.issuer}</span>

@@ -16,14 +16,12 @@ const { Content } = await render(project);
 ---
 
 <BaseLayout title={project.data.title} description={project.data.description}>
-  <p style="margin-bottom: 1rem;">
-    <a href={withBase('/projects/')} class="muted">← Back to Projects</a>
-  </p>
+  <a href={withBase('/projects/')} class="back-link">← Back to Projects</a>
 
   <h1>{project.data.title}</h1>
-  <p class="muted" style="margin: 0 0 0.5rem;">{project.data.description}</p>
+  <p class="muted" style="margin: 0.25rem 0 0;">{project.data.description}</p>
   <p class="project-meta">
-    <strong>{project.data.affiliation}</strong> · {project.data.period}
+    {project.data.affiliation} · {project.data.period}
     {project.data.advisor && <> · Advisor: {project.data.advisor}</>}
   </p>
 
