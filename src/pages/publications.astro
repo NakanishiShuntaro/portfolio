@@ -8,7 +8,6 @@ const years = [...new Set(PUBLICATIONS.map((p) => p.year))].sort((a, b) => b - a
 
 <BaseLayout title="Publications" description="Conference presentations by Shuntaro Nakanishi.">
   <h1 class="sr-only">Publications</h1>
-  <p class="page-lead">Conference presentations.</p>
 
   {
     years.map((year) => (

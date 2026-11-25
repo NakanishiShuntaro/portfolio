@@ -250,13 +250,7 @@ strong {
   border: 0;
 }
 
-.page-lead {
-  color: var(--text-muted);
-  margin: 0 0 1.75rem;
-}
-
-.page-lead + section > h2,
-main > section:first-child > h2 {
+main > section:first-of-type > h2 {
   margin-top: 0;
 }
 
@@ -271,13 +265,6 @@ main > section:first-child > h2 {
   grid-template-columns: 1fr 196px;
   gap: 2.75rem;
   align-items: start;
-}
-
-.hero-subtitle {
-  font-size: 0.94rem;
-  color: var(--text-muted);
-  margin: 0 0 1.25rem;
-  line-height: 1.55;
 }
 
 .hero-bio p {
