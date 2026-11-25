@@ -196,7 +196,7 @@ video {
 /* Main & Typography */
 main {
   flex: 1;
-  padding-block: 2rem 4rem;
+  padding-block: 1.15rem 3.5rem;
 }
 
 h1, h2, h3 {
@@ -676,7 +676,7 @@ main > section:first-of-type > h2 {
 .cv-header {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .cv-section {
@@ -770,7 +770,7 @@ main > section:first-of-type > h2 {
   }
 
   main {
-    padding-block: 1.5rem 3rem;
+    padding-block: 1rem 2.75rem;
   }
 
   h1 {

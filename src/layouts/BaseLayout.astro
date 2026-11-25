@@ -19,7 +19,8 @@ const canonicalUrl = Astro.site ? new URL(currentPath, Astro.site).href : undefi
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
-    <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
+    <link rel="icon" type="image/png" href={withBase('/favicon.png')} />
+    <link rel="apple-touch-icon" href={withBase('/favicon.png')} />
     {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
     <meta name="description" content={description} />
     <meta property="og:title" content={pageTitle} />
