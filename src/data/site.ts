@@ -6,7 +6,7 @@ export const SITE = {
     "Shuntaro Nakanishi's academic website. Undergraduate researcher at Kyushu University working on large-eddy simulation, data-driven turbulence modeling, and scientific machine learning.",
   location: 'Fukuoka, Japan',
   email: 'nakanishi.shuntaro.638@s.kyushu-u.ac.jp',
-  ogImage: 'https://nakanishishuntaro.github.io/portfolio/assets/img/shuntaro-portrait.jpg',
+  ogImage: 'https://nakanishishuntaro.github.io/portfolio/assets/img/hero-rocket.jpg',
   cvPdfPath: '/assets/pdf/Shuntaro_Nakanishi_CV.pdf',
   social: [
     { label: 'Email', href: 'mailto:nakanishi.shuntaro.638@s.kyushu-u.ac.jp', icon: 'email' },

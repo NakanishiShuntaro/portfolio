@@ -303,7 +303,7 @@ strong {
   width: 100%;
   border-radius: 5px;
   border: 1px solid var(--border);
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
 }
 
