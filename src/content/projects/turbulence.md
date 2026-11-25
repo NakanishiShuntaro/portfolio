@@ -1,7 +1,8 @@
 ---
 title: TBNN / LES
 description: Data-driven nonlinear subgrid-scale models for turbulent channel-flow LES
-img: /assets/img/tbnn-profiles.png
+img: /assets/img/tbnn-velocity-poster.jpg
+video: /assets/video/tbnn-velocity.mp4
 importance: 1
 selected: true
 period: April 2026 – Present
@@ -10,8 +11,10 @@ advisor: Prof. Kenichi Abe
 ---
 
 <figure class="project-figure">
-  <img src="/portfolio/assets/img/tbnn-results.png" alt="A posteriori channel-flow LES profiles at Re_tau = 395 comparing T^(1), T^(1)–T^(4), T^(1)–T^(10), and DNS reference data" />
-  <figcaption><em>A posteriori</em> turbulent channel-flow LES at Re<sub>τ</sub> = 395 comparing TBNN basis configurations against DNS (Moser, Kim &amp; Mansour, 1999).</figcaption>
+  <video autoplay loop muted playsinline controls poster="/portfolio/assets/img/tbnn-velocity-poster.jpg">
+    <source src="/portfolio/assets/video/tbnn-velocity.mp4" type="video/mp4" />
+  </video>
+  <figcaption>Instantaneous velocity field visualization from <em>a posteriori</em> turbulent channel-flow LES at Re<sub>τ</sub> = 395.</figcaption>
 </figure>
 
 ## Learning turbulence
@@ -21,6 +24,11 @@ I investigate nonlinear subgrid-scale (SGS) models for large-eddy simulation (LE
 In *a posteriori* simulations of channel flow at Re<sub>τ</sub> = 395, using the first four of Pope's tensor bases achieved mean velocity and total Reynolds shear stress profiles comparable to using all ten, reducing velocity overprediction primarily in the buffer and outer layers relative to conventional isotropic models.
 
 Using a physical-role grouping analysis of the basis tensors, dominant groups maintained closely aligned time-averaged contributions across both bases (cosine similarity 0.984–0.998) despite substantial variations in individual learned coefficients.
+
+<figure class="project-figure">
+  <img src="/portfolio/assets/img/tbnn-results.png" alt="A posteriori channel-flow LES profiles at Re_tau = 395 comparing T^(1), T^(1)–T^(4), T^(1)–T^(10), and DNS reference data" loading="lazy" />
+  <figcaption><em>A posteriori</em> turbulent channel-flow LES profiles at Re<sub>τ</sub> = 395 comparing TBNN basis configurations against DNS (Moser, Kim &amp; Mansour, 1999).</figcaption>
+</figure>
 
 ### Conference presentation
 

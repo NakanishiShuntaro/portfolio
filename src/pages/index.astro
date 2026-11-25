@@ -109,12 +109,26 @@ const projectLinks: Record<string, { label: string; href: string; external?: boo
           return (
             <article class="entry-row">
               <a class="entry-thumb-link" href={withBase(`/projects/${project.id}/`)}>
-                <img
-                  class={`entry-thumb${isPlot ? ' contain' : ''}`}
-                  src={withBase(project.data.img)}
-                  alt={project.data.title}
-                  loading="lazy"
-                />
+                {project.data.video ? (
+                  <video
+                    class="entry-thumb"
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    poster={withBase(project.data.img)}
+                    aria-label={project.data.title}
+                  >
+                    <source src={withBase(project.data.video)} type="video/mp4" />
+                  </video>
+                ) : (
+                  <img
+                    class={`entry-thumb${isPlot ? ' contain' : ''}`}
+                    src={withBase(project.data.img)}
+                    alt={project.data.title}
+                    loading="lazy"
+                  />
+                )}
               </a>
               <div>
                 <h3 class="entry-title">

@@ -7,6 +7,7 @@ const projects = defineCollection({
     title: z.string(),
     description: z.string(),
     img: z.string(),
+    video: z.string().optional(),
     importance: z.number(),
     selected: z.boolean().default(true),
     period: z.string(),

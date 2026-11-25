@@ -24,11 +24,25 @@ const projects = (await getCollection('projects')).sort(
         return (
           <article class="entry-row">
             <a class="entry-thumb-link" href={withBase(`/projects/${project.id}/`)}>
-              <img
-                class={`entry-thumb${isPlot ? ' contain' : ''}`}
-                src={withBase(project.data.img)}
-                alt={project.data.title}
-              />
+              {project.data.video ? (
+                <video
+                  class="entry-thumb"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                  poster={withBase(project.data.img)}
+                  aria-label={project.data.title}
+                >
+                  <source src={withBase(project.data.video)} type="video/mp4" />
+                </video>
+              ) : (
+                <img
+                  class={`entry-thumb${isPlot ? ' contain' : ''}`}
+                  src={withBase(project.data.img)}
+                  alt={project.data.title}
+                />
+              )}
             </a>
             <div>
               <h2 class="entry-title" style="border: none; margin: 0 0 0.25rem; padding: 0;">

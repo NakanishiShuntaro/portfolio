@@ -608,11 +608,14 @@ strong {
   margin: 1.75rem 0;
 }
 
-.project-figure img {
+.project-figure img,
+.project-figure video {
+  width: 100%;
   border-radius: 4px;
   border: 1px solid var(--border);
   margin: 0 auto;
   background: #ffffff;
+  display: block;
 }
 
 .project-figure figcaption {
