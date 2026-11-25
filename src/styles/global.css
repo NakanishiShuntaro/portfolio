@@ -675,13 +675,8 @@ main > section:first-of-type > h2 {
 /* CV page (paper-like flat layout) */
 .cv-header {
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-  padding-bottom: 1.25rem;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 2rem;
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
 }
 
 .cv-section {
