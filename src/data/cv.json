@@ -21,8 +21,8 @@
       "role": "Undergraduate Researcher (Advisor: Prof. Kenichi Abe)",
       "period": "Apr 2026 – Present",
       "bullets": [
-        "Trained nonlinear subgrid-scale (SGS) closures using Tensor Basis Neural Networks (TBNNs) in PyTorch on filtered high-resolution large eddy simulation (LES) data and coupled them into OpenFOAM (C++) via LibTorch for <em>a posteriori</em> turbulent channel-flow LES at Re<sub>τ</sub> = 395.",
-        "Demonstrated against direct numerical simulation (DNS) reference data that a reduced four-tensor basis reproduces mean velocity and total Reynolds shear stress profiles comparably to the full ten-tensor basis.",
+        "Trained nonlinear subgrid-scale (SGS) closures using Tensor Basis Neural Networks in PyTorch on filtered high-resolution large eddy simulation (LES) data and coupled them into OpenFOAM (C++) via LibTorch for <em>a posteriori</em> turbulent channel-flow LES at Re<sub>τ</sub> = 395.",
+        "Demonstrated against direct numerical simulation reference data that a reduced four-tensor basis reproduces mean velocity and total Reynolds shear stress profiles comparably to the full ten-tensor basis.",
         "Introduced a physical-role grouping analysis for basis tensors, showing that dominant groups maintained closely aligned time-averaged contributions across both bases (cosine similarity 0.984–0.998) despite substantial variations in individual learned coefficients."
       ]
     },
