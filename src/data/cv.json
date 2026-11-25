@@ -18,7 +18,7 @@
     {
       "institution": "Kyushu University, Department of Aeronautics and Astronautics",
       "location": "Fukuoka, Japan",
-      "role": "Undergraduate Researcher (Advisor: Prof. Kenichi Abe)",
+      "role": "Undergraduate Researcher (Advisor: Prof. Kenichi Abe; <a href=\"https://nakanishishuntaro.github.io/portfolio/assets/slides/tbnn-les/research_slides.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">Research Slides</a>)",
       "period": "Apr 2026 – Present",
       "bullets": [
         "Trained nonlinear subgrid-scale (SGS) closures using Tensor Basis Neural Networks in PyTorch on filtered high-resolution large eddy simulation (LES) data and coupled them into OpenFOAM (C++) via LibTorch for <em>a posteriori</em> turbulent channel-flow LES at Re<sub>τ</sub> = 395.",

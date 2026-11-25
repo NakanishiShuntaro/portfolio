@@ -54,7 +54,7 @@ import cv from '../data/cv.json';
             <span class="muted">{exp.location}</span>
           </div>
           <div class="cv-entry-sub">
-            <em>{exp.role}</em>
+            <em set:html={exp.role} />
             <span>{exp.period}</span>
           </div>
           <ul class="cv-bullets">
