@@ -27,9 +27,9 @@
       ]
     },
     {
-      "institution": "Kyushu University, Faculty of Agriculture",
+      "institution": "Kyushu University, Faculty of Agriculture (Fukuoka Mitou Program)",
       "location": "Fukuoka, Japan",
-      "role": "Project Developer, Fukuoka Mitou Program (Advisor: Prof. Takashi Okayasu)",
+      "role": "Project Developer (Advisor: Prof. Takashi Okayasu; <a href=\"https://nakanishishuntaro.github.io/portfolio/assets/slides/tellmee/research_slides.pdf\" target=\"_blank\" rel=\"noopener noreferrer\">Research Slides</a>)",
       "period": "Sep 2024 – Feb 2025",
       "bullets": [
         "Designed and implemented <a href=\"https://mitou-fukuoka.org/works/solve-tellmee/\" target=\"_blank\" rel=\"noopener noreferrer\">Tellmee</a>, a multi-agent LLM assistant integrating IoT sensor readings, agronomic manuals, and growers' observations for strawberry cultivation; the prototype later transitioned to commercial integration with SERAKU Co., Ltd.",

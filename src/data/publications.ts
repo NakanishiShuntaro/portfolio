@@ -41,6 +41,7 @@ export const PUBLICATIONS: Publication[] = [
     preview: '/assets/img/tellmee-overview.png',
     links: [
       { label: 'Project', href: 'https://mitou-fukuoka.org/works/solve-tellmee/' },
+      { label: 'Slides (PDF)', href: '/assets/slides/tellmee/research_slides.pdf', isLocal: true },
     ],
     selected: true,
   },

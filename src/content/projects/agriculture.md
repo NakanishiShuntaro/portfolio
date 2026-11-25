@@ -38,6 +38,12 @@ As a software engineering intern at **SERAKU Co., Ltd.** (April 2025 – March 2
   <a class="btn" href="https://mitou-fukuoka.org/2025/02/10/2024-250201-seikahokokukai/" target="_blank" rel="noopener noreferrer">Certification</a>
 </div>
 
+### Research slides
+
+<div class="btn-row">
+  <a class="btn btn-primary" href="/portfolio/assets/slides/tellmee/research_slides.pdf" target="_blank" rel="noopener noreferrer">View PDF</a>
+</div>
+
 ### Fukuoka Mitou demo day
 
 The 2024 program's final presentation event took place on **February 1, 2025**, at Kyushu University's Nishijin Plaza. Tellmee received “Yoka Creator” certification in the Solve course.
